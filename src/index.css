@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+#header
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  background: #E3E6F3;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  height: 120px;
+}
+
+#navbar
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbar li
+{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+
+}
+#navbar li a
+{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+#navbar li a:hover,
+#navbar li a.active
+{
+    color: rgb(49, 198, 24);
+}
+#navbar li a.active::after,
+#navbar li a:hover::after
+{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: forestgreen;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+#navbar li:nth-child(2) a:hover
+{
+    color: rgb(223, 223, 70);
+}
+#navbar li:nth-child(3) a:hover
+{
+    color: #f54967;
+}
+#navbar li:nth-child(4) a:hover
+{
+    color: #328fa5;
+}
+#navbar li:nth-child(2) a:hover::after
+{
+    background: #F7DE3A;
+}
+#navbar li:nth-child(3) a:hover::after
+{
+    background: #d03852;
+}
+#navbar li:nth-child(4) a:hover::after
+{
+    background: #23798e;
+}
+
+#loginButton,
+#ContactButton
+{
+    color: #1a1a1a;
+    border: 2px solid rgb(49, 198, 24);
+    transition-duration: 0.4s;
+}
+#loginButton:hover,
+#ContactButton:hover 
+{
+    background-color: rgb(49, 198, 24);
+}
+
+/*======Carousel style======*/
+.carousel-caption {
+    position: absolute;
+    left: auto;
+    right: auto;
+    width: 50%;
+    height: 100%;
+    background-color: #1a1a1a;
+    opacity: 0.8;
+    bottom:0;
+    left:0;
+}
+
+#CarouselButton1 {
+    color: #ffff;
+    background-color: none;
+    border: 2px solid rgb(223, 223, 70);
+    transition-duration: 0.4s;
+}
+#CarouselButton1:hover 
+{
+    background-color: #F7DE3A;
+}
+#CarouselButton2 {
+    color: #ffff;
+    background-color: none;
+    border: 2px solid #f54967;
+    transition-duration: 0.4s;
+}
+#CarouselButton2:hover 
+{
+    background-color: #d03852;
+}
+#CarouselButton3 {
+    color: #ffff;
+    background-color: none;
+    border: 2px solid #328fa5;
+    transition-duration: 0.4s;
+}
+#CarouselButton3:hover 
+{
+    background-color: #23798e;
+}
+
+#S1{
+    border-bottom: 5px solid #F7DE3A;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+#S2{
+    border-bottom: 5px solid #d03852;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+#S3{
+    border-bottom: 5px solid #23798e;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+/**=====Help style=====**/
+.col-sm-12{
+    text-align: center;
+}
+
+/*=====Info Box style=====*/
+.info-container
+{
+    position: relative;
+    width: 1200px;
+    height: 300px;
+    margin: 80px auto; /**padding ai lati**/
+}
+.info-container .box
+{
+    position: relative;
+    width: calc(400px - 30px);
+    height: calc(300px - 30px);
+    background-color: #000;
+    float: left;
+    margin: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.info-container .box .icon
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff0;
+    transition: 0.5s;
+    z-index: 1;
+}
+.info-container .box:hover .icon
+{
+    top: 20px;
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+     border-radius: 50%;
+}
+.info-container .box .icon .fa
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    transition: 0.5s;
+    color: #fff;
+}
+.info-container .box:hover .icon .fa
+{
+    font-size: 40px;
+}
+.info-container .box .content
+{
+    position: absolute;
+    top: 100%;
+    height: calc(100% - 100px);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    opacity: 0;
+}
+.info-container .box:hover .content
+{
+   top: 100px;
+   opacity: 1;
+}
+.info-container .box .content h3
+{
+    margin: 0 0 10px;
+    padding: 0;
+    color: #fff;
+    font-size: 24px;
+}
+.info-container .box .content p
+{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+.info-container .box:nth-child(1) .icon
+{
+    background-color: #F7DE3A;
+}
+.info-container .box:nth-child(1)
+{
+    background-color: rgb(223, 223, 70);
+}
+.info-container .box:nth-child(2) .icon
+{
+    background-color: #d03852;
+}
+.info-container .box:nth-child(2)
+{
+    background-color: #f54967;
+}
+.info-container .box:nth-child(3) .icon
+{
+    background-color: #23798e;
+}
+.info-container .box:nth-child(3)
+{
+    background-color: #328fa5;
+}
+

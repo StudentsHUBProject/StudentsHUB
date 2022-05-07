@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentsHUB</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+<body>
+     
+    <!--=====Navbar=====-->
+    <section id="header">
+    <!--Logo-->
+        <a href="#">
+            <img src="./Logo/finalHomeB.png" class="logo" height="120px">
+        </a>
+    <!--Sezioni-->
+        <div>
+            <ul id="navbar">
+                <li><a href="index1.html" class="active">Home</a></li>
+                <li><a href="">Appartamenti</a></li>
+                <li><a href="">Libri</a></li>
+                <li><a href="">Corsi</a></li>
+    <!--Login Button-->
+                <button class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  Login</button>
+            </ul>
+        </div>
+    </section>
+    <!--Fine Sezione Navbar-->
+     
+
+    <!--=====Carousel=====-->  
+    <div id="Slider" class="carousel slide" data-bs-ride="carousel" style="box-sizing: border-box">
+
+    <!--Indicatori-->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#Slider" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#Slider" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#Slider" data-bs-slide-to="2"></button>
+    </div>
+  
+    <!--Slide-->
+    <div class="carousel-inner">
+    <!--Item1-->
+      <div class="carousel-item active">
+        <img src="./img/Appartamenti1.jpg" alt="Appartamenti" style="box-sizing: border-box;">
+        <div class="container">
+            <div class="carousel-caption">
+                <div class="caption">
+                 <h1 style="padding-top: 170px;" id="S1">Appartamenti</h1>
+
+                <p>Trova l'appartamento perfetto nei pressi del tuo istituto</p>
+                <p><button class="btn btn-lg btn-outline-light" id="CarouselButton1">Esplora  <i class="fa-solid fa-arrow-right"></i></button></p>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!--Item2-->
+      <div class="carousel-item">
+        <img src="./img/Libri1.jpg" alt="Libri" style="box-sizing: border-box;">
+        <div class="container">
+            <div class="carousel-caption">
+                <div class="caption">
+                 <h1 style="padding-top: 170px;" id="S2">Libri</h1>
+
+                <p>Trova il libro più adatto al tuo percorso di studi</p>
+                <p><button class="btn btn-lg btn-outline-light" id="CarouselButton2">Esplora  <i class="fa-solid fa-arrow-right"></i></button></p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!--Item3-->
+      <div class="carousel-item">
+        <img src="./img/CorsiT.jpg" alt="Corsi" style="box-sizing: border-box;">
+        <div class="container">
+            <div class="carousel-caption">
+                <div class="caption">
+                 <h1 style="padding-top: 170px;" id="S3">Corsi</h1>
+
+                <p>Trova i migliori insegnanti
+                    per ripetizioni e lezioni private</p>
+                <p><button class="btn btn-lg btn-outline-light" id="CarouselButton3">Esplora  <i class="fa-solid fa-arrow-right"></i></button></p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <br>
+    <!--Fine sezione Slider-->
+
+    <!--=====Info=====-->
+    <div class="info-container">
+        <!--Box1-->
+        <div class="box">
+          <div class="icon"><i class="fa fa-solid fa-house"></i></div>
+          <div class="content">
+              <h3>Appartamenti</h3>
+              <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
+          </div>
+        </div>
+        <!--Box2-->
+        <div class="box">
+            <div class="icon"><i class="fa fa-solid fa-book-open"></i></div>
+            <div class="content">
+                <h3>Libri</h3>
+                <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
+            </div>
+          </div>
+          <!--Box3-->
+          <div class="box">
+            <div class="icon"><i class="fa fa-solid fa-user-graduate"></i></div>
+            <div class="content">
+                <h3>Corsi</h3>
+                <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
+            </div>
+          </div>
+    </div>
+    <!--Fine sezione info-->
+
+
+    <!--Sezione Help-->
+    <div class="section clearfix" style="background-color: #E3E6F3;">
+      <div class="container">
+          <div class="row lp-section-content clearfix">
+              <div class="col-sm-12">
+                  <br>
+                  <h3>Hai bisogno di aiuto o vuoi lasciare un feedback?</h3>
+                  <p>Scrivici per parlare con noi.</p>
+                  <div class="calltoaction-right-panel">
+                      <a href="mailto:info@StudentsHUB.com" class="btn btn-outline-light btn-lg" role="button" id="ContactButton">Contattaci ora!</a>
+                  </div>
+                  <br>
+              </div>      
+          </div>     
+      </div>
+    </div>
+  <!-- Fine sezione aiuto-->
+  <br><br><br>
+
+  
+   <!-- Footer -->
+   <footer class="page-footer font-small blue">
+      <div class="footer-copyright text-center py-3"  style="background-color: rgb(49, 198, 24);"><strong>Made with</strong> ❤️ Lorenzo,Roberto e Ersi
+      </div>
+   </footer>
+   <!-- Fine Sezione Footer -->
+
+  <!--Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>
