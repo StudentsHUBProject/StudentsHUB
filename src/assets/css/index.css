@@ -8,6 +8,7 @@
     font-family: 'Spartan', sans-serif;
 }
 
+/**=====Navbar Style=====*/
 #header
 {
   display: flex;
@@ -93,6 +94,7 @@
 {
     background-color: rgb(49, 198, 24);
 }
+/**fine Navbar**/
 
 /*======Carousel style======*/
 .carousel-caption {
