@@ -7,6 +7,7 @@
     <title>Corsi</title>
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/src/assets/css/corsi.css">
+    <script src="./assets/js/corsi.js"></script>
 </head>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
@@ -34,11 +35,63 @@
         </section>
         <!--Fine Sezione Navbar-->
 
+        <!--=====Sticky navbar con filtri=====-->
+        <nav class="navbar sticky-top navbar-expand-lg">
+         <div class="container" id="NavFiltri">
+             <ul class="navbar-nav">
+                 <li class="nav-item dropdown">
+                    <div class="container1">
+                       <button class="click btn btn-outline-light" onclick="DropMenu()">Argomento  <i class="fa fa-solid fa-angle-down"></i></button>
+                        <div class="list">
+                            <button class="links">Informatica</button>
+                            <button class="links">Matematica</button>
+                            <button class="links">Fisica</button>
+                            <button class="links">Inglese</button>
+                            <button class="links">Altro</button>
+                        </div>
+                    </div>
+                 </li>
+                 <li class="nav-item dropdown">
+                    <div class="container1">
+                       <button class="click btn btn-outline-light btn-lg" onclick="DropMenu2()">Livello  <i class="fa2 fa-solid fa-angle-down"></i></button>
+                        <div class="list1">
+                            <button class="links">Principiante</button>
+                            <button class="links">Intermedio</button>
+                            <button class="links">Avanzato</button>
+                        </div>
+                    </div>
+                 </li>
+                 <li>
+                     <div class="container1">
+                         <button class="click btn btn-outline-light btn-lg">Disponibilità  <i class="fa3 fa-solid fa-angle-down"></i></button>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="container1">
+                        <button class="click btn btn-outline-light btn-lg">Prezzo  <i class="fa4 fa-solid fa-angle-down"></i></button>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="container1">
+                        <button class="clickT btn btn-outline-light btn-lg">Diventa Tutor</button>
+                     </div>
+                 </li>
+                 
+             </ul>
+         </div>
+        </nav>
 
 
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  
+   <!-- Footer -->
+   <footer class="page-footer font-small blue">
+      <div class="footer-copyright text-center py-3"  style="background-color: #328fa5;"><strong>Made with</strong> ❤️ Lorenzo,Roberto e Ersi
+      </div>
+   </footer>
+   <!-- Fine Sezione Footer -->  
 
 
-
-    
 </body>
 </html>

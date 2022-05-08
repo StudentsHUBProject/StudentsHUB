@@ -83,15 +83,85 @@
 }
 
 #loginButton,
-#ContactButton
+#ContactButton,
+.clickT
 {
     color: #1a1a1a;
     border: 2px solid #328fa5;
     transition-duration: 0.4s;
 }
 #loginButton:hover,
-#ContactButton:hover 
+#ContactButton:hover ,
+.clickT:hover
 {
     background-color: #328fa5;
 }
 /**fine Navbar**/
+
+/**=====sticky navbar con filtri======**/
+.container1
+{
+    width:200px;
+    position: relative;
+    margin-right: 10px;
+}
+.click
+{
+    border-radius: 5px;
+    border: 0.5px solid #000 !important;
+    text-align: left !important;
+}
+.click,.links
+{
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    width:200px;
+    color:#1a1a1a;
+    transition: 0.3s;
+}
+.list,
+.list1
+{
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+}
+.newlist
+{
+    transform: scaleY(1);
+}
+.links
+{
+    background-color: #E3E6F3;
+}
+.links:hover
+{
+    background-color: #c2c4ce;
+    transform: scale(1.1);
+}
+.fa
+{
+    padding-left: 60px;  
+}
+.fa2
+{
+    padding-left: 100px;
+}
+.fa3
+{
+    padding-left: 50px;
+}
+.fa4
+{
+    padding-left: 99px;
+}
+.clickT
+{
+    font-size: 16px;
+    margin-left: 175px;
+    overflow: hidden;
+    white-space: nowrap;
+}
