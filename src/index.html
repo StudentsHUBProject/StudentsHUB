@@ -1,130 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentsHUB</title>
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
-</head>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>StudentsHUB</title>
+      <link rel="stylesheet" href="/src/assets/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="/src/assets/css/index.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 
-<body>
-     
-    <!--=====Navbar=====-->
-    <section id="header">
-    <!--Logo-->
-        <a href="#">
-            <img src="./assets/img/finalHomeB.png" class="logo" height="120px">
-        </a>
-    <!--Sezioni-->
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="appartamenti.html">Appartamenti</a></li>
-                <li><a href="">Libri</a></li>
-                <li><a href="corsi.html">Corsi</a></li>
-    <!--Login Button-->
-                <button class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  Login</button>
-            </ul>
-        </div>
-    </section>
-    <!--Fine Sezione Navbar-->
-     
+   <body>
 
-    <!--=====Carousel=====-->  
-    <div id="Slider" class="carousel slide" data-bs-ride="carousel" style="box-sizing: border-box">
+   <!--==========Navbar==========-->
+      <nav>
+      <!--=====Logo=====-->
+         <div class="logo">
+            <a href="/src/index.html">
+               <img src="/src/assets/img/finalHomeB.png" class="logo" height="120px">
+           </a>
+         </div>
+      <!--=====Btn Toggle Responsive=====-->
+         <input type="checkbox" id="click">
+         <label for="click" class="menu-btn">
+         <i class="fas fa-bars"></i>
+         </label>
+      <!--=====Schede=====-->
+         <ul id="navbar">
+            <li><a href="/src/index.html" class="active">Home</a></li>
+            <li><a href="/src/appartamenti.html">Appartamenti</a></li>
+            <li><a href="">Libri</a></li>
+            <li><a href="/src/corsi.html">Corsi</a></li>
+      <!--=====Login Button=====-->
+            <button class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  
+               Login
+            </button>
+        </ul>
+      </nav>
+   <!--==========Fine Navbar==========-->
 
-    <!--Indicatori-->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#Slider" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#Slider" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#Slider" data-bs-slide-to="2"></button>
-    </div>
-  
-    <!--=Slide=-->
-    <div class="carousel-inner">
-    <!--Item1-->
-      <div class="carousel-item active">
-        <img src="./assets/img/Appartamenti1.jpg" alt="Appartamenti" style="box-sizing: border-box;">
-        <div class="container">
+   <!--==========Carousel==========-->
+   <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+      
+      <!--=====Indicatori=====-->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <!--=====Slide=====-->
+      <div class="carousel-inner">
+        <!--=====Item1=====-->
+        <div class="carousel-item active">
+          <img src="/src/assets/img/Appartamenti1.jpg" class="d-block" alt="appartamenti">
+          <div class="container">
             <div class="carousel-caption">
                 <div class="caption">
-                 <h1 style="padding-top: 170px;" id="S1">Appartamenti</h1>
+                 <h1 id="S1">Appartamenti</h1>
 
-                <p>Trova l'appartamento perfetto nei pressi del tuo istituto</p>
-                <p><button class="btn btn-lg btn-outline-light" id="CarouselButton1">Esplora  <i class="fa-solid fa-arrow-right"></i></button></p>
+                <p id="caption">Trova l'appartamento perfetto nei pressi del tuo istituto</p>
+                <a><button class="btn btn-lg btn-outline-light" id="CarouselButton1">Esplora  <i class="fa-solid fa-arrow-right"></i></button></a>
                 </div>
             </div>
+          </div>
         </div>
-      </div>
-    <!--Item2-->
-      <div class="carousel-item">
-        <img src="./assets/img/Libri1.jpg" alt="Libri" style="box-sizing: border-box;">
-        <div class="container">
+        <!--=====Item2=====-->
+        <div class="carousel-item">
+          <img src="/src/assets/img/CorsiT.jpg" class="d-block" alt="Corsi">
+          <div class="container">
             <div class="carousel-caption">
                 <div class="caption">
-                 <h1 style="padding-top: 170px;" id="S2">Libri</h1>
+                 <h1 id="S2">Libri</h1>
 
-                <p>Trova il libro più adatto al tuo percorso di studi</p>
-                <p><button class="btn btn-lg btn-outline-light" id="CarouselButton2">Esplora  <i class="fa-solid fa-arrow-right"></i></button></p>
+                <p id="caption">Trova il libro più adatto al tuo percorso di studi</p>
+                <a><button class="btn btn-lg btn-outline-light" id="CarouselButton2">Esplora  <i class="fa-solid fa-arrow-right"></i></button></a>
                 </div>
             </div>
+          </div>
         </div>
-      </div>
-      <!--Item3-->
-      <div class="carousel-item">
-        <img src="./assets/img/CorsiT.jpg" alt="Corsi" style="box-sizing: border-box;">
-        <div class="container">
+        <!--=====Item3=====-->
+        <div class="carousel-item">
+          <img src="/src/assets/img/Libri1.jpg" class="d-block" alt="Libri">
+          <div class="container">
             <div class="carousel-caption">
                 <div class="caption">
-                 <h1 style="padding-top: 170px;" id="S3">Corsi</h1>
+                 <h1 id="S3">Corsi</h1>
 
-                <p>Trova i migliori insegnanti
+                <p id="caption">Trova i migliori insegnanti
                     per ripetizioni e lezioni private</p>
-                <p><button class="btn btn-lg btn-outline-light" id="CarouselButton3">Esplora  <i class="fa-solid fa-arrow-right"></i></button></p>
+                <a href="/src/corsi.html"><button class="btn btn-lg btn-outline-light" id="CarouselButton3">Esplora  <i class="fa-solid fa-arrow-right"></i></button></a>
                 </div>
             </div>
+           </div>
         </div>
       </div>
     </div>
-    </div>
-    <br>
-    <!--Fine sezione Slider-->
+    <!--==========Fine Carousel==========-->
 
-    <!--=====Info=====-->
+    <!--==========Info==========-->
     <div class="info-container">
-        <!--Box1-->
-        <div class="box">
-          <div class="icon"><i class="fa fa-solid fa-house"></i></div>
+      <!--=====Box1=====-->
+      <div class="box">
+        <div class="icon"><i class="fa fa-solid fa-house"></i></div>
+        <div class="content">
+            <h3>Appartamenti</h3>
+            <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
+        </div>
+      </div>
+      <!--=====Box2=====-->
+      <div class="box">
+          <div class="icon"><i class="fa fa-solid fa-book-open"></i></div>
           <div class="content">
-              <h3>Appartamenti</h3>
+              <h3>Libri</h3>
               <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
           </div>
         </div>
-        <!--Box2-->
+      <!--=====Box3=====-->
         <div class="box">
-            <div class="icon"><i class="fa fa-solid fa-book-open"></i></div>
-            <div class="content">
-                <h3>Libri</h3>
-                <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
-            </div>
+          <div class="icon"><i class="fa fa-solid fa-user-graduate"></i></div>
+          <div class="content">
+              <h3>Corsi</h3>
+              <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
           </div>
-          <!--Box3-->
-          <div class="box">
-            <div class="icon"><i class="fa fa-solid fa-user-graduate"></i></div>
-            <div class="content">
-                <h3>Corsi</h3>
-                <p>Cerca l'appartamento che fa per te nei pressi del tuo istituto o mettine uno in affitto</p>
-            </div>
-          </div>
+        </div>
     </div>
-    <!--Fine sezione info-->
+    <!--==========Fine Sezione Info==========-->
 
-
-    <!--Sezione Help-->
+    <!--==========Sezione Help==========-->
     <div class="section clearfix" style="background-color: #E3E6F3;">
       <div class="container">
           <div class="row lp-section-content clearfix">
@@ -140,19 +143,19 @@
           </div>     
       </div>
     </div>
-  <!-- Fine sezione aiuto-->
-  <br><br><br>
+    <!--==========Fine sezione aiuto==========-->
+    <br><br><br>
 
-  
-   <!-- Footer -->
-   <footer class="page-footer font-small blue">
-      <div class="footer-copyright text-center py-3"  style="background-color: rgb(49, 198, 24);"><strong>Made with</strong> ❤️ Lorenzo,Roberto e Ersi
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+      <div class="footer-copyright text-center py-3"  style="background-color: rgb(49, 198, 24);">
+        <strong>Made with</strong> ❤️ Lorenzo,Roberto e Ersi
       </div>
-   </footer>
-   <!-- Fine Sezione Footer -->
+    </footer>
+    <!-- Fine Sezione Footer -->
 
-  <!--Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-</body>
+    <!--Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   
+  </body>
 </html>

@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+/**=====Navbar Style=====*/
+#header
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  background: #E3E6F3;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  height: 120px;
+}
+#navbar
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbar li
+{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+#navbar li a
+{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+#navbar li a.active
+{
+    color: #328fa5;
+}
+#navbar li a.active::after,
+#navbar li a:hover::after
+{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #23798e;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+#navbar li:nth-child(2) a:hover
+{
+    color: rgb(223, 223, 70);
+}
+#navbar li:nth-child(3) a:hover
+{
+    color: #f54967;
+}
+#navbar li:nth-child(1) a:hover
+{
+    color: rgb(49, 198, 24);
+}
+#navbar li:nth-child(2) a:hover::after
+{
+    background: #F7DE3A;
+}
+#navbar li:nth-child(3) a:hover::after
+{
+    background: #d03852;
+}
+#navbar li:nth-child(1) a:hover::after
+{
+    background: forestgreen;
+}
+#loginButton,
+#ContactButton,
+.clickT,
+#loadmore,
+#readmorebtn,
+.submitbtn,
+.resetbtn,
+.guidebtn
+{
+    color: #1a1a1a;
+    border: 2px solid #328fa5;
+    transition-duration: 0.4s;
+}
+#loginButton:hover,
+#ContactButton:hover ,
+.clickT:hover,
+#loadmore:hover,
+#readmorebtn:hover,
+.submitbtn:hover,
+.resetbtn:hover,
+.guidebtn:hover
+{
+    background-color: #328fa5;
+}
+/**=====fine Navbar======**/
+
+/**=====GoBack=====**/
+.navbar
+{
+    position: sticky;
+    margin-left: 110px;
+    background-color: #fff;
+
+}
+.fa1
+{
+    margin-right: 10px;
+}
+.navbar a
+{
+    font-size: 20px;
+    border: none;
+    color: #000;
+    text-decoration: none;
+}
+.navbar a:hover
+{
+    color: #23798e
+}
+/**=====Fine GoBack section=====**/
+
+/**=====Form Section=====**/
+.TutorForm
+{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    padding-left: 120px;
+    padding-right: 80px;
+    margin-top: 50px;
+}
+.card{
+    position: sticky;
+    top: 100px;
+    width: 350px;
+    height: 450px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px #328fa5;
+    transition: 0.5s;
+}
+.imgBx
+{
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    border-radius: 100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    overflow: hidden;
+    transition: 0.5s;
+}
+.imgBx img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card .content
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+
+}
+.card .content .details
+{
+    padding: 53px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+}
+.card .content .details h2
+{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #23798e;
+    line-height: 1.2em;
+}
+.card .content .details h2 span
+{
+ font-size: 0.75em;
+ font-weight: 500;
+ opacity: 0.5;
+}
+.card .content .details .data p
+{
+    font-weight: bold;
+}
+.card .content .details .actionbtn .btn
+{
+    display: inline-block;
+    padding:10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.card .content .details .icons
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top:3px solid #328fa5;
+}
+  
+  .card .content .details .icons span{
+    font-size: 14px;
+    color:#777;
+  }
+  
+.card .content .details .icons span i{
+    color:#328fa5;
+    padding-right: 5px;
+}
+.FormBox
+{
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px #328fa5;
+}
+.FormBox .title
+{
+    font-size: 30px;    
+}
+.FormBox .title::after
+{
+    content: ""; 
+    display: block;
+    width: 30%;
+    padding-top: 3x; 
+    border-bottom: 2px solid #23798e; 
+}
+form
+{
+   margin-top: 20px;
+}
+fieldset, legend {
+    all: revert;
+ }
+fieldset
+{
+    border: 2px solid #23798e;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+legend
+{
+    font-weight: 500;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.Language
+{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    grid-template-rows: 50% 50%;
+}
+.Language input
+{
+    width: 150px;
+}
+.MInfo
+{
+    display: grid;
+    grid-template-columns: 5% 10% 5% 5%;
+    margin-bottom: 10px;
+}
+.Minfo fa
+{
+    margin-bottom: 100px;
+    position: absolute;
+}
+.CardInfoC
+{
+    display: grid;
+    grid-template-columns: 40% 50%;
+    grid-template-rows: 50% 50%;
+}
+.CardInfoC input
+{
+    width: 100px;
+}
+#titolo
+{
+    width: 300px;
+}
+.inputdescription-box
+{
+    display: grid;
+    grid-template-columns: 100%;
+}
+.resetbtn
+{
+    margin-left: 20px;
+}
+#home,
+#away
+{
+    margin-top: 5px;
+}
+.guidebtn
+{
+    border-radius: 50px;
+    position: absolute;
+    margin-left: 580px;
+    margin-top: -790px;
+}
+/**=====Fine form=====**/
+
+/**=====Sezione guida=====**/

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corsi</title>
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/src/assets/css/FormTutor.css">
+    <script src="./assets/js/corsi.js"></script>
+</head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+    
+<body>
+
+     <!--==========Navbar==========-->
+     <section id="header">
+        <!--=====Logo=====-->
+            <a href="index.html">
+                <img src="./assets/img/FinalCorsi.png" class="logo" height="120px">
+            </a>
+        <!--=====Sezioni=====-->
+            <div>
+                <ul id="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="appartamenti.html">Appartamenti</a></li>
+                    <li><a href="libri.html">Libri</a></li>
+                    <li><a href="corsi.html" class="active">Corsi</a></li>
+        <!--=====Login Button=====-->
+                    <button class="btn btn-outline-light btn-lg" id="loginButton">
+                        <i class="fas fa-user-circle"></i>  Login
+                    </button>
+                </ul>
+            </div>
+        </section>
+     <!--==========Fine Sezione Navbar==========-->
+
+     <!--==========Torna Indietro==========-->
+     <nav class="navbar sticky-top navbar-expand-lg">
+        <a href="corsi.html"><i class="fa1 fa-solid fa-arrow-left-long"></i> Torna Indietro </a>
+     </nav>
+     <!--==========Fine GoBack==========-->
+
+     <!--==========Form==========-->
+     <div class="TutorForm">
+        <div class="card">
+            <div class="imgBx">
+                <img src="#" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2><br><span></span><br><span></span></h2>
+                    <div class="data">
+                        <p></p>
+                    </div>
+                    <div class="icons">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <div class="FormContainer">
+            <div class="FormBox">
+               <div class="title">Registrazione Tutor</div>
+            <form action="">
+               <fieldset>
+                  <legend>Foto</legend>
+                  <input type="file" name="foto">
+               </fieldset>
+               <fieldset>
+                  <legend>Info Tutor</legend>
+                  <div class="level">
+                    <label for="level">Livello:</label>
+                        <select name="livello" required>
+                            <option></option>
+                            <option value="Principiante">Principiante</option>
+                            <option value="Intermedio">Intermedio</option>
+                            <option value="Avanzato">Avanzato</option>
+                        </select>
+                    </div>
+                    <div class="Language">
+                        <label for="lingua">Lingua: </label>
+                        <label for="lingua">Lingua Secondaria (opzionale): </label>
+                        <input type="text" name="lingua" list="listalingue" required>
+                        <datalist id="listalingue">
+                            <option value="Italiano"></option>
+                            <option value="Inglese"></option>
+                            <option value="Tedesco"></option>
+                            <option value="Spagnolo"></option>
+                            <option value="Francese"></option>
+                        </datalist>
+                        <input type="text" name="lingua" list="listalingue">
+                    </div>
+               </fieldset>
+               <fieldset>
+                   <legend>Info Corso</legend>
+                   <div class="MInfo">
+                    <label for="home"><i class="fa fa-solid fa-house-user"></i></label><input type="radio" name="home" id="home"/>
+                    <label for="away"><i class="fa fa-solid fa-house-laptop"></i></label><input type="radio" name="away" id="away"/>
+                   </div>
+                   <div class="CardInfoC">
+                        <label for="prezzo">Prezzo/h:</label>
+                        <span class="details">Titolo (su Card):</span>
+                        <input type="number" name="prezzo" size="3" maxlength="3">
+                        <input type="text" id="titolo" placeholder="Inserisci il titolo del corso" required>
+                   </div>
+                   <div class="inputdescription-box">
+                        <span class="details">Descrizione:</span>
+                        <textarea name="DescrizioneCorso" id="desc" cols="30" rows="10"></textarea>
+                   </div>
+               </fieldset>
+                <input type="submit" class="submitbtn btn btn-lg btn-outline-light" value="Invia">
+                <input type="reset" class="resetbtn btn btn-lg btn-outline-light" value="Resetta">
+            </form>
+                <input type="button" class="guidebtn btn btn-lg" onClick="StartFunction()" value="?">
+            </div>
+         </div>
+     </div>
+     <!--==========Fine Form==========-->
+
+     <!--==========Inizio Guida==========-->
+  
+
+
+
+     <br><br><br><br>
+
+</body>

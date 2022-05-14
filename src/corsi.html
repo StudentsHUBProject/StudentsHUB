@@ -15,83 +15,454 @@
     
 <body>
 
-     <!--=====Navbar=====-->
+     <!--==========Navbar==========-->
      <section id="header">
-        <!--Logo-->
-            <a href="#">
+        <!--=====Logo=====-->
+            <a href="index.html">
                 <img src="./assets/img/FinalCorsi.png" class="logo" height="120px">
             </a>
-        <!--Sezioni-->
+        <!--=====Sezioni=====-->
             <div>
                 <ul id="navbar">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="appartamenti.html">Appartamenti</a></li>
-                    <li><a href="">Libri</a></li>
+                    <li><a href="libri.html">Libri</a></li>
                     <li><a href="corsi.html" class="active">Corsi</a></li>
-        <!--Login Button-->
-                    <button class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  Login</button>
+        <!--=====Login Button=====-->
+                    <button class="btn btn-outline-light btn-lg" id="loginButton">
+                        <i class="fas fa-user-circle"></i>  Login
+                    </button>
                 </ul>
             </div>
         </section>
-        <!--Fine Sezione Navbar-->
+     <!--==========Fine Sezione Navbar==========-->
 
-        <!--=====Sticky navbar con filtri=====-->
-        <nav class="navbar sticky-top navbar-expand-lg">
-         <div class="container" id="NavFiltri">
-             <ul class="navbar-nav">
-                 <li class="nav-item dropdown">
-                    <div class="container1">
-                       <button class="click btn btn-outline-light" onclick="DropMenu()">Argomento  <i class="fa fa-solid fa-angle-down"></i></button>
-                        <div class="list">
-                            <button class="links">Informatica</button>
-                            <button class="links">Matematica</button>
-                            <button class="links">Fisica</button>
-                            <button class="links">Inglese</button>
-                            <button class="links">Altro</button>
+     <!--==========Sticky navbar con filtri==========-->
+     <nav class="navbar sticky-top navbar-expand-lg">
+        <div class="container" id="NavFiltri">
+            <ul class="navbar-nav">
+        <!--=====Dropmenu Argomenti=====-->
+                <li class="nav-item dropdown">
+                  <div class="container1">
+                    <button class="click btn btn-outline-light" onclick="DropMenu()">
+                        Argomento  <i class="fa fa-solid fa-angle-down"></i>
+                    </button>
+                    <div class="list">
+                        <button class="links">Informatica</button>
+                        <button class="links">Matematica</button>
+                        <button class="links">Fisica</button>
+                        <button class="links">Inglese</button>
+                        <button class="links">Altro</button>
+                    </div>
+                  </div>
+                </li>
+        <!--=====Dropmenu Livello=====-->
+                <li class="nav-item dropdown">
+                  <div class="container1">
+                    <button class="click btn btn-outline-light" onclick="DropMenu2()">
+                        Livello  <i class="fa2 fa-solid fa-angle-down"></i>
+                    </button>
+                    <div class="list1">
+                        <button class="links">Principiante</button>
+                        <button class="links">Intermedio</button>
+                        <button class="links">Avanzato</button>
+                    </div>
+                  </div>
+                </li>
+        <!--=====DropMenu Regione=====-->
+                <li class="nav-item dropdown">
+                  <div class="container1">
+                    <button onclick="myFunction()" class="click btn btn-outline-light">
+                        Regione <i class="fa3 fa-solid fa-angle-down"></i>
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                         <a href="#about">Abruzzo</a>
+                         <a href="#base">Basilicata</a>
+                         <a href="#blog">Calabria</a>
+                         <a href="#contact">Campania</a>
+                         <a href="#custom">Emilia-Romagna</a>
+                         <a href="#support">Friuli Venezia Giulia</a>
+                         <a href="#tools">Lazio</a>
+                         <a href="#tools">Liguria</a>
+                         <a href="#tools">Lombardia</a>
+                         <a href="#tools">Marche</a>
+                         <a href="#tools">Molise</a>
+                         <a href="#tools">Piemonte</a>
+                         <a href="#tools">Puglia</a>
+                         <a href="#tools">Sardegna</a>
+                         <a href="#tools">Sicilia</a>
+                         <a href="#tools">Toscana</a>
+                         <a href="#tools">Trentino-Alto Adige</a>
+                         <a href="#tools">Umbria</a>
+                         <a href="#tools">Valle d'Aosta</a>
+                         <a href="#tools">Veneto</a>
+                    </div>
+                  </div>
+                </li>
+        <!--===Range Prezzo===-->
+                <li>
+                  <div class="container1">
+                    <button class="click btn btn-outline-light btn-lg" onclick="AvFunction()">
+                        Disponibilità  <i class="fa4 fa-solid fa-angle-down"></i>
+                    </button>
+                    <div class="avContainer">
+                        <h5 id="giorno">Giorno</h5>
+                        <div class="giorniSettimana">
+                            <a href="" class="btn btn-sm">Lun</a>
+                            <a href="" class="btn btn-sm">Mar</a>
+                            <a href="" class="btn btn-sm">Mer</a>
+                            <a href="" class="btn btn-sm">Gio</a>
+                            <a href="" class="btn btn-sm">Ven</a>
+                            <a href="" class="btn btn-sm">Sab</a>
+                            <a href="" class="btn btn-sm">Dom</a>
+                        </div>
+                        <h5 id="fascia">Fascia Oraria</h5>
+                        <div class="Orario">
+                            <a href="" class="btn btn-sm">8-10</a>
+                            <a href="" class="btn btn-sm">10-12</a>
+                            <a href="" class="btn btn-sm">13-15</a>
+                            <a href="" class="btn btn-sm">15-17</a>
+                            <a href="" class="btn btn-sm">17-19</a>
+                            <a href="" class="btn btn-sm">20-22</a>
                         </div>
                     </div>
-                 </li>
-                 <li class="nav-item dropdown">
-                    <div class="container1">
-                       <button class="click btn btn-outline-light btn-lg" onclick="DropMenu2()">Livello  <i class="fa2 fa-solid fa-angle-down"></i></button>
-                        <div class="list1">
-                            <button class="links">Principiante</button>
-                            <button class="links">Intermedio</button>
-                            <button class="links">Avanzato</button>
-                        </div>
                     </div>
-                 </li>
-                 <li>
-                     <div class="container1">
-                         <button class="click btn btn-outline-light btn-lg">Disponibilità  <i class="fa3 fa-solid fa-angle-down"></i></button>
-                     </div>
-                 </li>
-                 <li>
-                     <div class="container1">
-                        <button class="click btn btn-outline-light btn-lg">Prezzo  <i class="fa4 fa-solid fa-angle-down"></i></button>
-                     </div>
-                 </li>
-                 <li>
-                     <div class="container1">
-                        <button class="clickT btn btn-outline-light btn-lg">Diventa Tutor</button>
-                     </div>
-                 </li>
-                 
-             </ul>
+                </li>
+                <li>
+                  <div class="container1">
+                    <a href="/src/FormTutor.html" class="clickT btn btn-outline-light btn-lg">Diventa Tutor</a>
+                  </div>
+                </li>     
+            </ul>
+        </div>
+     </nav>
+    <br><br><br><br>
+     <!--==========Fine Sticky navbar con filtri==========-->
+
+    
+     <!--==========Banner==========-->
+     <div class="sectionBanner"> 
+         <h1>Corsi</h2>
+         <p>Prenota ripetizioni come, dove <br>
+             e quando vuoi tu</p>
+     </div>
+
+     <input type="button" class="Startbtn btn btn-lg" onClick="StartFunction()" value="Scopri di più">
+     <!--==========Fine Banner==========-->
+
+     <!--==========Products grid==========-->
+     <div class="TutorContainer">
+      <div class="ItemContainer">
+        <!--===Card Esempio 1===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/BG_Man.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Lorenzo<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                    <div class="data">
+                        <p>Lezioni di Java/Python/C++</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="SchedaTutor.html" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
          </div>
-        </nav>
+        <!--===Card Esempio 2===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/Girl.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Giulia<br><span>Lazio - Roma</span><br><span>Studente Superiori</span></h2>
+                    <div class="data">
+                        <p>Lezioni di Java/Python/C++</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--===Card Esempio 3===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/B_Man.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Roberto<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                    <div class="data">
+                        <p>Lezioni di HTML/CSS</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 15€/h </span>
+                        <span> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--===Card Esempio 4===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/Man.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Ersi<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                    <div class="data">
+                        <p>Lezioni di Analisi 1/2</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 20€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--===Card Esempio 5===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/G_Man.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Riccardo<br><span>Lazio - Roma</span><br><span>Studente Magistrale</span></h2>
+                    <div class="data">
+                        <p>Lezioni di Java/Python/C++</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--===Card Esempio 6===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/Bl_Girl.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Nicole<br><span>Lazio - Roma</span><br><span>Studente</span></h2>
+                    <div class="data">
+                        <p>Lezioni di Java/Python/C++</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--===Card EsemPio 7===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/Bl_Man.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Michael<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                    <div class="data">
+                        <p>Lezioni di Java/Python/C++</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--===Card Esempio 8===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/Bl2_Man.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Samuel<br><span>Lazio - Roma</span><br><span>Studente Superiori</span></h2>
+                    <div class="data">
+                        <p>Lezioni di Java/Python/C++</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--===Card Esempio 9===-->
+         <div class="card">
+            <div class="imgBx">
+                <img src="./assets/img/Default Avatar/Girl.png" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2>Elsa<br><span>Lazio - Roma</span><br><span>Studente Magistrale/span></h2>
+                    <div class="data">
+                        <p>Lezioni di Java/Python/C++</p>
+                    </div>
+                    <div class="actionbtn">
+                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                    </div>
+                    <div class="icons">
+                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                    </div>
+                </div>
+            </div>
+         </div>       
+      </div>
+      <div id="loadmore">Visualizza più Tutor</div>
+     </div>
+     <!--==========Fine product Grid==========-->
 
+     <!--==========Sezione HowTO==========-->
+     <div class="howtoContainer" id="HowTo">
+       <h1>Come Funziona</h1>
+     <div class="howto">
+        <div class="box">
+            <h2>01</h2>
+            <h3>Trova il tuo insegnante</h3>
+            <p>Tra i nostri migliaia d'insegnanti, troverai quello su misura per te. 
+                Si adatterà alle tue esigenze e ti aiuterà a raggiungere i tuoi obiettivi
+            </p>
+        </div>
+        <div class="box">
+            <h2>02</h2>
+            <h3>Organizza la lezione</h3>
+            <p>Mettiti subito in contatto con il/la tuo/a tutor per scegliere giorno,
+               modalità di erogazione della lezione e pagamento
+            </p>
+        </div>
+        <div class="box">
+            <h2>03</h2>
+            <h3>Mettiti in gioco</h3>
+            <p>Diventa un tutor StudentsHUB compilando il form accessibile dal
+                pulsante in alto a destra (solo per utenti registrati)
+            </p>
+        </div>
+     </div>
+      </div>
+     <!--==========Fine sezione HowTO==========-->
+    <br><br><br>
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     <!--==========Sezione FAQ==========-->
+     <section id="FAQsection">
+        <h2 class="title">FAQs</h2>
+     <div class="accordion-div">
+        <div class="faq">
+         <div class="accordion"><h3>Le lezioni sono online o a domicilio? <i class="fa8 fa-solid fa-caret-down"></i></h3></div>
+         <div class="panel">
+           <p>Apri la scheda del tutor che preferisci e guarda quali icone sono presenti in basso a destra, 
+            <i class="fa-solid fa-house-user"></i> indica che sono a domicilio mentre 
+            <i class="fa-solid fa-house-laptop"></i> indica che la modalità prevista
+            è online</p>
+         </div>
+        </div>
+      
+        <div class="faq">
+         <div class="accordion"><h3>Come funziona il pagamento?  <i class="fa9 fa-solid fa-caret-down"></i></h3></div>
+         <div class="panel">
+           <p>Controlla l'icona in basso a sinistra nella scheda del tutor che preferisci per sapere
+            il prezzo e mettiti d'accordo con lui per la modalità di pagamento che può essere a mano se la 
+            lezione è a domicilio o tramite bonifico se online</p>
+         </div>
+        </div>
+      
+        <div class="faq">
+         <div class="accordion"><h3>E' previsto del materiale di apprendimento?  <i class="fa10 fa-solid fa-caret-down"></i></h3></div>
+         <div class="panel">
+           <p>I tutor hanno la possibiltà di condividere materiale di apprendimento come appunti,
+            esercizi o slide collegando il loro account Google Drive</p>
+         </div>
+        </div>
+     </div>
+     </section>
+     <!--==========Fine sezione FAQ==========-->
+    <br><br>
 
-  
-   <!-- Footer -->
+     <!--==========Footer==========-->
    <footer class="page-footer font-small blue">
       <div class="footer-copyright text-center py-3"  style="background-color: #328fa5;"><strong>Made with</strong> ❤️ Lorenzo,Roberto e Ersi
       </div>
    </footer>
-   <!-- Fine Sezione Footer -->  
+     <!--==========Fine Sezione Footer==========-->  
 
+     <!--==========Script==========-->
+     <!--=====Script bottone Load More=====-->
+     <script>
+       let loadMoreBtn = document.querySelector('#loadmore');
+       let currentItem = 6;
+
+       loadMoreBtn.onclick = () =>{
+       let boxes = [...document.querySelectorAll('.TutorContainer .ItemContainer .card')];
+       for (var i = currentItem; i < currentItem + 3; i++){
+       boxes[i].style.display = 'inline-block';
+       }
+       currentItem += 3;
+
+       if(currentItem >= boxes.length){
+          loadMoreBtn.style.display = 'none';
+       }
+      }
+     </script>
+
+     <!--=====Script FAQ=====-->
+     <script>
+       var acc = document.getElementsByClassName("accordion");
+       var i;
+
+       for (i = 0; i < acc.length; i++) {
+       acc[i].addEventListener("click", function() {
+
+       var panel = this.nextElementSibling;
+       if (panel.style.maxHeight){
+       panel.style.maxHeight = null;
+       } else {
+       let active = document.querySelectorAll(".accordion-div .accordion.active");
+       for(let j = 0; j < active.length; j++){
+       active[j].classList.remove("active");
+       active[j].nextElementSibling.style.maxHeight = null;
+       }
+       this.classList.toggle("active");
+       panel.style.maxHeight = panel.scrollHeight + "px";
+       }
+      });
+     }
+     </script>
+     <!--==========Fine sezione Script==========-->
 
 </body>
 </html>

@@ -1,173 +1,178 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Spartan', sans-serif;
+} 
 
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Spartan', sans-serif;
-}
-
-/**=====Navbar Style=====*/
-#header
-{
+/**=====Navbar Style=====**/
+nav{
   display: flex;
+  height: 120px;
+  width: 100%;
+  background: #E3E6F3;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 80px;
-  background: #E3E6F3;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-  height: 120px;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
 }
-
-#navbar
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+nav ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
 }
-#navbar li
-{
-    list-style: none;
-    padding: 0 20px;
-    position: relative;
-
+nav ul li{
+  margin: 0 5px;
+  margin-top: 20px;
+  position: relative;
 }
-#navbar li a
-{
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
-    color: #1a1a1a;
-    transition: 0.3s ease;
+nav ul li a{
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 8px 15px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
-#navbar li a:hover,
-#navbar li a.active
-{
-    color: rgb(49, 198, 24);
+nav ul li a.active,
+nav ul li a:hover{
+  color:rgb(49, 198, 24);
 }
-#navbar li a.active::after,
-#navbar li a:hover::after
-{
+nav .menu-btn i{
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"]{
+  display: none;
+}
+nav ul li a.active::after,
+nav ul li a:hover::after{
     content: "";
     width: 30%;
     height: 2px;
     background: forestgreen;
     position: absolute;
-    bottom: -4px;
-    left: 20px;
+    bottom: 3px;
+    left: 15px;
 }
-#navbar li:nth-child(2) a:hover
-{
+nav ul li:nth-child(2) a:hover{
     color: rgb(223, 223, 70);
 }
-#navbar li:nth-child(3) a:hover
-{
+nav ul li:nth-child(3) a:hover{
     color: #f54967;
 }
-#navbar li:nth-child(4) a:hover
-{
+nav ul li:nth-child(4) a:hover{
     color: #328fa5;
 }
-#navbar li:nth-child(2) a:hover::after
-{
+nav ul li:nth-child(2) a:hover::after{
     background: #F7DE3A;
 }
-#navbar li:nth-child(3) a:hover::after
-{
+nav ul li:nth-child(3) a:hover::after{
     background: #d03852;
 }
-#navbar li:nth-child(4) a:hover::after
-{
+nav ul li:nth-child(4) a:hover::after{
     background: #23798e;
 }
-
 #loginButton,
-#ContactButton
-{
+#ContactButton{
+    margin-top: 5px;
     color: #1a1a1a;
     border: 2px solid rgb(49, 198, 24);
     transition-duration: 0.4s;
 }
 #loginButton:hover,
-#ContactButton:hover 
-{
+#ContactButton:hover {
     background-color: rgb(49, 198, 24);
 }
-/**fine Navbar**/
+/**=====Fine Navbar Style=====**/
 
-/*======Carousel style======*/
+/**=====Carousel Style=====**/
 .carousel-caption {
-    position: absolute;
-    left: auto;
-    right: auto;
-    width: 50%;
-    height: 100%;
-    background-color: #1a1a1a;
-    opacity: 0.8;
-    bottom:0;
-    left:0;
+  position: absolute;
+  justify-content: center;
+  left: auto;
+  right: auto;
+  width: 50%;
+  height: 100%;
+  background-color: #1a1a1a;
+  opacity: 0.8;
+  bottom:0;
+  left:0;
 }
-
+.d-block
+{
+  max-width:200%;
+  height: auto;
+}
 #CarouselButton1 {
-    color: #ffff;
-    background-color: none;
-    border: 2px solid rgb(223, 223, 70);
-    transition-duration: 0.4s;
+  color: #ffff;
+  background-color: none;
+  border: 2px solid rgb(223, 223, 70);
+  transition-duration: 0.4s;
+  height: 100%;
 }
 #CarouselButton1:hover 
 {
-    background-color: #F7DE3A;
+  background-color: #F7DE3A;
 }
 #CarouselButton2 {
-    color: #ffff;
-    background-color: none;
-    border: 2px solid #f54967;
-    transition-duration: 0.4s;
+  color: #ffff;
+  background-color: none;
+  border: 2px solid #f54967;
+  transition-duration: 0.4s;
 }
 #CarouselButton2:hover 
 {
-    background-color: #d03852;
+  background-color: #d03852;
 }
 #CarouselButton3 {
-    color: #ffff;
-    background-color: none;
-    border: 2px solid #328fa5;
-    transition-duration: 0.4s;
+  color: #ffff;
+  background-color: none;
+  border: 2px solid #328fa5;
+  transition-duration: 0.4s;
 }
 #CarouselButton3:hover 
 {
-    background-color: #23798e;
+  background-color: #23798e;
 }
-
 #S1{
-    border-bottom: 5px solid #F7DE3A;
-    display: inline-block;
-    padding-bottom: 3px;
+  padding-top: 25%;
+  font-size: 3vw;
+  border-bottom: 5px solid #F7DE3A;
+  display: inline-block;
+  padding-bottom: 1%;
 }
 #S2{
-    border-bottom: 5px solid #d03852;
-    display: inline-block;
-    padding-bottom: 3px;
+  padding-top: 25%;
+  font-size: 3vw;
+  border-bottom: 5px solid #d03852;
+  display: inline-block;
+  padding-bottom: 1%;
 }
 #S3{
-    border-bottom: 5px solid #23798e;
-    display: inline-block;
-    padding-bottom: 3px;
+  padding-top: 25%;
+  font-size: 3vw;
+  border-bottom: 5px solid #23798e;
+  display: inline-block;
+  padding-bottom: 1%;
 }
+/**=====Fine Carousel Style=====**/
 
-/**=====Help style=====**/
-.col-sm-12{
-    text-align: center;
-}
-
-/*=====Info Box style=====*/
+/**=====Info Box Style=====**/
 .info-container
 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
     position: relative;
-    width: 1200px;
-    height: 300px;
-    margin: 80px auto; /**padding ai lati**/
+    width: 100%;
+    height: 100%;
+    margin: 6% auto; /**padding ai lati**/
 }
 .info-container .box
 {
@@ -198,7 +203,7 @@
     left: calc(50% - 40px);
     width: 80px;
     height: 80px;
-     border-radius: 50%;
+    border-radius: 50%;
 }
 .info-container .box .icon .fa
 {
@@ -267,4 +272,127 @@
 {
     background-color: #328fa5;
 }
+/**=====Fine Info Box Style=====**/
 
+/**=====Help style=====**/
+.col-sm-12{
+  text-align: center;
+}
+/**=====Fine Help Style=====**/
+
+
+/**=====Responsive Style=====**/
+@media (max-width: 1000px){
+  nav{
+    padding: 0 40px 0 50px;
+  }
+}
+
+
+@media (max-width: 920px) {
+  nav .menu-btn i{
+    display: block;
+    color: #1a1a1a;
+  }
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  nav ul{
+    z-index: 2;
+    position: absolute;
+    top: 100px;
+    left: -100%;
+    background: #E3E6F3;
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  nav ul li a.active::after,
+  nav ul li a:hover::after
+  {
+    display: none;
+  }
+  #click:checked ~ ul{
+    left: 0;
+  }
+  nav ul li{
+    width: 100%;
+    margin: 40px 0;
+  }
+  nav ul li a{
+    width: 100%;
+    margin-left: -90%;
+    display: block;
+    font-size: 20px;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:checked ~ ul li a{
+    margin-left: 0px;
+  }
+  nav ul li a.active{
+    background: none;
+    color: rgb(49, 198, 24)
+  }
+  nav ul li:nth-child(2) a:hover{
+    color: rgb(223, 223, 70);
+  }
+  nav ul li:nth-child(3) a:hover{
+    color: #f54967;
+  }
+  nav ul li:nth-child(4) a:hover{
+    color: #328fa5;
+  }
+  #carousel{
+    z-index: 1;
+  }
+  #S1{
+    border-bottom: 3px solid #F7DE3A; 
+  }
+  #S2{
+    border-bottom: 3px solid #d03852;
+  }
+  #S3{
+    border-bottom: 3px solid #23798e;
+}
+  .carousel-caption p{
+    font-size: 14px;
+  }
+  #CarouselButton1,
+  #CarouselButton2,
+  #CarouselButton3{
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 500px){
+  nav{
+    padding: 0 40px 0 10px;
+  }
+  .carousel-caption #caption{
+    font-size: 10px;
+  }
+  #CarouselButton1,
+  #CarouselButton2,
+  #CarouselButton3{
+    font-size: 10px;
+  }
+  #S1{
+    border-bottom: 1px solid #F7DE3A; 
+  }
+  #S2{
+    border-bottom: 1px solid #d03852;
+  }
+  #S3{
+    border-bottom: 1px solid #23798e;
+}
+}
+
+@media (max-width: 315px){
+  nav{
+    padding: 0 60px 0 10px;
+  }
+}
+/**=====Fine responsive Navbar=====**/
