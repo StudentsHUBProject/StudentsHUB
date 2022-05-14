@@ -5,32 +5,279 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appartamenti</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="./assets/css/appartamenti.css">
+    
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script src="./assets/js/appartamenti.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfAFPKJ_uOSVVAfGRXlupYR80hq7Roz98&libraries=places&callback=initMap&v=weekly&language=it&region=IT&solution_channel=GMP_QB_addressselection_v1_cA" defer></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 
 <body>
      
-    <!--=====Navbar=====-->
-    <section id="header">
-    <!--Logo-->
-        <a href="index.html">
-            <img src="./assets/img/FinalAppartamenti.png" class="logo" height="120px">
-        </a>
-    <!--Sezioni-->
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="appartamenti.html" class="active">Appartamenti</a></li>
-                <li><a href="">Libri</a></li>
-                <li><a href="corsi.html">Corsi</a></li>
-    <!--Login Button-->
-                <button class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  Login</button>
-            </ul>
+    <!--==========Navbar==========-->
+      <nav>
+      <!--=====Logo=====-->
+         <div class="logo">
+            <a href="/src/index.html">
+               <img src="/src/assets/img/FinalAppartamenti.png" class="logo" height="120px">
+           </a>
+         </div>
+      <!--=====Btn Toggle Responsive=====-->
+         <input type="checkbox" id="click">
+         <label for="click" class="menu-btn">
+         <i class="fas fa-bars"></i>
+         </label>
+      <!--=====Schede=====-->
+         <ul id="navbar">
+            <li><a href="/src/index.html">Home</a></li>
+            <li><a href="/src/appartamenti.html" class="active">Appartamenti</a></li>
+            <li><a href="">Libri</a></li>
+            <li><a href="/src/corsi.html">Corsi</a></li>
+      <!--=====Login Button=====-->
+            <button class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  
+               Login
+            </button>
+        </ul>
+      </nav>
+   <!--==========Fine Navbar==========-->
+
+    <!--=====Appartamenti=====-->
+    <section id="appartamenti">
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                          <button class="btn btn-outline-warning btn-lg w-100" data-bs-toggle="modal" data-bs-target="#inserisciAnnuncioModal">Inserisci Annuncio</button>  
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="appartamenti.html" method="post">
+                                <div class="form-group">
+                                    <label for="">Tipologia</label>
+                                    <select class="form-control" id="tipologia" name="tipologia">
+                                        <option value="">Tutti</option>
+                                        <option value="">Appartamento</option>
+                                        <option value="">Villa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Prezzo</label>
+                                    <select class="form-control" id="prezzo" name="prezzo">
+                                        <option value="">Tutti</option>
+                                        <option value="">0-400</option>
+                                        <option value="">400-800</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col">
+                                <div class="col">
+                                    <select id="select-state" placeholder="Cerca per zona...">
+                                        <option value="">Seleziona una Zona...</option>
+                                        <option value="1">Centro</option>
+                                        <option value="2">Parioli</option>
+                                        <option value="3">Piazza del Popolo - Piazza Navona - Quirinale, Centro</option>
+                                        <option value="4">Cassia-Flaminia</option>
+                                        <option value="5">Monte Sacro</option>
+                                        <option value="6">Eur - Torrino - Giuliano Dalmata</option>
+                                        <option value="7">Appio Latino</option>
+                                        <option value="8">Prati</option>
+                                        <option value="9">Aurelio</option>
+                                        <option value="10">Gianicolense-La Pisana</option>
+                                        <option value="11">Cinecittà</option>
+                                        <option value="12">Nomentano-Tiburtino</option>
+                                        <option value="13">Trionfale-Monte Mario</option>
+                                        <option value="14">Trieste-Africano, Parioli</option>
+                                        <option value="15">Portuense-Magliana</option>
+                                        <option value="16">Roma est-Autostrade</option>
+                                        <option value="17">Aniene-Collatino</option>
+                                        <option value="18">Tor di Quinto-Collina Fleming, Cassia-Flaminia</option>
+                                    </select>  
+                                </div>
+
+                                <br>
+                                
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="./assets/img/Appartamenti1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <h5 class="card-title">Appartamento 1</h5>
+                                                    <p class="card-text">Appartamento situato a Roma a due passi dalla Metro B, composto da 3 camere da letto, una cucina e due bagni.</p>
+                                                </div>
+
+                                                <div class="col-sm-6 d-flex align-items-center justify-content-end">
+                                                    <div class="row d-flex justify-content-between">
+                                                        <div class="col-md-12">
+                                                            <h5 class="tipologia">AFFITTO</h5>
+                                                            <h5 class="prezzo">800€</h5>
+                                                            <a href="appartamento.html" class="btn btn-primary float-right">Dettagli</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="./assets/img/Appartamenti1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <h5 class="card-title">Appartamento 2</h5>
+                                                    <p class="card-text">Appartamento situato a Roma a due passi dalla Metro B, composto da 3 camere da letto, una cucina e due bagni.</p>
+                                                </div>
+                                                <div class="col-sm-6 d-flex align-items-center justify-content-end">
+                                                    <div class="row d-flex justify-content-between">
+                                                        <div class="col-md-12">
+                                                            <h5 class="tipologia">STANZA</h5>
+                                                            <h5 class="prezzo">300€</h5>
+                                                            <a href="appartamento.html" class="btn btn-primary float-right">Dettagli</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="./assets/img/Appartamenti1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <h5 class="card-title">Appartamento 3</h5>
+                                                    <p class="card-text">Appartamento situato a Roma a due passi dalla Metro B, composto da 3 camere da letto, una cucina e due bagni.</p>
+                                                </div>
+                                                <div class="col-sm-6 d-flex align-items-center justify-content-end">
+                                                    <div class="row d-flex justify-content-between">
+                                                        <div class="col-md-12">
+                                                            <h5 class="tipologia">AFFITTO</h5>
+                                                            <h5 class="prezzo">800€</h5>
+                                                            <a href="appartamento.html" class="btn btn-primary float-right">Dettagli</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div aria-label="Page Navigation">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Precedente</span></a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Successivo</span></a></li>
+                                </ul>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!--Fine Sezione Navbar-->
+    <!--Fine Appartamenti-->
+
+    <!--Modal Inserisci Annuncio-->
+    <div class="modal fade" id="inserisciAnnuncioModal" tabindex="-1" role="dialog" aria-labelledby="inserisciAnnuncioModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inserisciAnnuncioModalLabel">Inserisci Annuncio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="appartamenti.html" method="post">
+                        <div class="form-group">
+                            <label for="">Titolo</label>
+                            <input type="text" class="form-control" id="titolo" name="titolo">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Descrizione</label>
+                            <textarea rows="4" cols="40" class="form-control" id="descrizione" name="descrizione"></textarea>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Indirizzo</label>
+                            <input type="text" class="form-control" id="indirizzo" name="indirizzo">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Prezzo</label>
+                            <input type="text" class="form-control" id="prezzo" name="prezzo">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Tipologia</label>
+                            <select class="form-control" id="tipologia" name="tipologia">
+                                <option value="">Affitto</option>
+                                <option value="">Vendita</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="">Immagini</label>
+                            <input type="file" accept="image/png, image/jpeg" multiple class="form-control-file" id="immagine" name="immagine">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-primary">Inserisci</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fine Modal Inserisci Annuncio-->
+
+
 
 </body>
 </html>
