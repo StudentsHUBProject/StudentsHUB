@@ -14,7 +14,7 @@ function initMap() {
       position: { lat: position.lat, lng: position.lng },
       label,
       title: position.title,
-      url: "http://127.0.0.1:5500/src/appartamento.html"
+      url: "http://localhost:8080/appartamento"
     });
 
     marker.addListener("click", () => {
@@ -54,5 +54,102 @@ window.initMap = initMap;
 $(document).ready(function () {
   $('#select-state').selectize({
     sortField: 'text'
+  });
+
+  //ajax get request
+  $.ajax({
+    url: "http://localhost:8080/api/appartamenti",
+    method: "GET",
+    success: function (data) {
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        $("#appartamenti").append(
+          `
+          <div class="col">
+            <div class="card">
+                <img src="./assets/img/Appartamenti1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <h5 class="card-title">${data[i].titolo}</h5>
+                          <p class="card-text">${data[i].descrizione}</p>
+                      </div>
+                      <div class="col-sm-6 d-flex align-items-center justify-content-end">
+                          <div class="row d-flex justify-content-between">
+                              <div class="col-md-12">
+                                  <h5 class="tipologia">${data[i].tipologia}</h5>
+                                  <h5 class="prezzo">${data[i].prezzo}€</h5>
+                                  <a href="appartamento.html" class="btn btn-primary float-right">Dettagli</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <br>
+          `
+        );
+      }
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  });
+
+  //ajax post request
+  $("#test").click(function (e) {
+    let data = {
+      titolo: "Appartamento Test",
+      descrizione: "Descrizione dell'appartamento",
+      tipologia: "stanza",
+      prezzo: 350,
+      metri_quadri: 80,
+      numero_stanza: 4,
+      numero_bagni: 2
+    };
+    console.log(data);
+    
+    $.ajax({
+      url: "http://localhost:8080/api/appartamenti",
+      method: "POST",
+      dataType: 'json',
+      contentType: 'application/json',
+      processData: false,
+      data: JSON.stringify(data),
+      success: function (data) {
+        console.log(data);
+        $("#appartamenti").append(
+          `
+          <div class="col">
+            <div class="card">
+                <img src="./assets/img/Appartamenti1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <h5 class="card-title">${data.titolo}</h5>
+                          <p class="card-text">${data.descrizione}</p>
+                      </div>
+                      <div class="col-sm-6 d-flex align-items-center justify-content-end">
+                          <div class="row d-flex justify-content-between">
+                              <div class="col-md-12">
+                                  <h5 class="tipologia">${data.tipologia}</h5>
+                                  <h5 class="prezzo">${data.prezzo}€</h5>
+                                  <a href="appartamento.html" class="btn btn-primary float-right">Dettagli</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <br>
+          `
+        );
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
   });
 });
