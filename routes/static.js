@@ -23,4 +23,8 @@ router.get('/libri', function(req, res) {
   res.sendFile(path.join(__dirname, '../src/libri.html'));
 });
 
+router.get('/signin', function(req, res) {
+  res.sendFile(path.join(__dirname, '../src/signin.html'));
+});
+
 module.exports = router;
