@@ -25,7 +25,6 @@ var uiConfig = {
   },
   signInFlow: 'popup',
   signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],
   // Terms of service url.

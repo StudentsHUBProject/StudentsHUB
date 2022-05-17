@@ -6,106 +6,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corsi</title>
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/src/assets/css/selectize_less.css">
+
     <link rel="stylesheet" href="/src/assets/css/corsi.css">
     <script src="./assets/js/corsi.js"></script>
-</head>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+</head>
+
 
     
 <body>
 
      <!--==========Navbar==========-->
-     <section id="header">
+     <nav>
         <!--=====Logo=====-->
-            <a href="index.html">
-                <img src="./assets/img/FinalCorsi.png" class="logo" height="120px">
-            </a>
-        <!--=====Sezioni=====-->
-            <div>
-                <ul id="navbar">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="appartamenti.html">Appartamenti</a></li>
-                    <li><a href="libri.html">Libri</a></li>
-                    <li><a href="corsi.html" class="active">Corsi</a></li>
+           <div class="logo">
+              <a href="./index.html">
+                 <img src="./assets/img/FinalCorsi.png" class="logo" height="120px">
+             </a>
+           </div>
+        <!--=====Btn Toggle Responsive=====-->
+           <input type="checkbox" id="click">
+           <label for="click" class="menu-btn">
+           <i class="fas fa-bars"></i>
+           </label>
+        <!--=====Schede=====-->
+           <ul id="navbar">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./appartamenti.html">Appartamenti</a></li>
+              <li><a href="./libri.html">Libri</a></li>
+              <li><a href="./corsi.html" class="active">Corsi</a></li>
         <!--=====Login Button=====-->
-                    <button class="btn btn-outline-light btn-lg" id="loginButton">
-                        <i class="fas fa-user-circle"></i>  Login
-                    </button>
-                </ul>
-            </div>
-        </section>
-     <!--==========Fine Sezione Navbar==========-->
+              <a href="/src/signin.html" class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  
+                 Login
+              </a>
+          </ul>
+        </nav>
+     <!--==========Fine Navbar==========-->
 
+     
      <!--==========Sticky navbar con filtri==========-->
-     <nav class="navbar sticky-top navbar-expand-lg">
-        <div class="container" id="NavFiltri">
+     <navbar class="navbar sticky-top navbar-expand-lg">
+     <!--=====Btn Toggle Responsive=====-->
+     <input type="checkbox" id="clickF">
+     <label for="clickF" class="checkbtn">
+        Filtri
+     </label>
             <ul class="navbar-nav">
         <!--=====Dropmenu Argomenti=====-->
                 <li class="nav-item dropdown">
-                  <div class="container1">
-                    <button class="click btn btn-outline-light" onclick="DropMenu()">
-                        Argomento  <i class="fa fa-solid fa-angle-down"></i>
-                    </button>
-                    <div class="list">
-                        <button class="links">Informatica</button>
-                        <button class="links">Matematica</button>
-                        <button class="links">Fisica</button>
-                        <button class="links">Inglese</button>
-                        <button class="links">Altro</button>
+                    <div class="container1">
+                        <select id="select-subject" placeholder="Cerca per materia...">
+                            <option value="">Seleziona una Materia...</option>
+                        <optgroup label="Ingegnieria" style="font-weight: 500 !important">
+                            <option value="Informatica">Informatica</option>
+                            <option value="Analisi">Analisi</option>
+                            <option value="Fisica">Fisica</option>
+                            <option value="Chimica">Chimica</option>
+                        </optgroup>
+                        <optgroup label="Lingue">
+                            <option value="Inglese">Inglese</option>
+                            <option value="Francese">Francese</option>
+                            <option value="Spagnolo">Spagnolo</option>
+                        </optgroup>
+                        </select>
                     </div>
-                  </div>
                 </li>
+
         <!--=====Dropmenu Livello=====-->
                 <li class="nav-item dropdown">
-                  <div class="container1">
-                    <button class="click btn btn-outline-light" onclick="DropMenu2()">
-                        Livello  <i class="fa2 fa-solid fa-angle-down"></i>
-                    </button>
-                    <div class="list1">
-                        <button class="links">Principiante</button>
-                        <button class="links">Intermedio</button>
-                        <button class="links">Avanzato</button>
+                    <div class="container1">
+                        <select id="select-level" placeholder="Seleziona il livello...">
+                            <option value="">Seleziona il livello...</option>
+                            <option value="Informatica">Principiante</option>
+                            <option value="Analisi">Intermedio</option>
+                            <option value="Fisica">Avanzato</option>
+                        </select>
                     </div>
-                  </div>
                 </li>
+
         <!--=====DropMenu Regione=====-->
                 <li class="nav-item dropdown">
-                  <div class="container1">
-                    <button onclick="myFunction()" class="click btn btn-outline-light">
-                        Regione <i class="fa3 fa-solid fa-angle-down"></i>
-                    </button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                         <a href="#about">Abruzzo</a>
-                         <a href="#base">Basilicata</a>
-                         <a href="#blog">Calabria</a>
-                         <a href="#contact">Campania</a>
-                         <a href="#custom">Emilia-Romagna</a>
-                         <a href="#support">Friuli Venezia Giulia</a>
-                         <a href="#tools">Lazio</a>
-                         <a href="#tools">Liguria</a>
-                         <a href="#tools">Lombardia</a>
-                         <a href="#tools">Marche</a>
-                         <a href="#tools">Molise</a>
-                         <a href="#tools">Piemonte</a>
-                         <a href="#tools">Puglia</a>
-                         <a href="#tools">Sardegna</a>
-                         <a href="#tools">Sicilia</a>
-                         <a href="#tools">Toscana</a>
-                         <a href="#tools">Trentino-Alto Adige</a>
-                         <a href="#tools">Umbria</a>
-                         <a href="#tools">Valle d'Aosta</a>
-                         <a href="#tools">Veneto</a>
+                    <div class="container1">
+                        <select id="select-city" placeholder="Seleziona la città...">
+                            <option>Seleziona la città...</option>
+                            <option>Abruzzo</option>
+                            <option>Basilicata</option>
+                            <option>Calabria</opti>
+                            <option>Campania</opti>
+                            <option>Emilia-Romagna</option>
+                            <option>Friuli Venezia Giulia</opti>
+                            <option>Lazio</opti>
+                            <option>Liguria</opti>
+                            <option>Lombardia</opti>
+                            <option>Marche</opti>
+                            <option>Molise</opti>
+                            <option>Piemonte</opti>
+                            <option>Puglia</opti>
+                            <option>Sardegna</option>
+                            <option>Sicilia</option>
+                            <option>Toscana</option>
+                            <option>Trentino-Alto Adige</option>
+                            <option>Umbria</option>
+                            <option>Valle d'Aosta</option>
+                            <Option>Veneto</Option>
+                        </select>
                     </div>
-                  </div>
                 </li>
+
         <!--===Range Prezzo===-->
                 <li>
-                  <div class="container1">
-                    <button class="click btn btn-outline-light btn-lg" onclick="AvFunction()">
-                        Disponibilità  <i class="fa4 fa-solid fa-angle-down"></i>
-                    </button>
+                    <div class="container1">
+                        <button class="clickD" onclick="AvFunction()">
+                            Seleziona il giorno...  <i class="fa4 fa-solid fa-angle-down"></i>
+                        </button>
                     <div class="avContainer">
                         <h5 id="giorno">Giorno</h5>
                         <div class="giorniSettimana">
@@ -128,24 +147,20 @@
                         </div>
                     </div>
                     </div>
-                </li>
-                <li>
-                  <div class="container1">
-                    <a href="/src/FormTutor.html" class="clickT btn btn-outline-light btn-lg">Diventa Tutor</a>
-                  </div>
                 </li>     
             </ul>
-        </div>
-     </nav>
-    <br><br><br><br>
+            <div class="containerT">
+                <a href="/src/FormTutor.html" class="clickT btn">Diventa Tutor</a>
+            </div>
+     </navbar>
      <!--==========Fine Sticky navbar con filtri==========-->
 
-    
      <!--==========Banner==========-->
      <div class="sectionBanner"> 
-         <h1>Corsi</h2>
-         <p>Prenota ripetizioni come, dove <br>
-             e quando vuoi tu</p>
+        <img src="/src/assets/img/bannerC.jpg" class="d-block" alt="Banner" id="Banner">
+        <h1>Corsi</h2>
+        <p>Prenota ripetizioni come, dove <br>
+            e quando vuoi tu</p>
      </div>
 
      <input type="button" class="Startbtn btn btn-lg" onClick="StartFunction()" value="Scopri di più">
@@ -153,237 +168,237 @@
 
      <!--==========Products grid==========-->
      <div class="TutorContainer">
-      <div class="ItemContainer">
+        <div class="ItemContainer">
         <!--===Card Esempio 1===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/BG_Man.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Lorenzo<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
-                    <div class="data">
-                        <p>Lezioni di Java/Python/C++</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="SchedaTutor.html" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/BG_Man.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Lorenzo<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                      <div class="data">
+                          <p>Lezioni di Java/Python/C++</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="SchedaTutor.html" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
         <!--===Card Esempio 2===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/Girl.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Giulia<br><span>Lazio - Roma</span><br><span>Studente Superiori</span></h2>
-                    <div class="data">
-                        <p>Lezioni di Java/Python/C++</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/Girl.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Giulia<br><span>Lazio - Roma</span><br><span>Studente Superiori</span></h2>
+                      <div class="data">
+                          <p>Lezioni di Java/Python/C++</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
         <!--===Card Esempio 3===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/B_Man.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Roberto<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
-                    <div class="data">
-                        <p>Lezioni di HTML/CSS</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 15€/h </span>
-                        <span> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/B_Man.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Roberto<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                      <div class="data">
+                          <p>Lezioni di HTML/CSS</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 15€/h </span>
+                          <span> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
         <!--===Card Esempio 4===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/Man.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Ersi<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
-                    <div class="data">
-                        <p>Lezioni di Analisi 1/2</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 20€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/Man.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Ersi<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                      <div class="data">
+                          <p>Lezioni di Analisi 1/2</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 20€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
         <!--===Card Esempio 5===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/G_Man.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Riccardo<br><span>Lazio - Roma</span><br><span>Studente Magistrale</span></h2>
-                    <div class="data">
-                        <p>Lezioni di Java/Python/C++</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/G_Man.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Riccardo<br><span>Lazio - Roma</span><br><span>Studente Magistrale</span></h2>
+                      <div class="data">
+                          <p>Lezioni di Java/Python/C++</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
         <!--===Card Esempio 6===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/Bl_Girl.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Nicole<br><span>Lazio - Roma</span><br><span>Studente</span></h2>
-                    <div class="data">
-                        <p>Lezioni di Java/Python/C++</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
-        <!--===Card EsemPio 7===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/Bl_Man.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Michael<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
-                    <div class="data">
-                        <p>Lezioni di Java/Python/C++</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/Bl_Girl.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Nicole<br><span>Lazio - Roma</span><br><span>Studente</span></h2>
+                      <div class="data">
+                          <p>Lezioni di Java/Python/C++</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
+        <!--===Card Esempio 7===-->
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/Bl_Man.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Michael<br><span>Lazio - Roma</span><br><span>Studente Universitario</span></h2>
+                      <div class="data">
+                          <p>Lezioni di Java/Python/C++</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
         <!--===Card Esempio 8===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/Bl2_Man.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Samuel<br><span>Lazio - Roma</span><br><span>Studente Superiori</span></h2>
-                    <div class="data">
-                        <p>Lezioni di Java/Python/C++</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/Bl2_Man.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Samuel<br><span>Lazio - Roma</span><br><span>Studente Superiori</span></h2>
+                      <div class="data">
+                          <p>Lezioni di Java/Python/C++</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>
         <!--===Card Esempio 9===-->
-         <div class="card">
-            <div class="imgBx">
-                <img src="./assets/img/Default Avatar/Girl.png" alt="">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Elsa<br><span>Lazio - Roma</span><br><span>Studente Magistrale/span></h2>
-                    <div class="data">
-                        <p>Lezioni di Java/Python/C++</p>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="#" class="btn" id="readmorebtn">Scopri</a>
-                    </div>
-                    <div class="icons">
-                        <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
-                        <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
-                    </div>
-                </div>
-            </div>
-         </div>       
-      </div>
-      <div id="loadmore">Visualizza più Tutor</div>
-     </div>
-     <!--==========Fine product Grid==========-->
+           <div class="card">
+              <div class="imgBx">
+                  <img src="./assets/img/Default Avatar/Girl.png" alt="">
+              </div>
+              <div class="content">
+                  <div class="details">
+                      <h2>Elsa<br><span>Lazio - Roma</span><br><span>Studente Magistrale/span></h2>
+                      <div class="data">
+                          <p>Lezioni di Java/Python/C++</p>
+                      </div>
+                      <div class="actionbtn">
+                          <a href="#" class="btn" id="readmorebtn">Scopri</a>
+                      </div>
+                      <div class="icons">
+                          <span> <i class="fa-solid fa-euro-sign"></i> 25€/h </span>
+                          <span> <i class="fa-solid fa-house-user"></i> <i class="fa-solid fa-house-laptop"></i> </span>
+                      </div>
+                  </div>
+              </div>
+           </div>       
+        </div>
+        <div id="loadmore">Visualizza più Tutor</div>
+       </div>
+    <!--==========Fine product Grid==========-->
 
-     <!--==========Sezione HowTO==========-->
-     <div class="howtoContainer" id="HowTo">
-       <h1>Come Funziona</h1>
-     <div class="howto">
-        <div class="box">
-            <h2>01</h2>
-            <h3>Trova il tuo insegnante</h3>
-            <p>Tra i nostri migliaia d'insegnanti, troverai quello su misura per te. 
-                Si adatterà alle tue esigenze e ti aiuterà a raggiungere i tuoi obiettivi
-            </p>
-        </div>
-        <div class="box">
-            <h2>02</h2>
-            <h3>Organizza la lezione</h3>
-            <p>Mettiti subito in contatto con il/la tuo/a tutor per scegliere giorno,
-               modalità di erogazione della lezione e pagamento
-            </p>
-        </div>
-        <div class="box">
-            <h2>03</h2>
-            <h3>Mettiti in gioco</h3>
-            <p>Diventa un tutor StudentsHUB compilando il form accessibile dal
-                pulsante in alto a destra (solo per utenti registrati)
-            </p>
-        </div>
-     </div>
+    <!--==========Sezione HowTO==========-->
+    <div class="howtoContainer" id="HowTo">
+        <h1>Come Funziona</h1>
+      <div class="howto">
+         <div class="box">
+             <h2>01</h2>
+             <h3>Trova il tuo insegnante</h3>
+             <p>Tra i nostri migliaia d'insegnanti, troverai quello su misura per te. 
+                 Si adatterà alle tue esigenze e ti aiuterà a raggiungere i tuoi obiettivi
+             </p>
+         </div>
+         <div class="box">
+             <h2>02</h2>
+             <h3>Organizza la lezione</h3>
+             <p>Mettiti subito in contatto con il/la tuo/a tutor per scegliere giorno,
+                modalità di erogazione della lezione e pagamento
+             </p>
+         </div>
+         <div class="box">
+             <h2>03</h2>
+             <h3>Mettiti in gioco</h3>
+             <p>Diventa un tutor StudentsHUB compilando il form accessibile dal
+                 pulsante in alto a destra (solo per utenti registrati)
+             </p>
+         </div>
       </div>
-     <!--==========Fine sezione HowTO==========-->
-    <br><br><br>
+       </div>
+      <!--==========Fine sezione HowTO==========-->
+     <br><br><br>
 
-     <!--==========Sezione FAQ==========-->
-     <section id="FAQsection">
+      <!--==========Sezione FAQ==========-->
+      <section id="FAQsection">
         <h2 class="title">FAQs</h2>
      <div class="accordion-div">
         <div class="faq">
-         <div class="accordion"><h3>Le lezioni sono online o a domicilio? <i class="fa8 fa-solid fa-caret-down"></i></h3></div>
+         <div class="accordion"><h3>Le lezioni sono online o a domicilio?</h3></div>
          <div class="panel">
            <p>Apri la scheda del tutor che preferisci e guarda quali icone sono presenti in basso a destra, 
             <i class="fa-solid fa-house-user"></i> indica che sono a domicilio mentre 
@@ -393,7 +408,7 @@
         </div>
       
         <div class="faq">
-         <div class="accordion"><h3>Come funziona il pagamento?  <i class="fa9 fa-solid fa-caret-down"></i></h3></div>
+         <div class="accordion"><h3>Come funziona il pagamento?</h3></div>
          <div class="panel">
            <p>Controlla l'icona in basso a sinistra nella scheda del tutor che preferisci per sapere
             il prezzo e mettiti d'accordo con lui per la modalità di pagamento che può essere a mano se la 
@@ -402,7 +417,7 @@
         </div>
       
         <div class="faq">
-         <div class="accordion"><h3>E' previsto del materiale di apprendimento?  <i class="fa10 fa-solid fa-caret-down"></i></h3></div>
+         <div class="accordion"><h3>E' previsto del materiale di apprendimento?</h3></div>
          <div class="panel">
            <p>I tutor hanno la possibiltà di condividere materiale di apprendimento come appunti,
             esercizi o slide collegando il loro account Google Drive</p>
@@ -410,8 +425,8 @@
         </div>
      </div>
      </section>
+     <br><br>
      <!--==========Fine sezione FAQ==========-->
-    <br><br>
 
      <!--==========Footer==========-->
    <footer class="page-footer font-small blue">
@@ -464,5 +479,8 @@
      </script>
      <!--==========Fine sezione Script==========-->
 
-</body>
-</html>
+    </body>
+    </html>
+
+
+

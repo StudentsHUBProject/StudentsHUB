@@ -6,10 +6,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/src/assets/css/signin.css">
 </head>
 <body>
-<div id="firebaseui-auth-container"></div>
-<div id="loader">Loading...</div>
+      <!--==========Navbar==========-->
+      <nav>
+      <!--=====Logo=====-->
+        <div class="logo">
+          <a href="./index.html">
+            <img src="./assets/img/finalHomeB.png" class="logo" height="120px">
+          </a>
+        </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./appartamenti.html">Appartamenti</a></li>
+        <li><a href="./libri.html">Libri</a></li>
+        <li><a href="./corsi.html">Corsi</a></li>
+      <!--=====Login Button=====-->
+      <button class="btn btn-outline-light btn-lg" id="loginButton"><i class="fas fa-user-circle"></i>  
+        Login
+      </button>
+      </ul>
+      </nav>
+      <!--==========Fine Navbar==========-->
+
+    <!--==========Login Section==========-->
+   <div class="LoginContainer">
+     <div class="container">
+       <div class="greenBG">
+         <div class="box signin">
+           <h2>Hai già un account ?</h2>
+           <button class="signinbtn"> Accedi </button>
+         </div>
+         <div class="box signup">
+          <h2>Non hai un account ?</h2>
+          <button class="signupbtn"> Registrati </button>
+        </div>
+       </div>
+       <div class="formbx">
+        <div class="form signinForm">
+          <form>
+            <h3>Accedi</h3>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <input type="submit"value="Accedi">
+            <div id="firebaseui-auth-container"></div>
+            <div id="loader">Loading...</div>
+          </form>
+       </div>
+       <div class="form signupForm">
+        <form>
+         <h3>Registrati</h3>
+          <input type="text" placeholder="Username">
+         <input type="text" placeholder="Indirizzo Email">
+          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Conferma Password">
+         <input type="submit" id="RegBtn" value="Registrati">
+        </form>
+      </div>
+     </div>
+   </div>
+   </div>
+    
+    <script>
+      const signinBtn=document.querySelector('.signinbtn');
+      const signupBtn=document.querySelector('.signupbtn');
+      const formBx=document.querySelector('.formbx');
+      const background=document.querySelector('.LoginContainer');
+
+        signupBtn.onclick=function(){
+            formBx.classList.add('active')
+            background.classList.add('active')
+        }
+        signinBtn.onclick=function(){
+           formBx.classList.remove('active')
+           background.classList.remove('active')
+        }
+    </script>
+       
+ 
+
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
