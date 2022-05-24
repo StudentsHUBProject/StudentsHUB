@@ -7,6 +7,7 @@ const gravatar = require("gravatar"); //prende avatar dall'email
 const auth = require("../../middleware/auth");
 
 const User = require("../../models/User");
+const Appartamento = require("../../models/Appartamento");
 const Corso = require("../../models/Corso");
 
 //POST api/user/
@@ -22,9 +23,19 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+// GET appartameni dell'utente loggato
+router.get("/appartamenti", auth, async (req, res) => {
+  Appartamento.find({ user: req.user.id }, (err, appartamenti) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(appartamenti);
+  });
+});
+
 // GET corsi dell'utente loggato
 router.get("/corsi", auth, async (req, res) => {
-  Corso.find({ User: req.user.id }, (err, corso) => {
+  Corso.find({ user: req.user.id }, (err, corso) => {
     if (err) {
       res.send(err);
     }

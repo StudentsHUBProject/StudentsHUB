@@ -1,5 +1,8 @@
 const express = require("express");
 const Appartamento = require("../../models/Appartamento");
+const User = require("../../models/User");
+const auth = require("../../middleware/auth");
+
 const router = express.Router();
 
 // Get appartamenti con filtri
@@ -59,13 +62,17 @@ router.get("/map/coordinate", (req, res) => {
 });
 
 // Create appartamento
-router.post("/", (req, res) => {
-  Appartamento.create(req.body, (err, appartamento) => {
-    if (err) {
-      res.send(err);
+router.post("/", auth, async (req, res) => {
+  const user = await User.findById(req.user.id).select("email");
+  Appartamento.create(
+    { user: req.user.id, email: user.email, ...req.body },
+    (err, appartamento) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(appartamento);
     }
-    res.json(appartamento);
-  });
+  );
 });
 
 // Update appartamento
@@ -83,13 +90,20 @@ router.patch("/:id", (req, res) => {
 });
 
 // Delete appartamento
-router.delete("/:id", (req, res) => {
-  Appartamento.findByIdAndRemove(req.params.id, (err, appartamento) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(appartamento);
-  });
+router.delete("/:id", auth, async (req, res) => {
+  const appartamento = await Appartamento.findById(req.params.id).select(
+    "user"
+  );
+  if (appartamento.user === req.user.id) {
+    Appartamento.findByIdAndRemove(req.params.id, (err, appartamento) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(appartamento);
+    });
+  } else {
+    res.status(401).json({ msg: "Unauthorized" });
+  }
 });
 
 module.exports = router;

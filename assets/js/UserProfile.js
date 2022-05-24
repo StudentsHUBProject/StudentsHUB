@@ -1,4 +1,9 @@
 $(document).ready(function () {
+  $("#logoutButton").click(function () {
+    document.cookie = "access-token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    window.location.href = "./signin";
+  });
+
   $.ajax({
     url: "http://localhost:8080/api/user",
     method: "GET",
@@ -27,26 +32,7 @@ $(document).ready(function () {
                 <div class="Annunci">
                   <div class="Section Appartamenti">
                     <h2 id="appartamenti">Appartamenti</h2>
-                      <div class="AnnunciAppartamenti">
-                        <a class="ACardAppartamenti" href="./appartamenti">
-                        <div class="cardAppartamenti">
-                          <img src="./assets/img/Appartamenti1.jpg" class="cardAppartamenti-img-top" alt="...">
-                          <div class="cardAppartamenti-body">
-                            <h5 class="cardAppartamenti-title">Appartamento - Via Cassia</h5>
-                            <h4 class="cardAppartamenti-price">500$</h4>
-                          </div>
-                        </div>
-                        </a>
-                        <a class="ACardAppartamenti" href="./appartamenti">
-                        <div class="cardAppartamenti">
-                          <img src="./assets/img/Appartamenti1.jpg" class="cardAppartamenti-img-top" alt="...">
-                          <div class="cardAppartamenti-body">
-                            <h5 class="cardAppartamenti-title">Appartamento - Via Cassia</h5>
-                            <h4 class="cardAppartamenti-price">500$</h4>
-                          </div>
-                        </div>
-                        </a>
-                      </div>     
+                      <div class="AnnunciAppartamenti"></div>     
                   </div>
                   <div class="Section Libri">
                     <h2 id="libri">Libri</h2>
@@ -55,7 +41,7 @@ $(document).ready(function () {
                         <div class="LibriContainer" id="libricard">
                           <div class="cardLibri">
                             <div class="card-body">
-                                <img src="./assets/img/81l0RVWNgfL.jpg" class="card-img-top">
+                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
                                 <h5 class="card-title">Analisi 1</h5>
                                 <p class="card-text">20 euro</p>
                             </div>
@@ -66,7 +52,7 @@ $(document).ready(function () {
                         <div class="LibriContainer" id="libricard">
                           <div class="cardLibri">
                             <div class="card-body">
-                                <img src="./assets/img/81l0RVWNgfL.jpg" class="card-img-top">
+                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
                                 <h5 class="card-title">Analisi 1</h5>
                                 <p class="card-text">20 euro</p>
                             </div>
@@ -77,7 +63,7 @@ $(document).ready(function () {
                         <div class="LibriContainer" id="libricard">
                           <div class="cardLibri">
                             <div class="card-body">
-                                <img src="./assets/img/81l0RVWNgfL.jpg" class="card-img-top">
+                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
                                 <h5 class="card-title">Analisi 1</h5>
                                 <p class="card-text">20 euro</p>
                             </div>
@@ -88,7 +74,7 @@ $(document).ready(function () {
                         <div class="LibriContainer" id="libricard">
                           <div class="cardLibri">
                             <div class="card-body">
-                                <img src="./assets/img/81l0RVWNgfL.jpg" class="card-img-top">
+                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
                                 <h5 class="card-title">Analisi 1</h5>
                                 <p class="card-text">20 euro</p>
                             </div>
@@ -107,18 +93,36 @@ $(document).ready(function () {
           </div>
           `
       );
-
-      $("#logoutButton").click(function () {
-        document.cookie =
-          "access-token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-        window.location.href = "./signin";
-      });
     },
     error: function (err) {
       console.log(err);
     },
   });
 
+  //appartamenti
+  $.ajax({
+    url: "http://localhost:8080/api/user/appartamenti",
+    method: "GET",
+    success: function (data) {
+      for (let i = 0; i < data.length; i++) {
+        $(".AnnunciAppartamenti")
+          .append(`<a class="ACardAppartamenti" href="./appartamenti">
+                    <div class="cardAppartamenti">
+                      <img src="${data[i].immagini[0]}" class="cardAppartamenti-img-top">
+                      <div class="cardAppartamenti-body">
+                        <h5 class="cardAppartamenti-title">${data[i].titolo}</h5>
+                        <h4 class="cardAppartamenti-price">${data[i].prezzo}€</h4>
+                      </div>
+                    </div>
+                    </a>`);
+      }
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  });
+
+  //corsi
   $.ajax({
     url: "http://localhost:8080/api/user/corsi",
     method: "GET",
