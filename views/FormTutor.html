@@ -68,12 +68,14 @@
             </div>
             <div class="icons">
               <span id="prezzo"></span>
+            <div class="erogazione">
               <span class="homeicon"
                 ><i class="fa fa-solid fa-house-user"></i
               ></span>
               <span class="awayicon"
                 ><i class="fa fa-solid fa-house-laptop"></i
               ></span>
+            </div>
             </div>
           </div>
         </div>
@@ -213,23 +215,19 @@
                 <label for="lingua">Lingua: </label>
                 <label for="lingua">Lingua Secondaria (opzionale): </label>
                 <select
-                  id="select-language"
+                  id="select-language" name="linguap"
                   placeholder="Seleziona Lingua"
                   required
                 >
                   <option></option>
                   <option value="Italiano">Italiano</option>
                   <option value="Inglese">Inglese</option>
-                  <option value="Francese">Francese</option>
-                  <option value="Spagnolo">Spagnolo</option>
-                  <option value="Tedesco">Tedesco</option>
                 </select>
                 <select
-                  id="select-slanguage"
+                  id="select-slanguage" name="linguas"
                   placeholder="Seleziona Lingua Secondaria"
                 >
                   <option></option>
-                  <option value="Italiano">Italiano</option>
                   <option value="Inglese">Inglese</option>
                   <option value="Francese">Francese</option>
                   <option value="Spagnolo">Spagnolo</option>
@@ -242,10 +240,10 @@
               <div class="MInfo">
                 <label for="home" id="labelh"
                   ><i class="fa fa-solid fa-house-user"></i></label
-                ><input type="checkbox" name="home" id="home" required />
+                ><input type="checkbox" name="home" id="home" value="on"/>
                 <label for="away" id="labela"
                   ><i class="fa fa-solid fa-house-laptop"></i></label
-                ><input type="checkbox" name="away" id="away" required />
+                ><input type="checkbox" name="away" id="away" value="on"/>
               </div>
               <div class="CardInfoC">
                 <label for="prezzo">Prezzo/h:</label>
@@ -255,6 +253,7 @@
                   id="input_prezzo"
                   name="prezzo"
                   min="0"
+                  max="99"
                   size="3"
                   maxlength="3"
                   required
@@ -295,7 +294,7 @@
     </div>
     <!--==========Fine Form==========-->
 
-    <!--==========Inizio Guida==========-->
+    <!--==========Inizio FAQ==========-->
     <section id="FAQsection">
       <h2 class="title">FAQs</h2>
       <div class="accordion-div">
@@ -315,8 +314,8 @@
             <p>
               Una volta inviata la form verrai re-indirizzato/a alla pagina
               Scheda Tutor del tuo corso in cui sarà presente un pulsante
-              "contatta" attraverso il quale è possibile mettersi in contattato
-              via mail (tramite mail di registrazione)
+              "contatta" attraverso il quale sarà possibile agli interessati contattarti,
+              le email inviate da "contatta" arriveranno al tuo indirizzo mail di registrazione
             </p>
           </div>
         </div>

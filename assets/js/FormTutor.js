@@ -1,9 +1,11 @@
 $(document).ready(function(){
 
+//==========Controllo Token Accesso===========
   if (!isAuth) {
     window.location.href = "./signin";
   }
 
+//===========Selectize selectors==========
 $('#select-regione').selectize({
     sortField: 'text'
   });
@@ -22,6 +24,7 @@ $('#levelselector').selectize({
 $('#select-occupation').selectize({
   sortField: 'text'
 });
+
   
 
 /**=====Real-time change del titolo=====**/
@@ -119,15 +122,14 @@ document.getElementById('input_foto').onchange = function (evt) {
         Materia: $("#select-subject").val(),
         Lingua:  $("#select-language").val(),
         Lingua_Secondaria:  $("#select-slanguage").val(),
-        Modalità:  [$("#home:checked").val(), $("#away:checked").val()],
+        Modalita:  [$("#home:checked").val(), $("#away:checked").val()],
         Prezzo:  $("#input_prezzo").val(),
         Titolo:  $("#input_titolo").val(),
         Descrizione:  $("#desc").val(),
-        Utente: "",
     };
 
     if(crea.Nome=="" || crea.Regione=="" || crea.Titolo_di_studio=="" || crea.Foto=="" || crea.Livello=="" ||
-       crea.Materia=="" || crea.Lingua=="" || crea.Modalità==[false,false] || crea.Prezzo=="" || 
+       crea.Materia=="" || crea.Lingua=="" || crea.Modalita==[false,false] || crea.Prezzo=="" || 
        crea.Titolo=="" || crea.Descrizione==""){}
 
     else{
@@ -138,8 +140,8 @@ document.getElementById('input_foto').onchange = function (evt) {
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify(crea),
-      success: function() {
-        window.location.href="http://localhost:8080/corsi";
+      success: function(corso) {
+        window.location.href="http://localhost:8080/SchedaTutor?id=" + corso._id;
         },
       error: function (err) {
         console.log(err);

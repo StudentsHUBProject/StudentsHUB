@@ -21,7 +21,7 @@ $.ajax({
                           <p>${data.Titolo}</p>
                       </div>
                       <div class="icons">
-                          <span> <i class="fa-solid fa-euro-sign"></i>${data.Prezzo}</span>
+                          <span id="prezzo">${data.Prezzo}</span>
                           <span class="homeicon">${data.Modalita[0] == 'on' ? `<i class="fa fa-solid fa-house-user"></i>` : ` `}</span>
                           <span class="awayicon">${data.Modalita[1] == 'on' ? `<i class="fa fa-solid fa-house-laptop"></i>` : ` `}</span>
                       </div>
@@ -34,22 +34,22 @@ $.ajax({
                 <div class="TutorContent">
                   <div class="argomentiBox">
                       <div class="argomenti">
-                        <h2>Info</h2>
+                        <h2>INFO</h2>
                         <li>Materia: ${data.Materia}</li>
                         <li>Livello: ${data.Livello}</li>
                       </div>
                   </div>
                   <div class="LingueBox">
                       <div class="Lingue">
-                        <h2>Lingue</h2>
+                        <h2>LINGUE</h2>
                         <li>${data.Lingua}</li>
                         <li>${data.Lingua_Secondaria}</li>
                       </div>
                   </div>
                   <div class="ContactBox">
                       <div class="contatta">
-                      <a href="mailto:${data.Utente}">
-                          Contatta
+                      <a href="mailto:${data.email}">
+                          Prenota una lezione
                       </a>
                     </div>
                   </div>

@@ -15,7 +15,8 @@ const Corsoschema = mongoose.Schema(
     Prezzo: { type: Number, required: true, default: 1 },
     Titolo: { type: String, required: true },
     Descrizione: { type: String, required: true },
-    Utente: { type: String },
+    user: { type: String, required: true },
+    email: { type: String, required: true },
   },
   {
     collection: "Corsi",

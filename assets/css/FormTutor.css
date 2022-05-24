@@ -191,6 +191,7 @@ nav ul li:nth-child(1) a:hover::after {
 }
 #titolo {
   font-weight: bold;
+  padding-top: 3%;
 }
 .card .content .details .actionbtn .btn {
   display: inline-block;
@@ -210,12 +211,18 @@ nav ul li:nth-child(1) a:hover::after {
   font-size: 14px;
   color: #328fa5;
 }
+.erogazione{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gap: 5%;
+}
 .homeicon {
   display: none;
 }
 .showhome {
-  display: inline-block;
-  margin-right: 2%;
+  display: inline;
+  position: static;
+  margin-right: 10%;
   margin-left: 2%;
 }
 .awayicon {
@@ -350,7 +357,7 @@ legend {
   min-height: 80vh;
   width: 60%;
   margin: 10% auto;
-  padding-bottom: 15%;
+  padding-bottom: 12%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -405,8 +412,8 @@ legend {
 /**=====Fine sezione FAQ=====**/
 
 /**=====Footer=====**/
-.footer-copyright {
-  margin-top: -10%;
+footer{
+  padding-bottom: -10%;
 }
 
 /**=====Responsive Style=====**/

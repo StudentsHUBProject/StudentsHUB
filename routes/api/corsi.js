@@ -16,11 +16,25 @@ router.get("/", (req, res) => {
   });
 });
 
-// Create Corso
+// Create appartamento
+router.post("/FormTutor", auth, async (req, res) => {
+  const user = await User.findById(req.user.id).select("email");
+  Corso.create(
+    { user: req.user.id, email: user.email, ...req.body },
+    (err, corso) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(corso);
+    }
+  );
+});
+
+/** 
 router.post("/FormTutor", auth, async(req, res) => {
 	//Aggiungi email utente al corso
 	const user = await User.findById(req.user.id).select('email')
-	req.body.Utente = user.email;
+	req.body.user = user.email;
 
 	Corso.create(req.body, (err, corso) => {
 		if (err) {
@@ -29,8 +43,8 @@ router.post("/FormTutor", auth, async(req, res) => {
 		res.json(corso);
 	});
 });
-
-// Get appartamento by id
+**/
+// Get corso by id
 router.get("/SchedaTutor/:id", (req, res) => {
   Corso.findById(req.params.id, (err, corso) => {
     if (err) {
@@ -56,6 +70,27 @@ router.get("/SchedaTutor", (req, res) => {
     }
     res.json(corso);
   });
+});
+
+// Delete appartamento
+router.delete("/:id", auth, async (req, res) => {
+  try {
+    const corso = await Corso.findById(req.params.id).select(
+      "user"
+    );
+    if (corso.user === req.user.id) {
+      Corso.findByIdAndRemove(req.params.id, (err, corso) => {
+        if (err) {
+          res.send(err);
+        }
+        res.json(corso);
+      });
+    } else {
+      res.status(401).json({ msg: "Unauthorized" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: "Server error" });
+  }
 });
 
 module.exports = router;

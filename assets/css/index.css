@@ -169,11 +169,26 @@ nav ul li:nth-child(4) a:hover::after {
   grid-template-columns: 100%;
   row-gap: 5%;
   padding-top: 5%;
-  padding-bottom: 10%;
+  padding-bottom: 15%;
+}
+.InfoSite h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+.InfoSite h1::before,
+.InfoSite h1::after {
+  display: inline-block;
+  content: "";
+  border-top: .2rem solid rgb(49, 198, 24);
+  width: 25rem;
+  margin: -0.5rem 1rem;
+  transform: translateY(-1rem);
 }
 #InfoP {
-  font-size: 20px;
+  font-size: 1.5vw;
   text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 [type="radio"] {
@@ -250,6 +265,9 @@ nav ul li:nth-child(4) a:hover::after {
 /**=====Help style=====**/
 .col-sm-12 {
   text-align: center;
+}
+footer{
+  padding-bottom: 0.5%;
 }
 /**=====Fine Help Style=====**/
 

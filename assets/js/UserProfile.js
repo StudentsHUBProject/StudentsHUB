@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  $("#logoutButton").click(function () {
+ 
+  $(document).on("click", "#logoutButton", function () {
     document.cookie = "access-token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     window.location.href = "./signin";
   });
@@ -116,6 +117,7 @@ $(document).ready(function () {
     });
   });
 
+
   //appartamenti
   $.ajax({
     url: "http://localhost:8080/api/user/appartamenti",
@@ -152,38 +154,28 @@ $(document).ready(function () {
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
         $(".AnnunciCorsi").append(
-          `
-                        <a class="ACardCorsi" href="SchedaTutor?id=${
-                          data[i]._id
-                        }">
-                        <div class="remove">
-                           <div class="removebtn"> x </div>
+          ` 
+            <div id="${data[i]._id}">
+              <div class="remove">
+                <div class="removebtn" sezione="corsi" _id="${data[i]._id}"> x </div>
+              </div>
+                  <a class="ACardCorsi" href="SchedaTutor?id=${data[i]._id}">
+                    <div class="cardCorso">
+                      <div class="content">
+                        <div class="details">
+                          <div class="data">
+                            <p>${data[i].Titolo}</p>
                           </div>
-                          <div class="cardCorso">
-                          <div class="content">
-                            <div class="details">
-                              <div class="data">
-                                <p>${data[i].Titolo}</p>
-                              </div>
-                              <div class="icons">
-                                <span id="prezzo">${data[i].Prezzo}</span>
-                                <span class="homeicon">${
-                                  data[i].Modalita[0] == "on"
-                                    ? '<i class="fa fa-solid fa-house-user"></i>'
-                                    : ""
-                                }</span>
-                                <span class="awayicon">${
-                                  data[i].Modalita[1] == "on"
-                                    ? '<i class="fa fa-solid fa-house-laptop"></i>'
-                                    : ""
-                                }</span>
-                              </div>
-                            </div>
+                          <div class="icons">
+                            <span id="prezzo">${data[i].Prezzo}</span>
+                            <span class="homeicon">${data[i].Modalita[0] == "on" ? '<i class="fa fa-solid fa-house-user"></i>': ""}</span>
+                            <span class="awayicon">${data[i].Modalita[1] == "on" ? '<i class="fa fa-solid fa-house-laptop"></i>': ""}</span>
                           </div>
-                          </div>
-                        </a>
+                        </div>
                       </div>
-                  </div>
+                    </div>
+                  </a>
+            </div>
               `
         );
       }

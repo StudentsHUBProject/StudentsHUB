@@ -213,18 +213,13 @@ nav ul li:nth-child(1) a:hover::after {
   color: #328fa5;
 }
 .homeicon {
-  display: none;
-}
-.showhome {
   display: inline;
+  margin-left: 60%;
 }
 .awayicon {
-  display: none;
-}
-.showaway {
-  margin-left: -65%;
   display: inline;
 }
+
 #prezzo::before {
   content: "\f153";
   font-weight: 900;
@@ -270,12 +265,12 @@ nav ul li:nth-child(1) a:hover::after {
 }
 .argomenti h2,
 .Lingue h2 {
-  font-size: 2vw;
+  font-size: 1vw;
+  font-weight: 900;
   color: #23798e;
 }
 .ContactBox {
-  background-color: #fff;
-  border: 2px solid #23798e;
+  background-color: #23798e;
   width: 90%;
   height: 60%;
   border-radius: 20px;
@@ -286,14 +281,14 @@ nav ul li:nth-child(1) a:hover::after {
   align-items: center;
 }
 .contatta {
-  padding-top: 1%;
+  padding-top: 4%;
 }
 .ContactBox a {
   margin-left: 14%;
-  padding-bottom: 20px;
-  font-size: 2.5vw;
+  font-size: 1.3vw;
+  font-weight: 600;
   text-decoration: none;
-  color: #1a1a1a;
+  color: white;
 }
 .ContactBox a::after {
   content: "\f0e0";
@@ -322,6 +317,10 @@ nav ul li:nth-child(1) a:hover::after {
     position: relative;
     margin-bottom: 20%;
     margin-top: -10%;
+  }
+  .contatta {
+    padding-top: 3%;
+    padding-left: 18%;
   }
 }
 
@@ -433,10 +432,10 @@ nav ul li:nth-child(1) a:hover::after {
   }
   .contatta {
     padding-top: 2.5%;
-    margin-left: 25%;
+    margin-left: -5%;
   }
   .ContactBox a {
-    font-size: 3.5vw;
+    font-size: 3vw;
   }
 }
 
@@ -475,11 +474,11 @@ nav ul li:nth-child(1) a:hover::after {
     font-size: 3vw;
   }
   .ContactBox a {
-    font-size: 5vw;
+    font-size: 4vw;
   }
   .contatta {
-    padding-top: 2.5%;
-    margin-left: 20%;
+    padding-top: 3%;
+    margin-left: -15%;
   }
 }
 
