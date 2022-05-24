@@ -91,18 +91,22 @@ router.patch("/:id", (req, res) => {
 
 // Delete appartamento
 router.delete("/:id", auth, async (req, res) => {
-  const appartamento = await Appartamento.findById(req.params.id).select(
-    "user"
-  );
-  if (appartamento.user === req.user.id) {
-    Appartamento.findByIdAndRemove(req.params.id, (err, appartamento) => {
-      if (err) {
-        res.send(err);
-      }
-      res.json(appartamento);
-    });
-  } else {
-    res.status(401).json({ msg: "Unauthorized" });
+  try {
+    const appartamento = await Appartamento.findById(req.params.id).select(
+      "user"
+    );
+    if (appartamento.user === req.user.id) {
+      Appartamento.findByIdAndRemove(req.params.id, (err, appartamento) => {
+        if (err) {
+          res.send(err);
+        }
+        res.json(appartamento);
+      });
+    } else {
+      res.status(401).json({ msg: "Unauthorized" });
+    }
+  } catch (err) {
+    res.status(500).json({ msg: "Server error" });
   }
 });
 

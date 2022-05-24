@@ -99,25 +99,45 @@ $(document).ready(function () {
     },
   });
 
+  $(document).on("click", ".removebtn", function () {
+    $.ajax({
+      url:
+        "http://localhost:8080/api/" +
+        $(this).attr("sezione") +
+        "/" +
+        $(this).attr("_id"),
+      method: "DELETE",
+      success: function (data) {
+        $("#" + data._id).remove();
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  });
+
   //appartamenti
   $.ajax({
     url: "http://localhost:8080/api/user/appartamenti",
     method: "GET",
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
-        $(".AnnunciAppartamenti")
-          .append(`<a class="ACardAppartamenti" href="./appartamenti">
-          <div class="remove">
-                           <div class="removebtn"> x </div>
-                          </div>
-                    <div class="cardAppartamenti">
-                      <img src="${data[i].immagini[0]}" class="cardAppartamenti-img-top">
-                      <div class="cardAppartamenti-body">
-                        <h5 class="cardAppartamenti-title">${data[i].titolo}</h5>
-                        <h4 class="cardAppartamenti-price">${data[i].prezzo}€</h4>
-                      </div>
-                    </div>
-                    </a>`);
+        $(".AnnunciAppartamenti").append(`
+          <div id="${data[i]._id}">
+            <div class="remove">
+              <div class="removebtn" sezione="appartamenti" _id="${data[i]._id}"> x </div>
+            </div>
+            <a class="ACardAppartamenti" href="./appartamento?id=${data[i]._id}">
+            <div class="cardAppartamenti">
+              <img src="${data[i].immagini[0]}" class="cardAppartamenti-img-top">
+              <div class="cardAppartamenti-body">
+                <h5 class="cardAppartamenti-title">${data[i].titolo}</h5>
+                <h4 class="cardAppartamenti-price">${data[i].prezzo}€</h4>
+              </div>
+            </div>
+            </a>
+          </div>
+          `);
       }
     },
     error: function (err) {
