@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/checkAuth.js"></script>
+    <script src="./js/UserProfile.js"></script>
+    <link rel="stylesheet" href="./css/UserProfile.css" />
+    <title>UserProfile</title>
+  </head>
+
+  <body>
+    <!--==========Navbar==========-->
+    <nav>
+      <!--=====Logo=====-->
+      <div class="logo">
+        <a href="/">
+          <img src="./img/finalHomeB.png" class="logo" height="120px" />
+        </a>
+      </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click" />
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="./appartamenti">Appartamenti</a></li>
+        <li><a href="./libri">Libri</a></li>
+        <li><a href="./corsi">Corsi</a></li>
+        <!--=====Login Button=====-->
+      </ul>
+    </nav>
+    <!--==========Fine Navbar==========-->
+
+    <!--==========User Section==========-->
+    <div class="UserSection"></div>
+
+    <!-- Footer -->
+    <footer
+      class="text-center text-white"
+      style="background-color: forestgreen"
+    >
+      <br />
+      <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+      <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+        Made with ❤️ by Lorenzo, Roberto e Ersi
+      </p>
+      <br />
+    </footer>
+    <!-- Footer -->
+  </body>
+</html>

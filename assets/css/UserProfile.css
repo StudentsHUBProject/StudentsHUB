@@ -1,0 +1,493 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
+}
+
+/**=====Navbar Style=====**/
+nav {
+  display: flex;
+  height: 120px;
+  width: 100%;
+  background: #e3e6f3;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+nav ul li {
+  margin: 0 5px;
+  margin-top: 20px;
+  position: relative;
+}
+nav ul li a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 8px 15px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+nav ul li a.active,
+nav ul li a:hover {
+  color: #328fa5;
+}
+nav .menu-btn i {
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"] {
+  display: none;
+}
+nav ul li a.active::after,
+nav ul li a:hover::after {
+  content: "";
+  width: 30%;
+  height: 2px;
+  background: #23798e;
+  position: absolute;
+  bottom: 3px;
+  left: 15px;
+}
+nav ul li:nth-child(2) a:hover {
+  color: #f7de3a;
+}
+nav ul li:nth-child(3) a:hover {
+  color: #f54967;
+}
+nav ul li:nth-child(1) a:hover {
+  color: rgb(49, 198, 24);
+}
+nav ul li:nth-child(2) a:hover::after {
+  background: #f7de3a;
+}
+nav ul li:nth-child(3) a:hover::after {
+  background: #d03852;
+}
+nav ul li:nth-child(1) a:hover::after {
+  background: forestgreen;
+}
+#loginButton,
+#ContactButton,
+#logoutButton,
+#UserButton {
+  margin-top: 5px;
+  color: #1a1a1a;
+  border: 2px solid rgb(49, 198, 24);
+  transition-duration: 0.4s;
+}
+#loginButton:hover,
+#ContactButton:hover,
+#logoutButton:hover,
+#UserButton:hover {
+  background-color: rgb(49, 198, 24);
+}
+#UserButton {
+  border-radius: 100px;
+}
+
+/**=====Fine Navbar Style=====**/
+.UserSection {
+  background-image: url(../img/backgroundUser.jpg);
+  height: auto;
+}
+.UserPage {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 4%;
+  padding-left: 10%;
+  padding-right: 8%;
+  padding-top: 6%;
+  padding-bottom: 3%;
+}
+.card {
+  position: sticky;
+  top: 100px;
+  width: 350px;
+  height: 450px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgb(49, 198, 24);
+  transition: 0.5s;
+}
+.imgBx {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: 0.5s;
+}
+.imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card .content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  margin-top: 5%;
+}
+.card .content .details {
+  padding-bottom: 20%;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+}
+.card .content .details h2 {
+  display: inline;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: rgb(49, 198, 24);
+  line-height: 1.2em;
+}
+.card .content .details span {
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 10% !important;
+}
+#titolo {
+  font-weight: bold;
+}
+.card .content .details .actionbtn {
+  padding-top: 5%;
+}
+.card .content .details .actionbtn .btn {
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.FormContainer {
+  height: auto;
+}
+.FormBox {
+  background: #fff;
+  padding: 4% 4%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(49, 198, 24);
+}
+.FormBox .title {
+  font-size: 3vw;
+}
+.FormBox .title::after,
+.Section h2 {
+  content: "";
+  margin-top: -1%;
+  display: block;
+  width: 20%;
+  border-bottom: 2px solid forestgreen;
+}
+#appartamenti {
+  border-bottom: 2px solid #f7de3a;
+}
+#libri {
+  border-bottom: 2px solid #d03852;
+  width: 8%;
+}
+#corsi {
+  border-bottom: 2px solid #23798e;
+  width: 8%;
+}
+.Annunci {
+  padding-top: 5%;
+}
+.Section {
+  padding-bottom: 5%;
+}
+.AnnunciAppartamenti {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 3%;
+}
+.ACardAppartamenti {
+  text-decoration: none;
+  border: 1px solid rgb(247, 222, 58, 0.8);
+}
+.cardAppartamenti {
+  border-radius: 10px;
+  height: 30%;
+  transition: 0.3s;
+}
+.cardAppartamenti:hover {
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+.cardAppartamenti-body {
+  display: grid;
+  grid-template-columns: 88% 12%;
+  padding-top: 1%;
+}
+.cardAppartamenti-body h5 {
+  color: #1a1a1a;
+}
+.cardAppartamenti-img-top {
+  height: 150px;
+  object-fit: cover;
+  width: 100%;
+}
+.cardAppartamenti-price {
+  color: #328fa5;
+  font-weight: 600;
+}
+.AnnunciCorsi {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 10%;
+}
+.ACardCorsi {
+  text-decoration: none;
+}
+.cardCorso {
+  width: 90%;
+  height: auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px #328fa5;
+  transition: 0.3s;
+}
+.cardCorso:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+.cardCorso .content .details .icons span {
+  font-size: 14px;
+  color: #328fa5;
+}
+.homeicon {
+  display: inline;
+  padding-left: 40px;
+}
+.showhome {
+  display: inline;
+}
+.awayicon {
+  display: inline;
+}
+.showaway {
+  margin-left: -65%;
+  display: inline;
+}
+#prezzo::before {
+  content: "\f153";
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  color: #328fa5;
+  padding-right: 2px;
+}
+#prezzo::after {
+  content: "/h";
+}
+.cardCorso .content .details .data {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 20px;
+  padding-top: 25px;
+  margin-bottom: -10px;
+}
+.cardCorso .content .details .icons {
+  display: inline;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 5px;
+  border-top: 2px solid #328fa5;
+}
+.cardCorso .content .details {
+  padding-bottom: 5%;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+}
+
+.AnnunciLibri {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 3%;
+}
+.cardLibri {
+  border: 1px solid rgb(252, 71, 5, 0.5);
+  width: 90%;
+  transition: 0.3s;
+}
+.cardLibri:hover {
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+.card-img-top {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  padding-bottom: 10px;
+}
+.card-title {
+  padding-top: 10px;
+  margin-bottom: -3px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+.card-text {
+  color: #328fa5;
+  font-weight: 600;
+}
+.ACardLibri {
+  text-decoration: none;
+}
+
+/**=====Responsive Style=====**/
+@media (max-width: 1270px) {
+  .UserPage {
+    grid-template-columns: 100%;
+    padding-bottom: 10%;
+    padding-top: -30px;
+  }
+  .card {
+    width: 100%;
+    position: relative;
+    margin-bottom: 5%;
+  }
+  .card .content {
+    margin-top: 15%;
+  }
+  .logoutbtn {
+    margin-top: -5%;
+  }
+  .cardAppartamenti-img-top {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  nav {
+    padding: 0 40px 0 50px;
+  }
+}
+
+@media (max-width: 920px) {
+  nav .menu-btn i {
+    display: block;
+    color: #1a1a1a;
+  }
+  #click:checked ~ .menu-btn i:before {
+    content: "\f00d";
+  }
+  nav ul {
+    z-index: 2;
+    position: absolute;
+    top: 100px;
+    left: -100%;
+    background: #e3e6f3;
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  nav ul li a.active::after,
+  nav ul li a:hover::after {
+    display: none;
+  }
+  #click:checked ~ ul {
+    left: 0;
+  }
+  nav ul li {
+    width: 100%;
+    margin: 40px 0;
+  }
+  nav ul li a {
+    width: 100%;
+    margin-left: -90%;
+    display: block;
+    font-size: 20px;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:checked ~ ul li a {
+    margin-left: 0px;
+  }
+  nav ul li a.active {
+    background: none;
+    color: rgb(49, 198, 24);
+  }
+  nav ul li:nth-child(2) a:hover {
+    color: #f7de3a;
+  }
+  nav ul li:nth-child(3) a:hover {
+    color: #f54967;
+  }
+  nav ul li:nth-child(4) a:hover {
+    color: #328fa5;
+  }
+  #carousel {
+    z-index: 1;
+  }
+  #S1 {
+    border-bottom: 3px solid #f7de3a;
+  }
+  #S2 {
+    border-bottom: 3px solid #d03852;
+  }
+  #S3 {
+    border-bottom: 3px solid #23798e;
+  }
+  .carousel-caption p {
+    font-size: 14px;
+  }
+  #CarouselButton1,
+  #CarouselButton2,
+  #CarouselButton3 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  nav {
+    padding: 0 40px 0 10px;
+  }
+  .carousel-caption #caption {
+    font-size: 10px;
+  }
+  #CarouselButton1,
+  #CarouselButton2,
+  #CarouselButton3 {
+    font-size: 10px;
+  }
+  #S1 {
+    border-bottom: 1px solid #f7de3a;
+  }
+  #S2 {
+    border-bottom: 1px solid #d03852;
+  }
+  #S3 {
+    border-bottom: 1px solid #23798e;
+  }
+}
+
+@media (max-width: 315px) {
+  nav {
+    padding: 0 60px 0 10px;
+  }
+}
+/**=====Fine responsive Navbar=====**/

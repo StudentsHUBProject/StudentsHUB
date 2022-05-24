@@ -1,0 +1,491 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
+}
+
+/**=====Navbar Style=====**/
+nav {
+  display: flex;
+  height: 120px;
+  width: 100%;
+  background: #e3e6f3;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+nav ul li {
+  margin: 0 5px;
+  margin-top: 20px;
+  position: relative;
+}
+nav ul li a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 8px 15px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+nav ul li a.active,
+nav ul li a:hover {
+  color: #328fa5;
+}
+nav .menu-btn i {
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"] {
+  display: none;
+}
+nav ul li a.active::after,
+nav ul li a:hover::after {
+  content: "";
+  width: 30%;
+  height: 2px;
+  background: #23798e;
+  position: absolute;
+  bottom: 3px;
+  left: 15px;
+}
+nav ul li:nth-child(2) a:hover {
+  color: #f7de3a;
+}
+nav ul li:nth-child(3) a:hover {
+  color: #f54967;
+}
+nav ul li:nth-child(1) a:hover {
+  color: rgb(49, 198, 24);
+}
+nav ul li:nth-child(2) a:hover::after {
+  background: #f7de3a;
+}
+nav ul li:nth-child(3) a:hover::after {
+  background: #d03852;
+}
+nav ul li:nth-child(1) a:hover::after {
+  background: forestgreen;
+}
+#loginButton,
+#ContactButton,
+#UserButton,
+.resetbtn,
+.submitbtn,
+.guidebtn {
+  margin-top: 5px;
+  color: #1a1a1a;
+  border: 2px solid #23798e;
+  transition-duration: 0.4s;
+}
+#loginButton:hover,
+#ContactButton:hover,
+#UserButton:hover,
+.resetbtn:hover,
+.submitbtn:hover,
+.guidebtn:hover {
+  background-color: #328fa5;
+}
+#UserButton {
+  border-radius: 100px;
+}
+/**=====Fine Navbar Style=====**/
+
+/**=====GoBack=====**/
+.navbar {
+  position: sticky;
+  background-color: #fff;
+  height: auto;
+  z-index: 1;
+}
+.navbar a {
+  font-size: 20px;
+  margin-left: 2%;
+  border: none;
+  color: #000;
+  text-decoration: none;
+}
+.navbar a:before {
+  content: "\f177";
+  font-weight: 900;
+  font-family: "FontAwesome";
+}
+.navbar a:hover {
+  color: #23798e;
+}
+/**=====Fine GoBack section=====**/
+
+/**=====Scheda=====**/
+.TutorInfo {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  padding-left: 10%;
+  padding-right: 8%;
+}
+.card {
+  position: sticky;
+  top: 100px;
+  width: 350px;
+  height: 450px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px #328fa5;
+  transition: 0.5s;
+}
+.imgBx {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: 0.5s;
+}
+.imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card .content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.card .content .details {
+  padding: 53px;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+}
+.card .content .details h2 {
+  display: inline;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #23798e;
+  line-height: 1.2em;
+}
+.card .content .details h2 span {
+  font-size: 0.75em;
+  font-weight: 500;
+  opacity: 0.5;
+}
+#titolo {
+  font-weight: bold;
+}
+.card .content .details .actionbtn .btn {
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.card .content .details .icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 3px solid #328fa5;
+}
+.card .content .details .icons span {
+  font-size: 14px;
+  color: #328fa5;
+}
+.homeicon {
+  display: none;
+}
+.showhome {
+  display: inline;
+}
+.awayicon {
+  display: none;
+}
+.showaway {
+  margin-left: -65%;
+  display: inline;
+}
+#prezzo::before {
+  content: "\f153";
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  color: #328fa5;
+  padding-right: 2px;
+}
+#prezzo::after {
+  content: "/h";
+}
+
+.TutorContent {
+  margin-top: 4%;
+  display: grid;
+  grid-template-columns: 30% 25% 50%;
+}
+.LingueBox,
+.argomentiBox {
+  width: 90%;
+  height: auto;
+  font-size: 1vw;
+  padding: 1%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px #328fa5;
+  transition: 0.5s;
+}
+.LingueBox:hover,
+.argomentiBox:hover {
+  transform: scale(1.1);
+}
+.argomenti,
+.Lingue {
+  white-space: nowrap;
+  margin-top: 5%;
+  margin-left: 5%;
+  border-collapse: collapse;
+}
+.argomenti li,
+.Lingue li {
+  list-style: none;
+  margin-bottom: 3%;
+}
+.argomenti h2,
+.Lingue h2 {
+  font-size: 2vw;
+  color: #23798e;
+}
+.ContactBox {
+  background-color: #fff;
+  border: 2px solid #23798e;
+  width: 90%;
+  height: 60%;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+}
+.ContactBox:hover {
+  background-color: #328fa5;
+  align-items: center;
+}
+.contatta {
+  padding-top: 1%;
+}
+.ContactBox a {
+  margin-left: 14%;
+  padding-bottom: 20px;
+  font-size: 2.5vw;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+.ContactBox a::after {
+  content: "\f0e0";
+  font-weight: 900;
+  font-family: "FontAwesome";
+}
+.ContactBox a::after:hover {
+  background-color: #23798e;
+}
+.PInfo {
+  display: grid;
+  grid-template-columns: 20% 25% 25%;
+  column-gap: 1px !important;
+}
+.Info p {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+@media (max-width: 1125px) {
+  .TutorInfo {
+    grid-template-columns: 100%;
+  }
+  .card {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20%;
+    margin-top: -10%;
+  }
+}
+
+/**=====Responsive Style=====**/
+@media (max-width: 1000px) {
+  nav {
+    padding: 0 40px 0 50px;
+  }
+}
+
+@media (max-width: 920px) {
+  nav .menu-btn i {
+    display: block;
+    color: #1a1a1a;
+  }
+  #click:checked ~ .menu-btn i:before {
+    content: "\f00d";
+  }
+  nav ul {
+    z-index: 2;
+    position: absolute;
+    top: 100px;
+    left: -100%;
+    background: #e3e6f3;
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  nav ul li a.active::after,
+  nav ul li a:hover::after {
+    display: none;
+  }
+  #click:checked ~ ul {
+    left: 0;
+  }
+  nav ul li {
+    width: 100%;
+    margin: 40px 0;
+  }
+  nav ul li a {
+    width: 100%;
+    margin-left: -90%;
+    display: block;
+    font-size: 20px;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:checked ~ ul li a {
+    margin-left: 0px;
+  }
+  nav ul li a.active {
+    background: none;
+    color: rgb(49, 198, 24);
+  }
+  nav ul li:nth-child(2) a:hover {
+    color: #f7de3a;
+  }
+  nav ul li:nth-child(3) a:hover {
+    color: #f54967;
+  }
+  nav ul li:nth-child(4) a:hover {
+    color: #328fa5;
+  }
+  #carousel {
+    z-index: 1;
+  }
+  #S1 {
+    border-bottom: 3px solid #f7de3a;
+  }
+  #S2 {
+    border-bottom: 3px solid #d03852;
+  }
+  #S3 {
+    border-bottom: 3px solid #23798e;
+  }
+  .carousel-caption p {
+    font-size: 14px;
+  }
+  #CarouselButton1,
+  #CarouselButton2,
+  #CarouselButton3 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 730px) {
+  .card {
+    width: 100%;
+    position: relative;
+    margin-bottom: 30%;
+    margin-top: -20%;
+  }
+}
+
+@media (max-width: 600px) {
+  .TutorContent {
+    grid-template-columns: 100%;
+    gap: 10%;
+    margin-left: 5%;
+  }
+  .argomenti,
+  .Lingue {
+    white-space: normal;
+    font-size: 2vw;
+  }
+  .ContactBox {
+    height: 50px;
+  }
+  .contatta {
+    padding-top: 2.5%;
+    margin-left: 25%;
+  }
+  .ContactBox a {
+    font-size: 3.5vw;
+  }
+}
+
+@media (max-width: 500px) {
+  nav {
+    padding: 0 40px 0 10px;
+  }
+  .carousel-caption #caption {
+    font-size: 10px;
+  }
+  #CarouselButton1,
+  #CarouselButton2,
+  #CarouselButton3 {
+    font-size: 10px;
+  }
+  #S1 {
+    border-bottom: 1px solid #f7de3a;
+  }
+  #S2 {
+    border-bottom: 1px solid #d03852;
+  }
+  #S3 {
+    border-bottom: 1px solid #23798e;
+  }
+  .card {
+    width: 100%;
+    position: relative;
+    margin-bottom: 40%;
+    margin-top: -30%;
+  }
+}
+
+@media (max-width: 430px) {
+  .argomenti,
+  .Lingue {
+    font-size: 3vw;
+  }
+  .ContactBox a {
+    font-size: 5vw;
+  }
+  .contatta {
+    padding-top: 2.5%;
+    margin-left: 20%;
+  }
+}
+
+@media (max-width: 315px) {
+  nav {
+    padding: 0 60px 0 10px;
+  }
+}
+/**=====Fine responsive Navbar=====**/

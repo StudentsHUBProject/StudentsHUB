@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appartamenti</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/checkAuth.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="./css/appartamenti.css" />
+    <link rel="stylesheet" href="./css/appartamento.css" />
+
+    <script src="./js/appartamento.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfAFPKJ_uOSVVAfGRXlupYR80hq7Roz98&callback=initMap&v=weekly&language=it&region=IT"
+      defer
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!--==========Navbar==========-->
+    <nav>
+      <!--=====Logo=====-->
+      <div class="logo">
+        <a href="/">
+          <img src="./img/FinalAppartamenti.png" class="logo" height="120px" />
+        </a>
+      </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click" />
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/appartamenti" class="active">Appartamenti</a></li>
+        <li><a href="/libri">Libri</a></li>
+        <li><a href="/corsi">Corsi</a></li>
+        <!--=====Login Button=====-->
+      </ul>
+    </nav>
+    <!--==========Fine Navbar==========-->
+
+    <br />
+
+    <!--Card Appartamento-->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <br />
+                <!--=====Carousel=====-->
+                <div
+                  id="Slider"
+                  class="carousel slide"
+                  data-bs-ride="carousel"
+                  data-bs-interval="false"
+                >
+                  <!--Indicatori-->
+                  <ol class="carousel-indicators"></ol>
+
+                  <!--=Slide=-->
+                  <div class="carousel-inner"></div>
+
+                  <a
+                    class="carousel-control-prev"
+                    href="#Slider"
+                    role="button"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                  </a>
+                  <a
+                    class="carousel-control-next"
+                    href="#Slider"
+                    role="button"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                  </a>
+                </div>
+                <br />
+                <!--Fine sezione Carousel-->
+
+                <div class="row" id="appartamento"></div>
+
+                <br /><br />
+
+                <!--left and right columns-->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <h6>Servizi</h6>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-wifi"></i
+                        ><label class="form-check-label">Internet</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-smoking"></i
+                        ><label class="form-check-label"
+                          >Fumatori Ammessi</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-elevator"></i
+                        ><label class="form-check-label">Ascensore</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-cat"></i
+                        ><label class="form-check-label"
+                          >Animali Domestici</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-soap"></i
+                        ><label class="form-check-label">Lavatrice</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-fire-flame-simple"></i
+                        ><label class="form-check-label">Asciugatrice</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-tv"></i
+                        ><label class="form-check-label">TV</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-wind"></i
+                        ><label class="form-check-label"
+                          >Aria Condizionata</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-wheelchair"></i
+                        ><label class="form-check-label"
+                          >Accesso Disabili</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="row">
+                      <h6>Info</h6>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-bed"></i
+                        ><label class="form-check-label">Posti Letto:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="internet"
+                          >-</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-restroom"></i
+                        ><label class="form-check-label">Restrizioni:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="restrizioni"
+                          >-</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-house-fire"></i
+                        ><label class="form-check-label">Riscaldamento:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="riscaldamento"
+                          >-</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-bolt"></i
+                        ><label class="form-check-label"
+                          >Classe Energetica:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="classeEnergetica"
+                          >-</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-house"></i
+                        ><label class="form-check-label">Metri Quadri:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="metriQuadri"
+                          >-</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-file-signature"></i
+                        ><label class="form-check-label">Contratto:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="contratto"
+                          >-</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-sack-dollar"></i
+                        ><label class="form-check-label">Utenze Medie:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="utenzeMedie"
+                          >-</label
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-hand-holding-dollar"></i
+                        ><label class="form-check-label">Caparra:</label
+                        ><label
+                          class="form-check-label info_appartamento"
+                          id="caparra"
+                          >-</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <div id="map"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Fine Card Appartamento-->
+
+    <br />
+    <br />
+    <br />
+
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: #f7de3a">
+      <br />
+      <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+      <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+        Made with ❤️ by Lorenzo, Roberto e Ersi
+      </p>
+      <br />
+    </footer>
+    <!-- Footer -->
+  </body>
+</html>

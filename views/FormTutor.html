@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FormTutor</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/FormTutor.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/checkAuth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+    <link rel="stylesheet" href="./css/selectize_less.css" />
+    <script src="/routes/api.js"></script>
+    <script src="./js/FormTutor.js"></script>
+  </head>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  />
+
+  <body>
+    <!--==========Navbar==========-->
+    <nav>
+      <!--=====Logo=====-->
+      <div class="logo">
+        <a href="/">
+          <img src="./img/FinalCorsi.png" class="logo" height="120px" />
+        </a>
+      </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click" />
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="./appartamenti">Appartamenti</a></li>
+        <li><a href="./libri">Libri</a></li>
+        <li><a href="./corsi" class="active">Corsi</a></li>
+        <!--=====Login Button=====-->
+      </ul>
+    </nav>
+    <!--==========Fine Navbar==========-->
+
+    <!--==========Torna Indietro==========-->
+    <nav class="navbar sticky-top">
+      <a href="./corsi"> Torna Indietro </a>
+    </nav>
+    <!--==========Fine GoBack==========-->
+
+    <!--==========Form==========-->
+    <div class="TutorForm">
+      <div class="card">
+        <div class="imgBx">
+          <img src="" id="foto" alt="" />
+        </div>
+        <div class="content">
+          <div class="details">
+            <h2 id="Nome"></h2>
+            <h2 id="Cognome"></h2>
+            <br /><span id="Regione"></span><br /><span id="occupation"></span>
+            <div class="data">
+              <p id="titolo"></p>
+            </div>
+            <div class="icons">
+              <span id="prezzo"></span>
+              <span class="homeicon"
+                ><i class="fa fa-solid fa-house-user"></i
+              ></span>
+              <span class="awayicon"
+                ><i class="fa fa-solid fa-house-laptop"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="FormContainer">
+        <div class="FormBox">
+          <div class="title">Registrazione Tutor</div>
+          <input
+            type="button"
+            class="guidebtn btn btn-lg"
+            onClick="StartFunction2()"
+            value="?"
+          />
+          <form action="">
+            <fieldset>
+              <legend>Info Personali</legend>
+              <div class="PersonalInfo">
+                <span class="details">Nome:</span>
+                <span class="details">Cognome (opzionale):</span>
+                <input
+                  type="text"
+                  id="input_nome"
+                  placeholder="Inserisci il tuo nome..."
+                  maxlength="16"
+                  required
+                />
+                <input
+                  type="text"
+                  id="input_cognome"
+                  placeholder="Inserisci il tuo cognome..."
+                  maxlength="16"
+                />
+              </div>
+              <br />
+              <div class="SubCardForm">
+                <label for="" id="RLabel">Regione:</label>
+                <label for="">Titolo di studio:</label>
+                <div class="regionediv">
+                  <select
+                    id="select-regione"
+                    placeholder="Seleziona la regione..."
+                    required
+                  >
+                    <option>Seleziona la regione...</option>
+                    <option>Abruzzo</option>
+                    <option>Basilicata</option>
+                    <option>Calabria</option>
+                    <option>Campania</option>
+                    <option>Emilia-Romagna</option>
+                    <option>Friuli Venezia Giulia</option>
+                    <option>Lazio</option>
+                    <option>Liguria</option>
+                    <option>Lombardia</option>
+                    <option>Marche</option>
+                    <option>Molise</option>
+                    <option>Piemonte</option>
+                    <option>Puglia</option>
+                    <option>Sardegna</option>
+                    <option>Sicilia</option>
+                    <option>Toscana</option>
+                    <option>Trentino-Alto Adige</option>
+                    <option>Umbria</option>
+                    <option>Valle d'Aosta</option>
+                    <option>Veneto</option>
+                  </select>
+                </div>
+                <select
+                  name="Occupazione"
+                  id="select-occupation"
+                  placeholder="Titolo di Studio"
+                  required
+                >
+                  <option></option>
+                  <option value="Studente Liceale">Studente Liceale</option>
+                  <option value="Studente Universitario">
+                    Studente Universitario
+                  </option>
+                  <option value="Studente Magistrale">
+                    Studente Magistrale
+                  </option>
+                </select>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Foto</legend>
+              <input type="file" id="input_foto" name="foto" required />
+            </fieldset>
+            <fieldset>
+              <legend>Info Tutor</legend>
+              <div class="level">
+                <label for="level">Livello:</label>
+                <label for="select-subject">Materia:</label>
+                <select
+                  name="livello"
+                  id="levelselector"
+                  placeholder="Seleziona Livello"
+                  required
+                >
+                  <option></option>
+                  <option value="Principiante">Principiante</option>
+                  <option value="Intermedio">Intermedio</option>
+                  <option value="Avanzato">Avanzato</option>
+                </select>
+                <div class="subjectdiv">
+                  <select
+                    id="select-subject"
+                    placeholder="Seleziona materia"
+                    required
+                  >
+                    <option value=""></option>
+                    <optgroup label="Materie Scentifiche">
+                      <option value="Informatica">Informatica</option>
+                      <option value="Analisi">Matematica</option>
+                      <option value="Fisica">Fisica</option>
+                      <option value="Chimica">Chimica</option>
+                      <option value="Economia">Economia</option>
+                    </optgroup>
+                    <optgroup label="Materie Linguistiche">
+                      <option value="Inglese">Inglese</option>
+                      <option value="Francese">Francese</option>
+                      <option value="Spagnolo">Spagnolo</option>
+                      <option value="Latino">Latino</option>
+                    </optgroup>
+                    <optgroup label="Materie Umanistiche">
+                      <option value="Storia">Storia</option>
+                      <option value="Filosofia">Filosofia</option>
+                      <option value="Storia dell'arte">Storia dell'Arte</option>
+                      <option value="Letteratura Italiana">
+                        Letteratura Italiana
+                      </option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              <div class="Language">
+                <label for="lingua">Lingua: </label>
+                <label for="lingua">Lingua Secondaria (opzionale): </label>
+                <select
+                  id="select-language"
+                  placeholder="Seleziona Lingua"
+                  required
+                >
+                  <option></option>
+                  <option value="Italiano">Italiano</option>
+                  <option value="Inglese">Inglese</option>
+                  <option value="Francese">Francese</option>
+                  <option value="Spagnolo">Spagnolo</option>
+                  <option value="Tedesco">Tedesco</option>
+                </select>
+                <select
+                  id="select-slanguage"
+                  placeholder="Seleziona Lingua Secondaria"
+                >
+                  <option></option>
+                  <option value="Italiano">Italiano</option>
+                  <option value="Inglese">Inglese</option>
+                  <option value="Francese">Francese</option>
+                  <option value="Spagnolo">Spagnolo</option>
+                  <option value="Tedesco">Tedesco</option>
+                </select>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Info Corso</legend>
+              <div class="MInfo">
+                <label for="home" id="labelh"
+                  ><i class="fa fa-solid fa-house-user"></i></label
+                ><input type="checkbox" name="home" id="home" required />
+                <label for="away" id="labela"
+                  ><i class="fa fa-solid fa-house-laptop"></i></label
+                ><input type="checkbox" name="away" id="away" required />
+              </div>
+              <div class="CardInfoC">
+                <label for="prezzo">Prezzo/h:</label>
+                <span class="details">Titolo (su Card):</span>
+                <input
+                  type="number"
+                  id="input_prezzo"
+                  name="prezzo"
+                  min="0"
+                  size="3"
+                  maxlength="3"
+                  required
+                />
+                <input
+                  type="text"
+                  id="input_titolo"
+                  placeholder="Inserisci il titolo del corso"
+                  maxlength="20"
+                  required
+                />
+              </div>
+              <div class="inputdescription-box">
+                <span class="details">Descrizione:</span>
+                <textarea
+                  name="DescrizioneCorso"
+                  id="desc"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+            </fieldset>
+            <input
+              type="submit"
+              id="submitbtn"
+              class="submitbtn btn btn-lg btn-outline-light"
+              value="Crea Corso"
+            />
+            <input
+              type="reset"
+              id="resetbtn"
+              class="resetbtn btn btn-lg btn-outline-light"
+              value="Resetta"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--==========Fine Form==========-->
+
+    <!--==========Inizio Guida==========-->
+    <section id="FAQsection">
+      <h2 class="title">FAQs</h2>
+      <div class="accordion-div">
+        <div class="faq">
+          <div class="accordion"><h3>Cosa si intende per livello?</h3></div>
+          <div class="panel">
+            <p>
+              Per Livello si intende il livello di capacità richieste dallo/a
+              Studente per seguire il corso
+            </p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="accordion"><h3>Come verrò contattato?</h3></div>
+          <div class="panel">
+            <p>
+              Una volta inviata la form verrai re-indirizzato/a alla pagina
+              Scheda Tutor del tuo corso in cui sarà presente un pulsante
+              "contatta" attraverso il quale è possibile mettersi in contattato
+              via mail (tramite mail di registrazione)
+            </p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="accordion">
+            <h3>
+              Come posso specificare se le lezioni saranno online o a domicilio?
+            </h3>
+          </div>
+          <div class="panel">
+            <p>
+              Tramite gli appositi check box all'interno della sezione "Info
+              Corso", <i class="fa-solid fa-house-user"></i> indica che sono a
+              domicilio mentre <i class="fa-solid fa-house-laptop"></i> indica
+              che sono via webcam
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--==========Fine sezione FAQ==========-->
+
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: #328fa5">
+      <br />
+      <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+      <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+        Made with ❤️ by Lorenzo, Roberto e Ersi
+      </p>
+      <br />
+    </footer>
+    <!-- Footer -->
+
+    <!--=====Script FAQ=====-->
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            let active = document.querySelectorAll(
+              ".accordion-div .accordion.active"
+            );
+            for (let j = 0; j < active.length; j++) {
+              active[j].classList.remove("active");
+              active[j].nextElementSibling.style.maxHeight = null;
+            }
+            this.classList.toggle("active");
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
+    <!--==========Fine sezione Script==========-->
+  </body>
+</html>

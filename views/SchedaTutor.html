@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchedaTutor</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/checkAuth.js"></script>
+
+    <script src="./js/SchedaTutor.js"></script>
+    <link rel="stylesheet" href="./css/SchedaTutor.css" />
+  </head>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  />
+
+  <body>
+    <!--==========Navbar==========-->
+    <nav>
+      <!--=====Logo=====-->
+      <div class="logo">
+        <a href="/">
+          <img src="./img/FinalCorsi.png" class="logo" height="120px" />
+        </a>
+      </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click" />
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="./appartamenti">Appartamenti</a></li>
+        <li><a href="./libri">Libri</a></li>
+        <li><a href="./corsi" class="active">Corsi</a></li>
+        <!--=====Login Button=====-->
+        <a
+          href="./signin"
+          class="btn btn-outline-light btn-lg"
+          id="loginButton"
+        >
+          <i class="fas fa-user-circle"></i> Login
+        </a>
+      </ul>
+    </nav>
+    <!--==========Fine Navbar==========-->
+
+    <!--==========Torna Indietro==========-->
+    <nav class="navbar sticky-top">
+      <a href="corsi"> Torna Indietro </a>
+    </nav>
+    <!--==========Fine GoBack==========-->
+
+    <!--==========Scheda con info==========-->
+    <div class="TutorInfo">
+      <!---
+        <div class="card">
+            <div class="imgBx">
+                <img src="" id="foto" alt="">
+            </div>
+            <div class="content">
+                <div class="details">
+                    <h2 id="Nome"></h2>
+                    <h2 id="Cognome"></h2><br><span id="Regione"></span><br><span id="occupation"></span>
+                    <div class="data">
+                        <p id="titolo"></p>
+                    </div>
+                    <div class="icons">
+                        <span id="prezzo"></span>
+                        <span class="homeicon"><i class="fa fa-solid fa-house-user"></i></span>
+                        <span class="awayicon"><i class="fa fa-solid fa-house-laptop"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Info">
+            <h1>Riguardo la lezione</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                Minus quae tempora amet dolores officiis velit dignissimos nemo mollitia perspiciatis 
+                nihil? Ea, quasi non. Nihil ipsum nobis quasi, eaque accusantium voluptates atque aperiam 
+                soluta esse quaerat ab voluptate odit amet laboriosam ipsa corrupti veritatis repellat sequi 
+                odio ex praesentium earum asperiores beatae. Consectetur quis tempore rem esse laboriosam minus 
+                quia veniam eligendi dolor nam. Sint perspiciatis eligendi itaque inventore quas eius corporis, 
+                ullam architecto, quod eaque error excepturi illo ex nesciunt.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                Minus quae tempora amet dolores officiis velit dignissimos nemo mollitia perspiciatis 
+                nihil? Ea, quasi non. Nihil ipsum nobis quasi, eaque accusantium voluptates atque aperiam 
+                soluta esse quaerat ab voluptate odit amet laboriosam ipsa corrupti veritatis repellat sequi 
+                odio ex praesentium earum asperiores beatae. Consectetur quis tempore rem esse laboriosam minus 
+                quia veniam eligendi dolor nam. Sint perspiciatis eligendi itaque inventore quas eius corporis, 
+                ullam architecto, quod eaque error excepturi illo ex nesciunt.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                Minus quae tempora amet dolores officiis velit dignissimos nemo mollitia perspiciatis 
+                nihil? Ea, quasi non. Nihil ipsum nobis quasi, eaque accusantium voluptates atque aperiam 
+                soluta esse quaerat ab voluptate odit amet laboriosam ipsa corrupti veritatis repellat sequi 
+                odio ex praesentium earum asperiores beatae. Consectetur quis tempore rem esse laboriosam minus 
+                quia veniam eligendi dolor nam. Sint perspiciatis eligendi itaque inventore quas eius corporis, 
+                ullam architecto, quod eaque error excepturi illo ex nesciunt.</p>
+            <div class="TutorContent">
+              <div class="argomentiBox">
+                  <div class="argomenti">
+                    <h2>Info</h2>
+                    <li>Materia: Informatica</li>
+                    <li>livello: Intermedio</li>
+                  </div>
+              </div>
+              <div class="LingueBox">
+                  <div class="Lingue">
+                    <h2>Lingue</h2>
+                    <li>Italiano</li>
+                    <li>Inglese</li>
+                  </div>
+              </div>
+              <div class="ContactBox">
+                  <div class="contatta">
+                  <a href="mailto:lorenzoralli@hotmail.com">
+                      Contatta
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+    </div>
+
+    <br /><br /><br /><br /><br /><br />
+
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: #328fa5">
+      <br />
+      <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+      <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+        Made with ❤️ by Lorenzo, Roberto e Ersi
+      </p>
+      <br />
+    </footer>
+    <!-- Footer -->
+  </body>
+</html>

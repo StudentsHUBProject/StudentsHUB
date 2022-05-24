@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corsi</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/checkAuth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+    <link rel="stylesheet" href="./css/selectize_less.css" />
+
+    <script src="./js/corsi.js"></script>
+    <link rel="stylesheet" href="./css/corsi.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!--==========Navbar==========-->
+    <nav>
+      <!--=====Logo=====-->
+      <div class="logo">
+        <a href="/">
+          <img src="./img/FinalCorsi.png" class="logo" height="120px" />
+        </a>
+      </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click" />
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="./appartamenti">Appartamenti</a></li>
+        <li><a href="./libri">Libri</a></li>
+        <li><a href="./corsi" class="active">Corsi</a></li>
+        <!--=====Login Button=====-->
+      </ul>
+    </nav>
+    <!--==========Fine Navbar==========-->
+
+    <!--==========Sticky navbar con filtri==========-->
+    <navbar class="navbar sticky-top navbar-expand-lg">
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="clickF" />
+      <label for="clickF" class="checkbtn"> Filtri </label>
+      <form id="filtri" autocomplete="off">
+        <ul class="navbar-nav">
+          <!--=====Dropmenu Argomenti=====-->
+          <li class="nav-item dropdown">
+            <div class="container1">
+              <select id="select-subject" placeholder="Cerca per materia...">
+                <option value=""></option>
+                <optgroup label="Materie Scentifiche">
+                  <option value="Informatica">Informatica</option>
+                  <option value="Analisi">Matematica</option>
+                  <option value="Fisica">Fisica</option>
+                  <option value="Chimica">Chimica</option>
+                  <option value="Economia">Economia</option>
+                </optgroup>
+                <optgroup label="Materie Linguistiche">
+                  <option value="Inglese">Inglese</option>
+                  <option value="Francese">Francese</option>
+                  <option value="Spagnolo">Spagnolo</option>
+                  <option value="Latino">Latino</option>
+                </optgroup>
+                <optgroup label="Materie Umanistiche">
+                  <option value="Storia">Storia</option>
+                  <option value="Filosofia">Filosofia</option>
+                  <option value="Storia dell'arte">Storia dell'Arte</option>
+                  <option value="Letteratura Italiana">
+                    Letteratura Italiana
+                  </option>
+                </optgroup>
+              </select>
+            </div>
+          </li>
+
+          <!--=====Dropmenu Livello=====-->
+          <li class="nav-item dropdown">
+            <div class="container1">
+              <select id="select-level" placeholder="Seleziona il livello...">
+                <option value=""></option>
+                <option value="Principiante">Principiante</option>
+                <option value="Intermedio">Intermedio</option>
+                <option value="Avanzato">Avanzato</option>
+              </select>
+            </div>
+          </li>
+
+          <!--=====DropMenu Regione=====-->
+          <li class="nav-item dropdown">
+            <div class="container1">
+              <select id="select-city" placeholder="Seleziona la regione...">
+                <option></option>
+                <option value="Abruzzo">Abruzzo</option>
+                <option value="Basilicata">Basilicata</option>
+                <option value="Calabria">Calabria</option>
+                <option value="Campania">Campania</option>
+                <option value="Emilia-Romagna">Emilia-Romagna</option>
+                <option value="Friuli Venezia Giulia">
+                  Friuli Venezia Giulia
+                </option>
+                <option value="Lazio">Lazio</option>
+                <option value="Liguria">Liguria</option>
+                <option value="Lombardia">Lombardia</option>
+                <option value="Marche">Marche</option>
+                <option value="Molise">Molise</option>
+                <option value="Piemonte">Piemonte</option>
+                <option value="Puglia">Puglia</option>
+                <option value="Sardegna">Sardegna</option>
+                <option value="Sicilia">Sicilia</option>
+                <option value="Toscana">Toscana</option>
+                <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                <option value="Umbria">Umbria</option>
+                <option value="Valle d'Aosta">Valle d'Aosta</option>
+                <option value="Veneto">Veneto</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </form>
+      <div class="containerT">
+        <a href="./FormTutor" class="clickT btn">Diventa Tutor</a>
+      </div>
+    </navbar>
+    <!--==========Fine Sticky navbar con filtri==========-->
+
+    <!--==========Banner==========-->
+    <div class="sectionBanner">
+      <img src="./img/bannerC.jpg" class="d-block" alt="Banner" id="Banner" />
+      <h1>Corsi</h1>
+      <p>
+        Prenota ripetizioni come, dove <br />
+        e quando vuoi tu
+      </p>
+    </div>
+    <input
+      type="button"
+      class="Startbtn btn btn-lg"
+      onClick="StartFunction()"
+      value="Scopri di più"
+    />
+    <!--==========Fine Banner==========-->
+
+    <!--==========Products grid==========-->
+    <div class="TutorContainer">
+      <div class="ItemContainer"></div>
+      <div id="loadmore">Visualizza più Tutor</div>
+    </div>
+    <!--==========Fine product Grid==========-->
+
+    <!--==========Sezione HowTO==========-->
+    <div class="howtoContainer" id="HowTo">
+      <h1>Come Funziona</h1>
+      <div class="howto">
+        <div class="box">
+          <h2>01</h2>
+          <h3>Trova il tuo Tutor</h3>
+          <p>
+            Consulta liberamente i profili e contatta il/la tuo/a tutor secondo
+            i criteri che sono importanti per te (materia, livello, lingua,
+            corsi a domicilio o via webcam)
+          </p>
+        </div>
+        <div class="box">
+          <h2>02</h2>
+          <h3>Organizza la lezione</h3>
+          <p>
+            Mettiti subito in contatto con il/la tuo/a tutor per scegliere
+            giorno, modalità di erogazione della lezione e pagamento tramite la
+            "scheda tutor" accessibile attraverso il pulsante "scopri"
+          </p>
+        </div>
+        <div class="box">
+          <h2>03</h2>
+          <h3>Mettiti in gioco</h3>
+          <p>
+            Diventa un Tutor StudentsHUB compilando il form accessibile dal
+            pulsante "Diventa Tutor" in alto a destra (solo per utenti
+            registrati)
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--==========Fine sezione HowTO==========-->
+    <br /><br /><br />
+
+    <!--==========Sezione FAQ==========-->
+    <section id="FAQsection">
+      <h2 class="title">FAQs</h2>
+      <div class="accordion-div">
+        <div class="faq">
+          <div class="accordion">
+            <h3>Le lezioni sono online o a domicilio?</h3>
+          </div>
+          <div class="panel">
+            <p>
+              Apri la scheda del tutor che preferisci e guarda quali icone sono
+              presenti in basso a destra,
+              <i class="fa-solid fa-house-user"></i> indica che sono a domicilio
+              mentre <i class="fa-solid fa-house-laptop"></i> indica che sono
+              via webcam
+            </p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="accordion"><h3>Come funziona il pagamento?</h3></div>
+          <div class="panel">
+            <p>
+              Controlla l'icona nella parte inferiore della card tutor che
+              preferisci per sapere il prezzo e mettiti d'accordo con il/la
+              tutor tramite mail per la modalità di pagamento
+            </p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="accordion"><h3>Come si diventa Tutor?</h3></div>
+          <div class="panel">
+            <p>
+              Registrati a Students Hub attraverso l'apposito pulsante sulla
+              barra di navigazione e compila il form con i tuoi dati personali e
+              con i dati del tuo corso
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br /><br />
+    <!--==========Fine sezione FAQ==========-->
+
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: #328fa5">
+      <br />
+      <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+      <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+        Made with ❤️ by Lorenzo, Roberto e Ersi
+      </p>
+      <br />
+    </footer>
+    <!-- Footer -->
+
+    <!--==========Script==========-->
+
+    <!--=====Script FAQ=====-->
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            let active = document.querySelectorAll(
+              ".accordion-div .accordion.active"
+            );
+            for (let j = 0; j < active.length; j++) {
+              active[j].classList.remove("active");
+              active[j].nextElementSibling.style.maxHeight = null;
+            }
+            this.classList.toggle("active");
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
+    <!--==========Fine sezione Script==========-->
+  </body>
+</html>

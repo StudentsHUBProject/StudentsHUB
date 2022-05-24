@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appartamenti</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/checkAuth.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="./css/appartamenti.css" />
+    <link rel="stylesheet" href="./css/FormAppartamento.css" />
+
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script src="./js/FormAppartamento.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfAFPKJ_uOSVVAfGRXlupYR80hq7Roz98&libraries=places&callback=initMap&v=weekly&language=it&region=IT&solution_channel=GMP_QB_addressselection_v1_cA"
+      defer
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+      integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
+      integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg="
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!--==========Navbar==========-->
+    <nav>
+      <!--=====Logo=====-->
+      <div class="logo">
+        <a href="/">
+          <img src="./img/FinalAppartamenti.png" class="logo" height="120px" />
+        </a>
+      </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click" />
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/appartamenti" class="active">Appartamenti</a></li>
+        <li><a href="/libri">Libri</a></li>
+        <li><a href="/corsi">Corsi</a></li>
+        <!--=====Login Button=====-->
+      </ul>
+    </nav>
+    <!--==========Fine Navbar==========-->
+
+    <!--==========Form==========-->
+    <div class="container-fluid">
+      <div class="row justify-content-center mt-0">
+        <div
+          class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2"
+        >
+          <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+            <h2><strong>Crea il tuo Annuncio</strong></h2>
+            <p>
+              Compila il form sottostante con tutte le informazioni che ritieni
+              fondamentali.
+            </p>
+            <div class="row">
+              <div class="col-md-12 mx-0">
+                <form id="msform">
+                  <!-- progressbar -->
+                  <ul id="progressbar">
+                    <li class="fa-solid fa-map-location active" id="luogo">
+                      <strong>Luogo</strong>
+                    </li>
+                    <li class="fa-solid fa-house" id="tipologia">
+                      <strong>Tipologia</strong>
+                    </li>
+                    <li class="fa-solid fa-info" id="dettagli">
+                      <strong>Dettagli</strong>
+                    </li>
+                    <li class="fa-solid fa-check" id="fine">
+                      <strong>Fine</strong>
+                    </li>
+                  </ul>
+                  <!-- fieldsets -->
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Dove si trova il tuo posto?*</h2>
+                      <input
+                        required
+                        class="form-control"
+                        type="text"
+                        name="indirizzo"
+                        id="indirizzo"
+                        placeholder="Inserisci l'indirizzo"
+                      />
+                      <div id="map"></div>
+                    </div>
+                    <input
+                      type="button"
+                      name="next"
+                      class="next action-button"
+                      value="Avanti"
+                    />
+                  </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Tipologia Annuncio</h2>
+                      <label for="tipologia">Tipologia*</label>
+                      <select
+                        required
+                        class="form-select"
+                        id="tipologiaAnnuncio"
+                        name="tipologiaAnnuncio"
+                      >
+                        <option value="">Seleziona</option>
+                        <option value="singola">Camera Singola</option>
+                        <option value="doppia">Camera Doppia</option>
+                        <option value="tripla">Camera Tripla</option>
+                        <option value="appartamento">Appartamento</option>
+                      </select>
+                      <br />
+                      <label for="postiLetto">Posti Letto*</label>
+                      <select
+                        required
+                        class="form-select"
+                        id="postiLetto"
+                        name="postiLetto"
+                      >
+                        <option value="">Seleziona</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                      </select>
+                      <br />
+                      <label for="prezzo">Prezzo/Mese*</label>
+                      <input
+                        required
+                        class="form-control"
+                        type="number"
+                        name="prezzo"
+                        id="prezzo"
+                        placeholder="Inserisci il prezzo"
+                      />
+                      <label for="utenzeMedie">Utenze medie</label>
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="utenzeMedie"
+                        id="utenzeMedie"
+                        placeholder="Inserisci le utenze medie"
+                      />
+                      <label for="caparra">Caparra</label>
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="caparra"
+                        id="caparra"
+                        placeholder="Inserisci la caparra"
+                      />
+
+                      <label for="classeEnergetica">Classe Energetica</label>
+                      <select
+                        class="form-select"
+                        id="classeEnergetica"
+                        name="classeEnergetica"
+                      >
+                        <option value="">Seleziona</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                      </select>
+                    </div>
+                    <input
+                      type="button"
+                      name="previous"
+                      class="previous action-button-previous"
+                      value="Indietro"
+                    />
+                    <input
+                      type="button"
+                      name="next"
+                      class="next action-button"
+                      value="Avanti"
+                    />
+                  </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Dettagli del tuo Annuncio</h2>
+                      <label for="tipologiaContratto"
+                        >Tipologia di Contratto</label
+                      >
+                      <select
+                        class="form-select"
+                        id="tipologiaContratto"
+                        name="tipologiaContratto"
+                      >
+                        <option value="">Seleziona</option>
+                        <option value="1">Ordinario 4 + 4</option>
+                        <option value="2">Contratto Transitorio</option>
+                        <option value="3">Con cedolare secca</option>
+                        <option value="4">Contratto Convenzionato</option>
+                        <option value="5">Transitorio per Studenti</option>
+                        <option value="6">Commodato d'uso</option>
+                        <option value="7">Sublocazione Autorizzata</option>
+                        <option value="8">Altro</option>
+                      </select>
+                      <br />
+
+                      <label for="descrizione">Descrizione*</label>
+                      <textarea
+                        required
+                        class="form-control"
+                        name="descrizione"
+                        id="descrizione"
+                        placeholder="Descrivi l'appartamento"
+                      ></textarea>
+
+                      <label for="dimensioni">Dimensioni (mq.)</label>
+                      <input
+                        class="form-control"
+                        type="number"
+                        name="dimensioni"
+                        id="dimensioni"
+                        placeholder="Superficie in mq"
+                      />
+
+                      <label for="restrizioni">Restrizioni</label>
+                      <select
+                        class="form-select"
+                        id="restrizioni"
+                        name="restrizioni"
+                      >
+                        <option value="">Nessuna</option>
+                        <option value="ragazze">Solo Ragazze</option>
+                        <option value="ragazzi">Solo Ragazzi</option>
+                      </select>
+                      <br />
+
+                      <label for="riscaldamento">Riscaldamento</label>
+                      <select
+                        class="form-select"
+                        id="riscaldamento"
+                        name="riscaldamento"
+                      >
+                        <option value="">Non Specificato</option>
+                        <option value="autonomo">Autonomo</option>
+                        <option value="centralizzato">Centralizzato</option>
+                      </select>
+                      <br />
+
+                      <div class="form-group">
+                        <label>Servizi</label>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="internet"
+                          />
+                          <i class="fa-solid fa-wifi" for="internet"></i
+                          ><label class="form-check-label" for="internet"
+                            >Internet</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="fumatori"
+                          />
+                          <i class="fa-solid fa-smoking" for="fumatori"></i
+                          ><label class="form-check-label" for="fumatori"
+                            >Fumatori Ammessi</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="ascensore"
+                          />
+                          <i class="fa-solid fa-elevator" for="ascensore"></i
+                          ><label class="form-check-label" for="ascensore"
+                            >Ascensore</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="animali"
+                          />
+                          <i class="fa-solid fa-cat" for="animali"></i
+                          ><label class="form-check-label" for="animali"
+                            >Animali Domestici</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="lavatrice"
+                          />
+                          <i class="fa-solid fa-soap" for="lavatrice"></i
+                          ><label class="form-check-label" for="lavatrice"
+                            >Lavatrice</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="asciugatrice"
+                          />
+                          <i
+                            class="fa-solid fa-fire-flame-simple"
+                            for="asciugatrice"
+                          ></i
+                          ><label class="form-check-label" for="asciugatrice"
+                            >Asciugatrice</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="televisione"
+                          />
+                          <i class="fa-solid fa-tv" for="televisione"></i
+                          ><label class="form-check-label" for="televisione"
+                            >Televisione</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="aria"
+                          />
+                          <i class="fa-solid fa-wind" for="aria"></i
+                          ><label class="form-check-label" for="aria"
+                            >Aria Condizionata</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="disabili"
+                          />
+                          <i
+                            class="fa-solid fa-wheelchair-move"
+                            for="disabili"
+                          ></i
+                          ><label class="form-check-label" for="disabili"
+                            >Accesso Disabili</label
+                          >
+                        </div>
+                      </div>
+
+                      <br /><br /><br />
+                      <h2 class="fs-title">Foto</h2>
+                      <label for="foto"
+                        >Inserisci fino a 8 foto per il tuo Annuncio* (Massimo
+                        50mb)</label
+                      >
+                      <br /><br />
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <img
+                              required
+                              class="img-thumbnail"
+                              src="https://icon-library.com/images/add-picture-icon/add-picture-icon-16.jpg"
+                            />
+                            <input
+                              type="file"
+                              accept="image/*"
+                              class="uploadFile"
+                              value="Carica Foto"
+                              style="width: 0px; height: 0px; overflow: hidden"
+                            />
+                          </div>
+                          <i class="fa-solid fa-circle-plus add"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      type="button"
+                      name="previous"
+                      class="previous action-button-previous"
+                      value="Indietro"
+                    />
+                    <input
+                      type="button"
+                      name="crea_annuncio"
+                      class="next action-button"
+                      value="Conferma"
+                    />
+                  </fieldset>
+                  <fieldset id="latest">
+                    <div class="form-card">
+                      <div class="row justify-content-center">
+                        <div class="col-3">
+                          <img
+                            src="https://img.icons8.com/color/96/000000/ok--v2.png"
+                            class="fit-image"
+                          />
+                        </div>
+                      </div>
+                      <br /><br />
+                      <div class="row justify-content-center">
+                        <div class="col-7 text-center">
+                          <h5>Annuncio pubblicato con Successo!</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--==========Fine Form==========-->
+
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: #f7de3a">
+      <br />
+      <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+      <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+        Made with ❤️ by Lorenzo, Roberto e Ersi
+      </p>
+      <br />
+    </footer>
+    <!-- Footer -->
+  </body>
+</html>
