@@ -8,6 +8,8 @@ const static = require("./routes/static");
 const api = require("./routes/api");
 
 const app = express();
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
@@ -21,8 +23,6 @@ app.use(express.static(path.join(__dirname, "assets")));
 app.use(static);
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }).then(() => {
-  app.use(express.json({ limit: "50mb" }));
-  app.use(express.urlencoded({ limit: "50mb", extended: true }));
   app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
     res.setHeader(
