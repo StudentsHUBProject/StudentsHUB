@@ -8,6 +8,7 @@ const auth = require("../../middleware/auth");
 
 const User = require("../../models/User");
 const Appartamento = require("../../models/Appartamento");
+const Libro = require("../../models/Libro");
 const Corso = require("../../models/Corso");
 
 //POST api/user/
@@ -30,6 +31,16 @@ router.get("/appartamenti", auth, async (req, res) => {
       res.send(err);
     }
     res.json(appartamenti);
+  });
+});
+
+// GET libri dell'utente loggato
+router.get("/libri", auth, async (req, res) => {
+  Libro.find({ user: req.user.id }, (err, libri) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(libri);
   });
 });
 

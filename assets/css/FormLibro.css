@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
+  overflow: hidden;
+}
+
+.LibroContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(../img/sfondo_annuncio_libro.jpg);
+  transition: 0.3s;
+}
+
+.container {
+  position: relative;
+  left: 21%;
+  width: 1500px;
+  height: 600px;
+  margin: 20px;
+}
+
+.formbx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(230, 224, 224, 0.836);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 40px 20px 125px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+form p {
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+form h1 {
+  color: brown;
+}
+
+form textarea {
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+  resize: none;
+}
+
+form button {
+  width: 30%;
+  float: left;
+  font-family: "Times New Roman", Times, serif;
+}
+
+form button:hover {
+  background-color: rgba(255, 0, 0, 0.877);
+  transition: 400ms;
+}
+
+form {
+  margin-right: 14%;
+}
+
+/**=====Inizio Responsive Style =====**/
+
+@media (max-width: 1300px) {
+  .container {
+    left: 27%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .container {
+    width: 1300px;
+    height: 565px;
+  }
+  form p {
+    font-size: 13px;
+  }
+  form textarea {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 920px) {
+  .container {
+    height: 550px;
+    margin-bottom: 70%;
+    left: 23%;
+  }
+  form p {
+    font-size: 12px;
+  }
+  form {
+    margin-left: 5%;
+  }
+  form textarea {
+    font-size: 12px;
+  }
+  form button {
+    width: 30%;
+    font-size: 12px;
+  }
+  form h1 {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 820px) {
+  .container {
+    height: 550px;
+    left: 25%;
+    margin-bottom: 50%;
+  }
+  form textarea {
+    width: 90%;
+  }
+  form h1 {
+    font-size: 26px;
+  }
+  form {
+    margin-left: 4%;
+  }
+}
+
+@media (max-width: 770px) {
+  .container {
+    margin-bottom: 30%;
+  }
+  form {
+    margin-left: 3%;
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    margin-bottom: 6%;
+    left: 23%;
+  }
+  form button {
+    width: 50%;
+  }
+  form input {
+    width: 80%;
+  }
+  form h1 {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    height: 460px;
+    margin-bottom: 20%;
+    left: 23%;
+  }
+  form p {
+    font-size: 7px;
+  }
+  form button {
+    font-size: 7px;
+  }
+  form h1 {
+    font-size: 14px;
+  }
+  form select {
+    size: 29px;
+  }
+}
+
+@media (max-width: 380px) {
+  form p {
+    font-size: 6px;
+  }
+  .container {
+    margin-bottom: 10%;
+  }
+}

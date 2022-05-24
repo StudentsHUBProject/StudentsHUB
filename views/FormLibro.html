@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/FormLibro.css" />
+
+    <!--script per ajax-libri-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/FormLibro.js"></script>
+
+    <title>Vendita libri</title>
+  </head>
+  <body>
+    <div class="LibroContainer">
+      <div class="container">
+        <div class="formbx">
+          <form>
+            <h1>Crea il tuo annuncio</h1>
+            <br />
+            <p>
+              Aggiungi un immagine: <input type="file" id="immagine" required />
+            </p>
+
+            <p>
+              Nome della materia:
+              <select id="materia" required>
+                <option></option>
+                <option>matematica</option>
+                <option>informatica</option>
+                <option>arte</option>
+                <option>storia</option>
+                <option>filosofia</option>
+                <option>fisica</option>
+                <option>inglese</option>
+                <option>italiano</option>
+                <option>economia</option>
+                <option>scienze</option>
+              </select>
+            </p>
+
+            <p>
+              Inserisci il titolo del libro:
+              <input
+                type="text"
+                id="titolo"
+                size="30"
+                maxlength="30"
+                required
+              />
+            </p>
+
+            <div>
+              <p>Descrizione del libro:</p>
+
+              <textarea
+                id="descrizione"
+                cols="50"
+                rows="10"
+                required
+              ></textarea>
+            </div>
+
+            <p>
+              Inserisci il prezzo:
+              <input
+                type="number"
+                id="prezzo"
+                size="10"
+                maxlength="10"
+                required
+              />
+            </p>
+
+            <button id="crea-libro">Crea Annuncio</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

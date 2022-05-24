@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/libri.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--script per ajax-libri-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/checkAuth.js"></script>
+    <script src="./js/ajax-libri.js"></script>
+
+    <title>Libri</title>
+  </head>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  />
+
+  <body>
+    <!--==========Navbar==========-->
+    <nav>
+      <!--=====Logo=====-->
+      <div class="logo">
+        <a href="/">
+          <img src="./img/FinalLibri.png" class="logo" height="120px" />
+        </a>
+      </div>
+      <!--=====Btn Toggle Responsive=====-->
+      <input type="checkbox" id="click" />
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <!--=====Schede=====-->
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/appartamenti">Appartamenti</a></li>
+        <li><a href="/libri" class="active">Libri</a></li>
+        <li><a href="/corsi">Corsi</a></li>
+        <!--=====Login Button=====-->
+      </ul>
+    </nav>
+    <!--==========Fine Navbar==========-->
+
+    <!--==========Banner==========-->
+    <div class="sectionBanner">
+      <img src="./img/bannerL.jpg" class="d-block" alt="Banner" id="Banner" />
+      <h1>Libri</h1>
+      <p>
+        Acquista o vendi <br />
+        i tuoi libri
+      </p>
+    </div>
+    <!--==========Fine Banner==========-->
+
+    <div id="griglia">
+      <!--Sezione dei filtri-->
+
+      <section class="sidebar header">
+        <div class="d-grid mx-auto text-center">
+          <br />
+          <h4>Materie:</h4>
+          <br />
+          <form id="filtri">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="matematica"
+                id="matematica"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="matematica"
+                >Matematica</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="fisica"
+                id="fisica"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="fisica">Fisica</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="arte"
+                id="arte"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="arte">Arte</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="informatica"
+                id="informatica"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="informatica"
+                >Informatica</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="italiano"
+                id="italiano"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="italiano">Italiano</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="storia"
+                id="storia"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="storia">Storia</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="inglese"
+                id="inglese"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="inglese">Inglese</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="filosofia"
+                id="filosofia"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="filosofia">Filosofia</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="scienze"
+                id="scienze"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="scienze">Scienze</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                style="margin-left: 5%"
+                type="checkbox"
+                value="economia"
+                id="economia"
+                onchange="cbChange(this)"
+              />
+              <label class="form-check-label" for="economia">Economia</label>
+            </div>
+            <br />
+            <h4>Prezzo:</h4>
+            <br />
+            <div class="form-group">
+              <label for="prezzo" class="form-label"
+                >Prezzo: <label id="valPrezzo"> </label
+              ></label>
+              <input
+                type="range"
+                class="form-range"
+                min="0"
+                max="200"
+                step="10"
+                value="0"
+                id="prezzo"
+              />
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!--Fine sezione dei filtri-->
+
+      <section class="content-small">
+        <!--Sezione del Search-->
+
+        <input id="search-api" type="search" placeholder="Cerca per nome" />
+        <button id="cerca" class="btn btn-primary">Cerca</button>
+        <a href="/FormLibro" class="btn btn-danger" id="vendi" type="submit"
+          >Vendi</a
+        >
+
+        <br />
+
+        <hr />
+      </section>
+
+      <!--Fine sezione del Search-->
+
+      <!--Sezione dei libri-->
+
+      <section class="content-large">
+        <div class="ItemContainer" id="libri"></div>
+      </section>
+
+      <!--Fine sezione dei libri-->
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="text-center text-white"
+      style="background-color: rgba(255, 0, 0, 0.699)"
+    >
+      <br />
+      <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+      <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+        Made with ❤️ by Lorenzo, Roberto e Ersi
+      </p>
+      <br />
+    </footer>
+    <!-- Footer -->
+  </body>
+
+  <script>
+    $("#prezzo").on("input", function () {
+      var prezzo = $(this).val();
+      if (prezzo == 200 || prezzo == 0) {
+        prezzo = "Qualsiasi";
+      } else {
+        prezzo = prezzo + " €";
+      }
+      $("#valPrezzo").html(prezzo);
+    });
+  </script>
+  <script>
+    function cbChange(obj) {
+      var cbs = document.getElementsByClassName("form-check-input");
+      var check = obj.checked;
+      for (var i = 0; i < cbs.length; i++) {
+        cbs[i].checked = false;
+      }
+      obj.checked = check;
+    }
+  </script>
+</html>

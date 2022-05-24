@@ -1,5 +1,4 @@
 $(document).ready(function () {
- 
   $(document).on("click", "#logoutButton", function () {
     document.cookie = "access-token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     window.location.href = "./signin";
@@ -37,57 +36,11 @@ $(document).ready(function () {
                   </div>
                   <div class="Section Libri">
                     <h2 id="libri">Libri</h2>
-                    <div class="AnnunciLibri">
-                      <a class="ACardLibri" href="/">
-                        <div class="LibriContainer" id="libricard">
-                          <div class="cardLibri">
-                            <div class="card-body">
-                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
-                                <h5 class="card-title">Analisi 1</h5>
-                                <p class="card-text">20 euro</p>
-                            </div>
-                          </div>
-                        </div> 
-                      </a>
-                      <a class="ACardLibri" href="/">
-                        <div class="LibriContainer" id="libricard">
-                          <div class="cardLibri">
-                            <div class="card-body">
-                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
-                                <h5 class="card-title">Analisi 1</h5>
-                                <p class="card-text">20 euro</p>
-                            </div>
-                          </div>
-                        </div> 
-                      </a>
-                      <a class="ACardLibri" href="/">
-                        <div class="LibriContainer" id="libricard">
-                          <div class="cardLibri">
-                            <div class="card-body">
-                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
-                                <h5 class="card-title">Analisi 1</h5>
-                                <p class="card-text">20 euro</p>
-                            </div>
-                          </div>
-                        </div> 
-                      </a>
-                      <a class="ACardLibri" href="/">
-                        <div class="LibriContainer" id="libricard">
-                          <div class="cardLibri">
-                            <div class="card-body">
-                                <img src="./img/81l0RVWNgfL.jpg" class="card-img-top">
-                                <h5 class="card-title">Analisi 1</h5>
-                                <p class="card-text">20 euro</p>
-                            </div>
-                          </div>
-                        </div> 
-                      </a> 
-                      </div>
+                    <div class="AnnunciLibri"></div>
                     </div>
-                    <div class="Section Corsi">
-                        <h2 id="corsi">Corsi</h2>
-                          <div class="AnnunciCorsi">
-                          </div>
+                  <div class="Section Corsi">
+                    <h2 id="corsi">Corsi</h2>
+                    <div class="AnnunciCorsi"></div>
                   </div>
                 </div>
             </div>
@@ -116,7 +69,6 @@ $(document).ready(function () {
       },
     });
   });
-
 
   //appartamenti
   $.ajax({
@@ -147,6 +99,37 @@ $(document).ready(function () {
     },
   });
 
+  //libri
+  $.ajax({
+    url: "http://localhost:8080/api/user/libri",
+    method: "GET",
+    success: function (data) {
+      for (let i = 0; i < data.length; i++) {
+        $(".AnnunciLibri").append(`
+          <div id="${data[i]._id}">
+            <div class="remove">
+              <div class="removebtn" sezione="libri" _id="${data[i]._id}"> x </div>
+            </div>
+            <a class="ACardLibri" href="/libro?id=${data[i]._id}">
+              <div class="LibriContainer" id="libricard">
+                <div class="cardLibri">
+                  <div class="card-body">
+                      <img src="${data[i].immagine}" class="card-img-top">
+                      <h5 class="card-title">${data[i].titolo}</h5>
+                      <p class="card-text">${data[i].prezzo}€</p>
+                  </div>
+                </div>
+              </div> 
+            </a>
+          </div>
+          `);
+      }
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  });
+
   //corsi
   $.ajax({
     url: "http://localhost:8080/api/user/corsi",
@@ -157,7 +140,9 @@ $(document).ready(function () {
           ` 
             <div id="${data[i]._id}">
               <div class="remove">
-                <div class="removebtn" sezione="corsi" _id="${data[i]._id}"> x </div>
+                <div class="removebtn" sezione="corsi" _id="${
+                  data[i]._id
+                }"> x </div>
               </div>
                   <a class="ACardCorsi" href="SchedaTutor?id=${data[i]._id}">
                     <div class="cardCorso">
@@ -168,8 +153,16 @@ $(document).ready(function () {
                           </div>
                           <div class="icons">
                             <span id="prezzo">${data[i].Prezzo}</span>
-                            <span class="homeicon">${data[i].Modalita[0] == "on" ? '<i class="fa fa-solid fa-house-user"></i>': ""}</span>
-                            <span class="awayicon">${data[i].Modalita[1] == "on" ? '<i class="fa fa-solid fa-house-laptop"></i>': ""}</span>
+                            <span class="homeicon">${
+                              data[i].Modalita[0] == "on"
+                                ? '<i class="fa fa-solid fa-house-user"></i>'
+                                : ""
+                            }</span>
+                            <span class="awayicon">${
+                              data[i].Modalita[1] == "on"
+                                ? '<i class="fa fa-solid fa-house-laptop"></i>'
+                                : ""
+                            }</span>
                           </div>
                         </div>
                       </div>

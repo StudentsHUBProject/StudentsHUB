@@ -1,35 +1,14 @@
 const mongoose = require("mongoose");
 
-const Userschema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-      minlenght: [
-        2,
-        "Il nome utente non puo essere più piccolo di 2 caratteri",
-      ],
-      maxlength: [
-        64,
-        "il nome utente non puo essere più grande di 64 caratteri",
-      ],
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    avatar: {
-      type: String,
-    },
-  },
-  {
-    collection: "Users",
-  }
-);
+const libriSchema = new mongoose.Schema({
+  immagine: { type: String, required: true },
+  materia: { type: String, required: true },
+  titolo: { type: String, required: true },
+  descrizione: { type: String, required: true },
+  prezzo: { type: Number, required: true },
+  user: { type: String, required: true },
+  email: { type: String, required: true },
+  created_at: { type: Date, default: Date.now },
+});
 
-module.exports = mongoose.model("Libro", Userschema);
+module.exports = mongoose.model("Libro", libriSchema);

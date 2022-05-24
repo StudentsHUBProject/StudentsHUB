@@ -39,6 +39,15 @@ router.get("/libri", function (req, res) {
   res.sendFile(path.join(__dirname, "../views/libri.html"));
 });
 
+router.get("/libro", function (req, res) {
+  res.sendFile(path.join(__dirname, "../views/libro.html"));
+});
+
+router.get("/FormLibro", auth, function (req, res) {
+  if (!req.user) res.redirect("/signin");
+  else res.sendFile(path.join(__dirname, "../views/FormLibro.html"));
+});
+
 router.get("/user", auth, function (req, res) {
   if (!req.user) res.redirect("/signin");
   else res.sendFile(path.join(__dirname, "../views/UserProfile.html"));

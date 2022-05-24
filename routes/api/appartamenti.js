@@ -36,8 +36,9 @@ router.get("/", (req, res) => {
   Appartamento.find(query, (err, appartamenti) => {
     if (err) {
       res.send(err);
+    } else {
+      res.json(appartamenti);
     }
-    res.json(appartamenti);
   });
 });
 
@@ -46,8 +47,9 @@ router.get("/:id", (req, res) => {
   Appartamento.findById(req.params.id, (err, appartamento) => {
     if (err) {
       res.send(err);
+    } else {
+      res.json(appartamento);
     }
-    res.json(appartamento);
   });
 });
 
@@ -56,15 +58,16 @@ router.get("/map/coordinate", (req, res) => {
   Appartamento.find({}, "titolo lat lng", (err, appartamenti) => {
     if (err) {
       res.send(err);
+    } else {
+      res.json(appartamenti);
     }
-    res.json(appartamenti);
   });
 });
 
 // Create appartamento
 router.post("/", auth, async (req, res) => {
   if (req.body.immagini.lenght > 8) {
-    res.json({
+    return res.json({
       error: "Too many images",
     });
   }
@@ -75,8 +78,9 @@ router.post("/", auth, async (req, res) => {
     (err, appartamento) => {
       if (err) {
         res.send(err);
+      } else {
+        res.json(appartamento);
       }
-      res.json(appartamento);
     }
   );
 });
@@ -91,8 +95,9 @@ router.delete("/:id", auth, async (req, res) => {
       Appartamento.findByIdAndRemove(req.params.id, (err, appartamento) => {
         if (err) {
           res.send(err);
+        } else {
+          res.json(appartamento);
         }
-        res.json(appartamento);
       });
     } else {
       res.status(401).json({ msg: "Unauthorized" });
