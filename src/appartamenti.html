@@ -16,9 +16,6 @@
     <script src="./assets/js/appartamenti.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfAFPKJ_uOSVVAfGRXlupYR80hq7Roz98&libraries=places&callback=initMap&v=weekly&language=it&region=IT&solution_channel=GMP_QB_addressselection_v1_cA" defer></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
 
@@ -49,14 +46,29 @@
             </button>
         </ul>
       </nav>
-   <!--==========Fine Navbar==========-->
+    <!--==========Fine Navbar==========-->
+
+    <!--==========Banner==========-->
+    <div class="sectionBanner"> 
+        <img src="./assets/img/bannerA.jpg" class="d-block" alt="Banner" id="Banner">
+        <h1>Appartamenti</h1>
+        <p>Trova l'appartamento perfetto nei pressi del tuo istituto</p>
+    </div>
+    <input type="button" class="Startbtn btn btn-lg" onClick="StartFunction()" value="Scopri di più">
+    <!--==========Fine Banner==========-->
 
     <!--=====Appartamenti=====-->
     <section>
         <div class="container">
             <br>
             <div class="row">
-                <div class="col-md-4">
+                
+                <div class="gap-2 d-md-none d-flex justify-content-end">
+                    <a href="pubblicaAppartamento" class="btn btn-app btn-lg w-100 me-md-2">Inserisci Annuncio</a>
+                    <button class="btn btn-app" id="collapseButton" type="button" data-bs-toggle="collapse" data-bs-target="#collapsedFiltri" aria-expanded="true" aria-controls="collapsedFiltri"><i class="fa-solid fa-filter" id="filterIcon"></i></button>
+                </div>
+
+                <div class="collapse col-md-4 show" id="collapsedFiltri" style="margin-top: 20px;">
                     <div class="row">
                         <div class="col-md-12">
                             <div id="map"></div>
@@ -65,32 +77,126 @@
 
                     <br>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                          <button class="btn btn-primary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#inserisciAnnuncioModal">Inserisci Annuncio</button>  
+                    <div class="row d-none d-md-flex">
+                        <div class="col-md-12"> 
+                            <a href="pubblicaAppartamento" class="btn btn-app btn-lg w-100">Inserisci Annuncio</a>
                         </div>
                     </div>
 
-                    <br>
+                    <br class="d-none d-md-flex">
 
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="appartamenti.html" method="post">
+                            <form id="filtri">
                                 <div class="form-group">
-                                    <label for="">Tipologia</label>
-                                    <select class="form-control" id="tipologia" name="tipologia">
-                                        <option value="">Tutti</option>
-                                        <option value="">Appartamento</option>
-                                        <option value="">Villa</option>
+                                    <label for="tipologiaAnnuncio">Tipologia</label>
+                                    <select class="form-select" id="tipologiaAnnuncio" name="tipologiaAnnuncio">
+                                        <option value="">Qualsiasi</option>
+                                        <option value="singola">Camera Singola</option>
+                                        <option value="doppia">Camera Doppia</option>
+                                        <option value="tripla">Camera Tripla</option>
+                                        <option value="appartamento">Appartamento</option>
                                     </select>
                                 </div>
+                                <br>
                                 <div class="form-group">
-                                    <label for="">Prezzo</label>
-                                    <select class="form-control" id="prezzo" name="prezzo">
-                                        <option value="">Tutti</option>
-                                        <option value="">0-400</option>
-                                        <option value="">400-800</option>
+                                    <label for="prezzo" class="form-label">Prezzo: <label id="valPrezzo">Qualsiasi</label></label>
+                                    <input type="range" class="form-range" min="0" max="5000" step="50" value="5000" id="prezzo">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="postiLetto">Posti Letto: <label id="valPostiLetto">1</label></label>
+                                    <input type="range" class="form-range" min="1" max="6" step="1" value="1" id="postiLetto">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="classeEnergetica">Classe Energetica</label>
+                                    <select class="form-select" id="classeEnergetica" name="classeEnergetica">
+                                        <option value="">Qualsiasi</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
                                     </select>
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="tipologiaContratto">Tipologia di Contratto</label>
+                                    <select class="form-select" id="tipologiaContratto" name="tipologiaContratto">
+                                        <option value="">Qualsiasi</option>
+                                        <option value="1">Ordinario 4 + 4</option>
+                                        <option value="2">Contratto Transitorio</option>
+                                        <option value="3">Con cedolare secca</option>
+                                        <option value="4">Contratto Convenzionato</option>
+                                        <option value="5">Transitorio per Studenti</option>
+                                        <option value="6">Commodato d'uso</option>
+                                        <option value="7">Sublocazione Autorizzata</option>
+                                        <option value="8">Altro</option>
+                                    </select>
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="restrizioni">Restrizioni</label>
+                                    <select class="form-select" id="restrizioni" name="restrizioni">
+                                        <option value="">Nessuna</option>
+                                        <option value="ragazze">Solo Ragazze</option>
+                                        <option value="ragazzi">Solo Ragazzi</option>
+                                    </select>
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="riscaldamento">Riscaldamento</label>
+                                    <select class="form-select" id="riscaldamento" name="riscaldamento">
+                                        <option value="">Qualsiasi</option>
+                                        <option value="autonomo">Autonomo</option>
+                                        <option value="centralizzato">Centralizzato</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label>Servizi</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="internet">
+                                        <i class="fa-solid fa-wifi" for="internet"></i><label class="form-check-label" for="internet">Internet</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="fumatori">
+                                        <i class="fa-solid fa-smoking" for="fumatori"></i><label class="form-check-label" for="fumatori">Fumatori Ammessi</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="ascensore">
+                                        <i class="fa-solid fa-elevator" for="ascensore"></i><label class="form-check-label" for="ascensore">Ascensore</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="animali">
+                                        <i class="fa-solid fa-cat" for="animali"></i><label class="form-check-label" for="animali">Animali Domestici</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="lavatrice">
+                                        <i class="fa-solid fa-soap" for="lavatrice"></i><label class="form-check-label" for="lavatrice">Lavatrice</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="asciugatrice">
+                                        <i class="fa-solid fa-fire-flame-simple" for="asciugatrice"></i><label class="form-check-label" for="asciugatrice">Asciugatrice</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="televisione">
+                                        <i class="fa-solid fa-tv" for="televisione"></i><label class="form-check-label" for="televisione">Televisione</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="aria">
+                                        <i class="fa-solid fa-wind" for="aria"></i><label class="form-check-label" for="aria">Aria Condizionata</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="disabili">
+                                        <i class="fa-solid fa-wheelchair-move" for="disabili"></i><label class="form-check-label" for="disabili">Accesso Disabili</label>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -99,50 +205,16 @@
                 </div>
 
 
-                <div class="col-md-8">
+                <div class="col-md-8" style="margin-top: 20px;">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col">
                                 <div class="col">
-                                    <select id="select-state" placeholder="Cerca per zona...">
-                                        <option value="">Seleziona una Zona...</option>
-                                        <option value="1">Centro</option>
-                                        <option value="2">Parioli</option>
-                                        <option value="3">Piazza del Popolo - Piazza Navona - Quirinale, Centro</option>
-                                        <option value="4">Cassia-Flaminia</option>
-                                        <option value="5">Monte Sacro</option>
-                                        <option value="6">Eur - Torrino - Giuliano Dalmata</option>
-                                        <option value="7">Appio Latino</option>
-                                        <option value="8">Prati</option>
-                                        <option value="9">Aurelio</option>
-                                        <option value="10">Gianicolense-La Pisana</option>
-                                        <option value="11">Cinecittà</option>
-                                        <option value="12">Nomentano-Tiburtino</option>
-                                        <option value="13">Trionfale-Monte Mario</option>
-                                        <option value="14">Trieste-Africano, Parioli</option>
-                                        <option value="15">Portuense-Magliana</option>
-                                        <option value="16">Roma est-Autostrade</option>
-                                        <option value="17">Aniene-Collatino</option>
-                                        <option value="18">Tor di Quinto-Collina Fleming, Cassia-Flaminia</option>
-                                    </select>
+                                    <input class="form-control" type="text" name="indirizzo" id="indirizzo" placeholder="Cerca la tua Università..."/>
                                     <br>
-                                    <button type="button" class="btn btn-primary" id="test">Test</button>
                                 </div>
-
                                 <br>
-                                
                                 <div class="col" id="appartamenti"></div>
-                                
-                                <br>
-                                <div aria-label="Page Navigation">
-                                <ul class="pagination justify-content-end">
-                                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Precedente</span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Successivo</span></a></li>
-                                </ul>
-                                </div>
                                 <br>
                             </div>
                         </div>
@@ -153,58 +225,58 @@
     </section>
     <!--Fine Appartamenti-->
 
-    <!--Modal Inserisci Annuncio-->
-    <div class="modal fade" id="inserisciAnnuncioModal" tabindex="-1" role="dialog" aria-labelledby="inserisciAnnuncioModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="inserisciAnnuncioModalLabel">Inserisci Annuncio</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="appartamenti.html" method="post">
-                        <div class="form-group">
-                            <label for="">Titolo</label>
-                            <input type="text" class="form-control" id="titolo" name="titolo">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="">Descrizione</label>
-                            <textarea rows="4" cols="40" class="form-control" id="descrizione" name="descrizione"></textarea>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="">Indirizzo</label>
-                            <input type="text" class="form-control" id="indirizzo" name="indirizzo">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="">Prezzo</label>
-                            <input type="text" class="form-control" id="prezzo" name="prezzo">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="">Tipologia</label>
-                            <select class="form-control" id="tipologia" name="tipologia">
-                                <option value="">Affitto</option>
-                                <option value="">Vendita</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="">Immagini</label>
-                            <input type="file" accept="image/png, image/jpeg" multiple class="form-control-file" id="immagine" name="immagine">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-primary">Inserisci</button>
-                </div>
-            </div>
+    <!--==========Sezione HowTO==========-->
+    <div class="howtoContainer" id="HowTo">
+        <h1>Come Funziona</h1>
+      <div class="howto">
+         <div class="box">
+             <h2>01</h2>
+             <h3>Trova il tuo appartamento</h3>
+             <p>Tra i nostri migliaia di appartamenti, troverai quello su misura per te.</p>
+         </div>
+         <div class="box">
+             <h2>02</h2>
+             <h3>Prenota un appuntamento</h3>
+             <p>Mettiti subito in contatto con l'inserzionista per visitare l'appartamento.</p>
+         </div>
+         <div class="box">
+             <h2>03</h2>
+             <h3>Inserisci il tuo Annuncio</h3>
+             <p>Sei in cerca di un coinquilino? Inserisci il tuo annuncio compilando l'apposito form e attendi di essere contattato.</p>
+         </div>
+      </div>
+       </div>
+      <!--==========Fine sezione HowTO==========-->
+     <br><br><br>
+
+      <!--==========Sezione FAQ==========-->
+      <section id="FAQsection">
+        <h2 class="title">FAQs</h2>
+     <div class="accordion-div">
+        <div class="faq">
+         <div class="accordion"><h3>Si tratta di appartamenti o camere?</h3></div>
+         <div class="panel">
+           <p>StudentsHUB raccoglie sia appartamenti che camere, puoi selezionare la tipologia di affitto che ti interessa tramite l'apposito filtro!</p>
+         </div>
         </div>
-    </div>
-    <!--Fine Modal Inserisci Annuncio-->
+      
+        <div class="faq">
+         <div class="accordion"><h3>Come faccio a visitare un'appartamento?</h3></div>
+         <div class="panel">
+           <p>Per prenotare una visita ti basterà aprire la scheda dell'annuncio che ti interessa e cliccare "Contatta l'inserzionista" per metterti in contatto con lui!</p>
+         </div>
+        </div>
+      
+        <div class="faq">
+         <div class="accordion"><h3>Ci sono commissioni nascoste?</h3></div>
+         <div class="panel">
+           <p>StudentsHUB è completamente gratuito, il suo unico scopo è dare visibilità agli annunci dedicati agli studenti!</p>
+         </div>
+        </div>
+     </div>
+     </section>
+     <br><br>
+    <!--==========Fine sezione FAQ==========-->
 
  <!-- Footer -->
   <footer class="text-center text-white" style="background-color: #F7DE3A;">

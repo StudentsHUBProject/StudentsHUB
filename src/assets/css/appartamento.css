@@ -1,9 +1,24 @@
+.tipo_prezzo{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
 .tipologia {
-  margin-left: 70px;
   font-size: 1.2em;
 }
 
 .prezzo {
-  margin-left: 75px;
   font-size: 1.5em;
+}
+
+.fa-slash {
+  position: absolute;
+  margin-left: 2.5px;
+  margin-top: 2.5px;
+}
+
+.info_appartamento {
+  font-weight: bold;
+  margin-left: 200px;
+  text-transform: capitalize;
 }

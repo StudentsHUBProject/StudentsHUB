@@ -51,7 +51,7 @@
     <br>
 
     <!--Card Appartamento-->
-    <section id="appartamento">
+    <section>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -62,27 +62,10 @@
                 <div id="Slider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
 
                 <!--Indicatori-->
-                <ol class="carousel-indicators">
-                  <li data-bs-target="#Slider" data-bs-slide-to="0" class="active"></li>
-                  <li data-bs-target="#Slider" data-bs-slide-to="1"></li>
-                  <li data-bs-target="#Slider" data-bs-slide-to="2"></li>
-                </ol>
+                <ol class="carousel-indicators"></ol>
               
                 <!--=Slide=-->
-                <div class="carousel-inner">
-                <!--Item1-->
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="./assets/img/Appartamenti1.jpg" alt="Camera da letto">
-                  </div>
-                <!--Item2-->
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="./assets/img/Appartamenti1.jpg" alt="Cucina">
-                  </div>
-                  <!--Item3-->
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="./assets/img/Appartamenti1.jpg" alt="Bagno">
-                  </div>
-                </div>
+                <div class="carousel-inner"></div>
 
                 <a class="carousel-control-prev" href="#Slider" role="button" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -94,25 +77,78 @@
                 <br>
                 <!--Fine sezione Carousel-->
 
+                <div class="row" id="appartamento"></div>
+                
+                <br><br>
+
+                <!--left and right columns-->
                 <div class="row">
-                  <div class="col-sm-6">
-                      <h5 class="card-title">Appartamento 1</h5>
-                      <p class="card-text">Appartamento situato a Roma a due passi dalla Metro B, composto da 3 camere da letto, una cucina e due bagni.
-                        <br>
-                        <br>
-                        Classe Energetica A++
-                      </p>
-                  </div>
-                  <div class="col-sm-6 d-flex align-items-center justify-content-end">
-                      <div class="row d-flex justify-content-between">
-                          <div class="col-md-12">
-                              <h5 class="tipologia">AFFITTO</h5>
-                              <h5 class="prezzo">800€</h5>
-                              <a href="#" class="btn btn-primary">Contatta l'inserzionista</a>
-                          </div>
+
+                  <div class="col-md-6">
+                    <div class="row">
+                      <h6>Servizi</h6>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-wifi"></i><label class="form-check-label">Internet</label>
                       </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-smoking"></i><label class="form-check-label">Fumatori Ammessi</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-elevator"></i><label class="form-check-label">Ascensore</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-cat"></i><label class="form-check-label">Animali Domestici</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-soap"></i><label class="form-check-label">Lavatrice</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-fire-flame-simple"></i><label class="form-check-label">Asciugatrice</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-tv"></i><label class="form-check-label">TV</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-wind"></i><label class="form-check-label">Aria Condizionata</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-wheelchair"></i><label class="form-check-label">Accesso Disabili</label>
+                      </div>
+                    </div>
                   </div>
+
+                  <div class="col-md-6">
+                    <div class="row">
+                      <h6>Info</h6>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-bed"></i><label class="form-check-label">Posti Letto:</label><label class="form-check-label info_appartamento" id="internet">-</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-restroom"></i><label class="form-check-label">Restrizioni:</label><label class="form-check-label info_appartamento" id="restrizioni">-</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-house-fire"></i><label class="form-check-label">Riscaldamento:</label><label class="form-check-label info_appartamento" id="riscaldamento">-</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-bolt"></i><label class="form-check-label">Classe Energetica:</label><label class="form-check-label info_appartamento" id="classeEnergetica">-</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-house"></i><label class="form-check-label">Metri Quadri:</label><label class="form-check-label info_appartamento" id="metriQuadri">-</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-file-signature"></i><label class="form-check-label">Contratto:</label><label class="form-check-label info_appartamento" id="contratto">-</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-sack-dollar"></i><label class="form-check-label">Utenze Medie:</label><label class="form-check-label info_appartamento" id="utenzeMedie">-</label>
+                      </div>
+                      <div class="col-md-12">
+                        <i class="fa-solid fa-hand-holding-dollar"></i><label class="form-check-label">Caparra:</label><label class="form-check-label info_appartamento" id="caparra">-</label>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
+
                 <br>
                 <br>
                 <br>

@@ -46,165 +46,56 @@ nav .menu-btn i{
   cursor: pointer;
   display: none;
 }
-input[type="checkbox"]{
+#click {
   display: none;
 }
 nav ul li a.active::after,
 nav ul li a:hover::after{
-    content: "";
-    width: 30%;
-    height: 2px;
-    background: #F7DE3A;
-    position: absolute;
-    bottom: 3px;
-    left: 15px;
+  content: "";
+  width: 30%;
+  height: 2px;
+  background: #F7DE3A;
+  position: absolute;
+  bottom: 3px;
+  left: 15px;
 }
 nav ul li:nth-child(1) a:hover{
-    color: rgb(49, 198, 24);
+  color: rgb(49, 198, 24);
 }
 nav ul li:nth-child(3) a:hover{
-    color: #f54967;
+  color: #f54967;
 }
 nav ul li:nth-child(4) a:hover{
-    color: #328fa5;
+  color: #328fa5;
 }
 nav ul li:nth-child(1) a:hover::after{
-    background: forestgreen;
+  background: forestgreen;
 }
 nav ul li:nth-child(3) a:hover::after{
-    background: #d03852;
+  background: #d03852;
 }
 nav ul li:nth-child(4) a:hover::after{
-    background: #23798e;
+  background: #23798e;
 }
 #loginButton,
 #ContactButton{
-    margin-top: 5px;
-    color: #1a1a1a;
-    border: 2px solid rgb(49, 198, 24);
-    transition-duration: 0.4s;
+  margin-top: 5px;
+  color: #1a1a1a;
+  border: 2px solid #F7DE3A;
+  transition-duration: 0.4s;
 }
 #loginButton:hover,
 #ContactButton:hover {
-    background-color: rgb(49, 198, 24);
+  background-color: #F7DE3A;
 }
 /**=====Fine Navbar Style=====**/
 
-/**=====Responsive Style=====**/
-@media (max-width: 1000px){
-  nav{
-    padding: 0 40px 0 50px;
-  }
+.form-check-label {
+  display: grid;
+  padding-left: 30px;
+  margin-top: -23px;
 }
 
-
-@media (max-width: 920px) {
-  nav .menu-btn i{
-    display: block;
-    color: #1a1a1a;
-  }
-  #click:checked ~ .menu-btn i:before{
-    content: "\f00d";
-  }
-  nav ul{
-    z-index: 2;
-    position: absolute;
-    top: 100px;
-    left: -100%;
-    background: #E3E6F3;
-    height: 80vh;
-    width: 100%;
-    text-align: center;
-    display: block;
-    transition: all 0.3s ease;
-  }
-  nav ul li a.active::after,
-  nav ul li a:hover::after
-  {
-    display: none;
-  }
-  #click:checked ~ ul{
-    left: 0;
-  }
-  nav ul li{
-    width: 100%;
-    margin: 40px 0;
-  }
-  nav ul li a{
-    width: 100%;
-    margin-left: -90%;
-    display: block;
-    font-size: 20px;
-    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  #click:checked ~ ul li a{
-    margin-left: 0px;
-  }
-  nav ul li a.active{
-    background: none;
-    color: rgb(49, 198, 24)
-  }
-  nav ul li:nth-child(2) a:hover{
-    color: rgb(223, 223, 70);
-  }
-  nav ul li:nth-child(3) a:hover{
-    color: #f54967;
-  }
-  nav ul li:nth-child(4) a:hover{
-    color: #328fa5;
-  }
-  #carousel{
-    z-index: 1;
-  }
-  #S1{
-    border-bottom: 3px solid #F7DE3A; 
-  }
-  #S2{
-    border-bottom: 3px solid #d03852;
-  }
-  #S3{
-    border-bottom: 3px solid #23798e;
-}
-  .carousel-caption p{
-    font-size: 14px;
-  }
-  #CarouselButton1,
-  #CarouselButton2,
-  #CarouselButton3{
-    font-size: 14px;
-  }
-}
-
-
-@media (max-width: 500px){
-  nav{
-    padding: 0 40px 0 10px;
-  }
-  .carousel-caption #caption{
-    font-size: 10px;
-  }
-  #CarouselButton1,
-  #CarouselButton2,
-  #CarouselButton3{
-    font-size: 10px;
-  }
-  #S1{
-    border-bottom: 1px solid #F7DE3A; 
-  }
-  #S2{
-    border-bottom: 1px solid #d03852;
-  }
-  #S3{
-    border-bottom: 1px solid #23798e;
-}
-}
-
-@media (max-width: 315px){
-  nav{
-    padding: 0 60px 0 10px;
-  }
-}
-/**=====Fine responsive Navbar=====**/
 
 
 #map {
@@ -212,63 +103,418 @@ nav ul li:nth-child(4) a:hover::after{
   height: 400px;
 }
 
-.btn-primary {
-    background-color: #f7de3a;
-    border-color: #f7de3a;
+.btn-app {
+  background-color: #f7de3a;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
 }
 
-.btn-primary:hover {
-    background-color: #fad906;
-    border-color: #fad906;
+.btn-app:hover {
+  background-color: #fad906;
+  color: #fff;
 }
 
-.btn-primary:focus, .btn-primary.focus {
-    box-shadow:0 0 0 .2rem #fad906;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
-	color: #fff;
-	background-color: #fad906;
-	border-color: #fad906;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-primary.dropdown-toggle:focus {
-	box-shadow: 0 0 0 .2rem #fad906;
-}
-
-.btn-outline-warning {
-    color: #f7de3a;
-    border-color: #f7de3a;
-}
-
-.btn-outline-warning:hover{
-    color: white;
-    background-color: #fad906;
-    border-color: #fad906;
+.btn-app:focus, .btn-app.focus {
+  box-shadow:0 0 0 .2rem #fad906;
 }
 
 .card-img-top {
-    height: 150px;
-    object-fit: cover;
+  height: 150px;
+  object-fit: cover;
+}
+
+.tipo_prezzo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tipo_servizi {
+  margin-top: 10px;
+}
+
+i + i {
+  margin-left: 4px;
 }
 
 .tipologia {
-    margin-left: 20px;
-    font-size: 0.8em;
-    font-weight: bold;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .prezzo {
-    margin-left: 25px;
-    font-size: 1em;
-    font-weight: bold;
-    color: cadetblue;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: cadetblue;
 }
 
 .pac-container {
-    z-index: 10000 !important;
+  z-index: 10000 !important;
 }
+
+/*=====*Banner=====**/
+.sectionBanner{
+  width: 100%;
+}
+.sectionBanner #Banner
+{
+  height: auto;
+  width: 100%;
+}
+.sectionBanner h1
+{
+  position: absolute;
+  color: #ffff;
+  font-size: 5vw;
+  margin-top: -25%;
+  margin-left: 11%;
+  z-index: 2;
+}
+.sectionBanner p
+{
+  position: absolute;
+  color: #ffff;
+  font-size: 1.3vw;
+  margin-left: 11%;
+  margin-top: -18%;
+  z-index: 2;
+}
+.Startbtn
+{
+  background: #fff;
+  width: fit-content;
+  font-size: 1.5vw;
+  position: absolute;
+  margin-top: -15%;
+  margin-left: 11%;
+  border-radius: 30px;
+  border: 2px solid #fad906;
+}
+.Startbtn:hover
+{
+  background-color: #fffd8d;
+}
+/**=====Fine banner=====**/
+
+/**=====HowTo=====**/
+.howtoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    margin-top: -5%; 
+}
+.howTo h1{
+  font-size: 2vw;
+}
+.howto{
+      width: 90%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-flow: wrap;
+      margin-top: -15%;
+}
+.howto .box{
+   position: relative;
+   width: 320px;
+   background: #f9f8ed;
+   padding: 100px 40px 60px;
+   box-shadow:015px 45px #F7DE3A;
+}
+.howto .box::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    Left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f4df57;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+.howto .box:hover:before{
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s; 
+}
+.howto .box h2{
+    position: absolute;
+    Left: 40px;
+    top: 60px;
+    font-size: 4em;
+    font-weight: 800;
+    z-index: 1;
+    opacity: 0.1;
+    transition: 0.5s;
+}
+.howto .box:hover h2
+{
+   opacity: 1;
+   color: #fff;
+  transform: translateY(-40px);
+}
+.howto .box h3{
+   position: relative;
+   font-size: 1.5em;
+   z-index: 2;
+   color: #333;
+   transition: 0.5s;
+}
+.howto .box p{
+   position: relative;
+   z-index: 2;
+   color: #555;
+   transition: 0.5s;
+}
+.howto .box:hover h3,
+.howto .box:hover p{
+    color: #fff;
+}
+/**=====Fine sezione HowTo=====**/
+
+/**=====FAQ=====**/
+#FAQsection{
+  min-height: 80vh;
+  width: 60%;
+  margin: -20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.title{
+  font-size: 3rem;
+  margin: 1rem 0rem;
+}
+.faq
+{
+  width: 100%;
+  margin-top: 2rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #f2f0dc !important;
+  cursor: pointer;
+}
+.accordion 
+{
+  
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+.accordion:after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0d7";
+}
+.accordion h3
+{
+  font-size: 1.8rem;
+}
+.active, .accordion:hover 
+{
+  border: none;
+  outline: none;
+}
+.panel 
+{
+  padding: 0 18px;
+  font-size: 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.panel p
+{
+  padding-top: 1rem;
+  line-height: 1.6;
+  font-size: 1.4rem;
+}
+/**=====Fine sezione FAQ=====**/
+
+/**=====Responsive Style=====**/
+@media (max-width: 1300px){
+    .navbar{
+        z-index:2;
+        height: 50% !important;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    navbar .navbar-nav{
+        display: grid;
+        grid-template-columns: 100%;
+        border-radius: 20px;
+        margin-left: 60%;
+        position: absolute;
+        width: 35%;
+        height: 30vh;
+        background: #E3E6F3;
+        top: 85%;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: all 0.5s ease;
+    }
+    navbar .navbar-nav li{
+        margin-top: 1%;
+        margin-bottom: -90%;
+        margin-left: 2%;
+    }
+    #clickF:checked ~ .navbar-nav{
+        transform: scaleY(1);
+      }
+    .showav{
+        z-index: 2;
+        margin-left: -22%;
+    }
+    .containerT{
+        margin-left: 5%;
+        font-size: 2vw;
+    }
+    .clickD{
+       text-align: left;
+    }
+    .howto .box{
+      width: 30%;
+    }
+    .howto{
+      padding-top: 40px;
+    }
+}
+
+
+@media (max-width: 1000px){
+    nav{
+      padding: 0 40px 0 50px;
+    }
+    .howtoContainer h1{
+      margin-top: 5%;
+      margin-bottom: -5%;
+    }
+    .howto{
+      grid-template-columns: 100%;
+      align-items: center;
+      align-self: center;
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+    .howto .box{
+      width: 100%;
+      margin: 6%;
+    }
+  }
+  
+  
+  @media (max-width: 920px) {
+    nav .menu-btn i{
+      display: block;
+      color: #1a1a1a;
+    }
+    #click:checked ~ .menu-btn i:before{
+      content: "\f00d";
+    }
+    nav ul{
+      z-index: 3;
+      position: absolute;
+      top: 100px;
+      left: -100%;
+      background: #E3E6F3;
+      height: 80vh;
+      width: 100%;
+      text-align: center;
+      display: block;
+      transition: all 0.3s ease;
+    }
+    nav ul li a.active::after,
+    nav ul li a:hover::after
+    {
+      display: none;
+    }
+    #click:checked ~ ul{
+      left: 0;
+    }
+    nav ul li{
+      width: 100%;
+      margin: 40px 0;
+    }
+    nav ul li a{
+      width: 100%;
+      margin-left: -90%;
+      display: block;
+      font-size: 20px;
+      transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    #click:checked ~ ul li a{
+      margin-left: 0px;
+    }
+    nav ul li a.active{
+      background: none;
+      color: rgb(223, 223, 70);
+    }
+    nav ul li:nth-child(1) a:hover{
+      color: rgb(49, 198, 24);
+    }
+    nav ul li:nth-child(3) a:hover{
+      color: #f54967;
+    }
+    nav ul li:nth-child(4) a:hover{
+      color: #328fa5;
+    }
+  }
+
+  @media (max-width: 750px){
+    .card{
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 700px){
+    navbar{
+      padding: 0 20px 0 -20px;
+    }
+    navbar .navbar-nav{
+        width: 55%;
+        margin-left: 40%;
+    }
+  }
+  
+  
+  @media (max-width: 500px){
+    nav{
+      padding: 0 40px 0 10px;
+    }
+  }
+
+  
+  @media (max-width: 400px){
+    navbar .navbar-nav{
+        width: 65%;
+        margin-left: 30%;
+    }
+    .howto .box{
+      width: 100%;
+      margin: 10%;
+    }
+  }
+  
+  @media (max-width: 315px){
+    nav{
+      padding: 0 60px 0 10px;
+    }
+  }
+/**=====Fine responsive Navbar=====**/

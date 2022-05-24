@@ -11,6 +11,10 @@ router.get('/appartamenti', function(req, res) {
   res.sendFile(path.join(__dirname, '../src/appartamenti.html'));
 });
 
+router.get('/pubblicaAppartamento', function(req, res) {
+  res.sendFile(path.join(__dirname, '../src/FormAppartamento.html'));
+});
+
 router.get('/appartamento', function(req, res) {
   res.sendFile(path.join(__dirname, '../src/appartamento.html'));
 });
