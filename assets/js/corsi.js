@@ -102,7 +102,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: "http://localhost:8080/api/SchedaTutor/",
+      url: "http://localhost:8080/api/corsi/SchedaTutor/",
       method: "GET",
       data: filtri,
       success: function (data) {
@@ -135,12 +135,12 @@ $(document).ready(function () {
                             data[i].Prezzo
                           }</span>
                           <span class="homeicon">${
-                            data[i].Modalità[0] == "on"
+                            data[i].Modalita[0] == "on"
                               ? `<i class="fa fa-solid fa-house-user"></i>`
                               : ` `
                           }</span>
                           <span class="awayicon">${
-                            data[i].Modalità[1] == "on"
+                            data[i].Modalita[1] == "on"
                               ? `<i class="fa fa-solid fa-house-laptop"></i>`
                               : ` `
                           }</span>

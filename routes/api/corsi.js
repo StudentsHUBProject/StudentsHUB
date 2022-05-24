@@ -1,5 +1,6 @@
 const express = require("express");
 const Corso = require("../../models/Corso");
+const User = require("../../models/User")
 
 const auth = require("../../middleware/auth");
 
@@ -16,15 +17,17 @@ router.get("/", (req, res) => {
 });
 
 // Create Corso
-router.post("/FormTutor", auth, async (req, res) => {
-  req.body.Utente = req.user.id;
+router.post("/FormTutor", auth, async(req, res) => {
+	//Aggiungi email utente al corso
+	const user = await User.findById(req.user.id).select('email')
+	req.body.Utente = user.email;
 
-  Corso.create(req.body, (err, corso) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json(corso);
-  });
+	Corso.create(req.body, (err, corso) => {
+		if (err) {
+			res.send(err);
+		}
+		res.json(corso);
+	});
 });
 
 // Get appartamento by id

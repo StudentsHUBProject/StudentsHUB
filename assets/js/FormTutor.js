@@ -83,7 +83,6 @@ $('#resetbtn').bind('click', function(){
     document.querySelector(".awayicon").classList.remove("showaway")
 })
 
-
 /**=====Real-Time change della foto=====**/
 document.getElementById('input_foto').onchange = function (evt) {
     var tgt = evt.target
@@ -102,6 +101,13 @@ document.getElementById('input_foto').onchange = function (evt) {
 
   //ajax request per la creazione del libro
   $("#submitbtn").on('click', function(){
+
+    checked = $("input[type=checkbox]:checked").length;
+
+      if(!checked) {
+        alert("Devi selezionare almeno una modalità di erogazione delle lezioni");
+        return false;
+      }
 
     var crea={
         Nome:  $("#input_nome").val(),    
@@ -126,7 +132,7 @@ document.getElementById('input_foto').onchange = function (evt) {
 
     else{
       $.ajax({
-      url: "http://localhost:8080/api/FormTutor",
+      url: "http://localhost:8080/api/corsi/FormTutor",
       method: 'POST',
       dataType: 'json',
       contentType: 'application/json',
@@ -140,6 +146,8 @@ document.getElementById('input_foto').onchange = function (evt) {
       }
     })
     }
+
+    return false;
   })
 
 })

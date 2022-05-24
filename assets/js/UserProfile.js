@@ -107,6 +107,9 @@ $(document).ready(function () {
       for (let i = 0; i < data.length; i++) {
         $(".AnnunciAppartamenti")
           .append(`<a class="ACardAppartamenti" href="./appartamenti">
+          <div class="remove">
+                           <div class="removebtn"> x </div>
+                          </div>
                     <div class="cardAppartamenti">
                       <img src="${data[i].immagini[0]}" class="cardAppartamenti-img-top">
                       <div class="cardAppartamenti-body">
@@ -133,6 +136,9 @@ $(document).ready(function () {
                         <a class="ACardCorsi" href="SchedaTutor?id=${
                           data[i]._id
                         }">
+                        <div class="remove">
+                           <div class="removebtn"> x </div>
+                          </div>
                           <div class="cardCorso">
                           <div class="content">
                             <div class="details">

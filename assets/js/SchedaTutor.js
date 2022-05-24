@@ -2,7 +2,7 @@ $(document).ready(function () {
     var id = window.location.href.split("?id=")[1];
 //ajax get request
 $.ajax({
-    url: "http://localhost:8080/api/SchedaTutor/"+id,
+    url: "http://localhost:8080/api/corsi/SchedaTutor/"+id,
     method: "GET",
     success: function (data) {
         console.log(data)
@@ -22,8 +22,8 @@ $.ajax({
                       </div>
                       <div class="icons">
                           <span> <i class="fa-solid fa-euro-sign"></i>${data.Prezzo}</span>
-                          <span class="homeicon">${data.Modalità[0] == 'on' ? `<i class="fa fa-solid fa-house-user"></i>` : ` `}</span>
-                          <span class="awayicon">${data.Modalità[1] == 'on' ? `<i class="fa fa-solid fa-house-laptop"></i>` : ` `}</span>
+                          <span class="homeicon">${data.Modalita[0] == 'on' ? `<i class="fa fa-solid fa-house-user"></i>` : ` `}</span>
+                          <span class="awayicon">${data.Modalita[1] == 'on' ? `<i class="fa fa-solid fa-house-laptop"></i>` : ` `}</span>
                       </div>
                   </div>
               </div>
