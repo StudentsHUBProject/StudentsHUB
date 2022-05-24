@@ -59,7 +59,6 @@ router.post(
       .custom((value, { req, loc, path }) => {
         if (value !== req.body.confirmpassword) {
           // trow error if passwords do not match
-          alert("Password non corrispondono");
           throw new Error("Le password non corrispondono");
         } else {
           return value;

@@ -63,23 +63,15 @@ router.get("/map/coordinate", (req, res) => {
 
 // Create appartamento
 router.post("/", auth, async (req, res) => {
+  if (req.body.immagini.lenght > 8) {
+    res.json({
+      error: "Too many images",
+    });
+  }
+
   const user = await User.findById(req.user.id).select("email");
   Appartamento.create(
     { user: req.user.id, email: user.email, ...req.body },
-    (err, appartamento) => {
-      if (err) {
-        res.send(err);
-      }
-      res.json(appartamento);
-    }
-  );
-});
-
-// Update appartamento
-router.patch("/:id", (req, res) => {
-  Appartamento.findByIdAndUpdate(
-    req.params.id,
-    req.body,
     (err, appartamento) => {
       if (err) {
         res.send(err);
