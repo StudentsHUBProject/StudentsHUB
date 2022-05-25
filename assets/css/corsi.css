@@ -107,7 +107,7 @@ nav ul li:nth-child(1) a:hover::after {
   height: 100%;
 }
 .navbar-nav {
-  margin-left: 15%;
+  margin-left: 10%;
 }
 .container1 {
   width: 250px;
@@ -126,11 +126,6 @@ nav ul li:nth-child(1) a:hover::after {
   color: #9d8d7e;
   transition: 0.3s;
 }
-.giorniSettimana a:hover,
-.Orario a:hover {
-  background-color: #328fa5;
-  transform: scale(1.1);
-}
 .fa4 {
   padding-left: 1vw;
 }
@@ -140,7 +135,7 @@ nav ul li:nth-child(1) a:hover::after {
   transition-duration: 0.4s;
 }
 .containerT {
-  margin-left: 27%;
+  margin-left: 18%;
   margin-right: 0;
   padding-bottom: 6px;
 }
@@ -156,6 +151,7 @@ navbar .checkbtn {
 /*=====*Banner=====**/
 .sectionBanner {
   width: 100%;
+  z-index: 1;
 }
 .sectionBanner #Banner {
   height: auto;
@@ -478,65 +474,68 @@ navbar .checkbtn {
 /**=====Fine sezione FAQ=====**/
 
 /**=====Responsive Style=====**/
-@media (max-width: 1300px) {
-  .navbar {
-    z-index: 2;
-    height: 50% !important;
-    margin-top: 0;
-    margin-bottom: 0;
+@media (max-width: 1300px){
+  .navbar{
+      z-index:20;
+      height: 50% !important;
+      margin-top: 0;
+      margin-bottom: 0;
   }
-  navbar .checkbtn {
+  navbar .checkbtn{
     display: block;
     position: absolute;
     padding-left: 88%;
     width: 100%;
   }
-  .checkbtn:after {
+  .checkbtn:after{
     content: "\f0b0";
     font-weight: 900;
-    font-family: "FontAwesome";
+    font-family: 'FontAwesome';
   }
-  navbar .navbar-nav {
-    display: grid;
-    grid-template-columns: 100%;
-    border-radius: 20px;
-    margin-left: 60%;
-    position: absolute;
-    width: 35%;
-    height: 30vh;
-    background: #e3e6f3;
-    top: 85%;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: all 0.5s ease;
+  navbar .navbar-nav{
+      display: grid;
+      grid-template-columns: 100%;
+      border-radius: 20px;
+      margin-left: 60%;
+      position: absolute;
+      width: 35%;
+      height: 30vh;
+      background: #E3E6F3;
+      top: 85%;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: all 0.5s ease;
   }
-  navbar .navbar-nav li {
-    margin-top: 1%;
-    margin-bottom: -90%;
-    margin-left: 2%;
+  .container1 {
+    width: 100%
   }
-  #clickF:checked ~ .navbar-nav {
-    transform: scaleY(1);
+  navbar .navbar-nav li{
+      margin-top: 1%;
+      margin-bottom: -90%;
+      margin-left: 2%;
+      margin-right: 2%;
   }
-  .showav {
-    z-index: 2;
-    margin-left: -22%;
+  #clickF:checked ~ .navbar-nav{
+      transform: scaleY(1);
+    }
+  .showav{
+      z-index: 2;
+      margin-left: -22%;
   }
-  .containerT {
-    margin-left: 5%;
-    font-size: 2vw;
+  .containerT{
+      margin-left: 5%;
+      font-size: 2vw;
   }
-  .clickD {
-    text-align: left;
+  .clickD{
+     text-align: left;
   }
-  .howto .box {
+  .howto .box{
     width: 30%;
   }
-  .howto {
+  .howto{
     padding-top: 40px;
   }
 }
-
 @media (max-width: 1000px) {
   nav {
     padding: 0 40px 0 50px;
@@ -567,7 +566,7 @@ navbar .checkbtn {
     content: "\f00d";
   }
   nav ul {
-    z-index: 3;
+    z-index: 30;
     position: absolute;
     top: 100px;
     left: -100%;
@@ -641,7 +640,7 @@ navbar .checkbtn {
 }
 
 @media (max-width: 700px) {
-  navbar {
+  navbar{
     padding: 0 20px 0 -20px;
   }
   navbar .navbar-nav {

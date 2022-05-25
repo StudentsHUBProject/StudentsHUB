@@ -202,6 +202,9 @@ nav ul li:nth-child(1) a:hover::after {
   width: 20%;
   border-bottom: 2px solid forestgreen;
 }
+.Section h2{
+  margin-bottom: 3%;
+}
 #appartamenti {
   border-bottom: 2px solid #f7de3a;
 }
@@ -226,11 +229,13 @@ nav ul li:nth-child(1) a:hover::after {
 }
 .ACardAppartamenti {
   text-decoration: none;
-  border: 1px solid rgb(247, 222, 58, 0.8);
 }
 .cardAppartamenti {
+  border: 1px solid rgb(247, 222, 58, 0.8);
   border-radius: 10px;
-  height: 30%;
+  overflow: hidden;
+  position: relative;
+  height: auto;
   transition: 0.3s;
 }
 .cardAppartamenti:hover {
@@ -257,14 +262,17 @@ nav ul li:nth-child(1) a:hover::after {
 .AnnunciCorsi {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 2%;
   row-gap: 10%;
 }
 .ACardCorsi {
   text-decoration: none;
 }
 .cardCorso {
-  width: 90%;
+  width: 100%;
   height: auto;
+  overflow: hidden;
+  position: relative;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 5px 10px #328fa5;
@@ -331,6 +339,8 @@ nav ul li:nth-child(1) a:hover::after {
 }
 .cardLibri {
   border: 1px solid rgb(252, 71, 5, 0.5);
+  overflow: hidden;
+  position: relative;
   width: 90%;
   transition: 0.3s;
 }
@@ -359,21 +369,27 @@ nav ul li:nth-child(1) a:hover::after {
 }
 .removebtn{
   position: absolute;
-  background-color: rgb(252, 71, 5, 0.9);
+  background-color: rgb(252, 71, 5, 0.6);
   border-radius: 100px;
   width: 2%;
   text-align: center;
   color: #fff;
-  margin-bottom: -10%;
-  z-index: 3;
+  margin-left: -5px;
+  margin-top: -5px;
+  cursor: pointer;
+  z-index: 30;
+}
+.removebtn:hover{
+  background-color: rgb(252, 71, 5);
 }
 
 /**=====Responsive Style=====**/
 @media (max-width: 1270px) {
   .UserPage {
     grid-template-columns: 100%;
-    padding-bottom: 10%;
-    padding-top: -30px;
+    padding-bottom: 20%;
+    padding-top: -10%;
+    gap:6%
   }
   .card {
     width: 100%;
@@ -473,6 +489,13 @@ nav ul li:nth-child(1) a:hover::after {
   }
 }
 
+@media (max-width: 600px) {
+  .UserPage {
+    padding-bottom: 30%;
+    gap:10%
+  }
+
+}
 @media (max-width: 500px) {
   nav {
     padding: 0 40px 0 10px;
@@ -493,6 +516,9 @@ nav ul li:nth-child(1) a:hover::after {
   }
   #S3 {
     border-bottom: 1px solid #23798e;
+  }
+  .UserPage {
+    padding-bottom: 50%;
   }
 }
 
