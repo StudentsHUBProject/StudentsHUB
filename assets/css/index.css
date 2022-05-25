@@ -172,7 +172,7 @@ nav ul li:nth-child(4) a:hover::after {
   padding-bottom: 15%;
 }
 .InfoSite h1 {
-  font-size: 2rem;
+  font-size: 2vw;
   text-align: center;
 }
 .InfoSite h1::before,
@@ -180,9 +180,9 @@ nav ul li:nth-child(4) a:hover::after {
   display: inline-block;
   content: "";
   border-top: .2rem solid rgb(49, 198, 24);
-  width: 25rem;
-  margin: -0.5rem 1rem;
-  transform: translateY(-1rem);
+  width: 30vw;
+  margin: -0.5% 1%;
+  transform: translateY(-1vw);
 }
 #InfoP {
   font-size: 1.5vw;

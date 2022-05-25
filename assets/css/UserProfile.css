@@ -266,12 +266,16 @@ nav ul li:nth-child(1) a:hover::after {
   gap: 2%;
   row-gap: 10%;
   padding-bottom: 8%;
+  max-width: 100%;
+  height: auto;
 }
 .ACardCorsi {
   text-decoration: none;
+  max-width: 100%;
+  height: auto;
 }
 .cardCorso {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   overflow: hidden;
   position: relative;
@@ -286,7 +290,7 @@ nav ul li:nth-child(1) a:hover::after {
   z-index: 2;
 }
 .cardCorso .content .details .icons span {
-  font-size: 14px;
+  font-size: 1vw;
   color: #328fa5;
 }
 .homeicon {
@@ -316,16 +320,16 @@ nav ul li:nth-child(1) a:hover::after {
 .cardCorso .content .details .data {
   font-weight: 600;
   color: #1a1a1a;
-  font-size: 20px;
-  padding-top: 25px;
-  margin-bottom: -10px;
+  font-size: 1.5vw;
+  padding-top: 10%;
+  margin-bottom: -5%;
 }
 .cardCorso .content .details .icons {
   display: inline;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-top: 5px;
-  border-top: 2px solid #328fa5;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-top: 1%;
+  border-top: 0.2vw solid #328fa5;
 }
 .cardCorso .content .details {
   padding-bottom: 5%;
@@ -373,12 +377,13 @@ nav ul li:nth-child(1) a:hover::after {
 .removebtn{
   position: absolute;
   background-color: rgb(252, 71, 5, 0.6);
-  border-radius: 100px;
+  border-radius: 100%;
+  font-size: 1vw;
   width: 2%;
   text-align: center;
   color: #fff;
-  margin-left: -5px;
-  margin-top: -5px;
+  margin-left: -0.5%;
+  margin-top: -0.5%;
   cursor: pointer;
   z-index: 30;
 }
@@ -492,6 +497,12 @@ nav ul li:nth-child(1) a:hover::after {
   }
 }
 
+@media (max-width: 750px) {
+.AnnunciCorsi {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+}
 @media (max-width: 600px) {
   .UserPage {
     padding-bottom: 30%;
