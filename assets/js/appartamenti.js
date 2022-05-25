@@ -20,7 +20,7 @@ function initMap() {
           position: { lat: data[i].lat, lng: data[i].lng },
           label: labels[i % labels.length],
           title: data[i].titolo,
-          url: "http://localhost:8080/appartamento?id=" + data[i]._id
+          url: "http://localhost:8080/appartamento?id=" + data[i]._id,
         });
 
         marker.addListener("click", () => {
@@ -29,16 +29,15 @@ function initMap() {
 
         markers.push(marker);
       }
-      new markerClusterer.MarkerClusterer({ markers, map })
+      new markerClusterer.MarkerClusterer({ markers, map });
     },
     error: function (err) {
       console.log(err);
-    }
+    },
   });
 
+  const autocompleteInput = document.getElementById("indirizzo");
 
-  const autocompleteInput = document.getElementById('indirizzo');
-  
   const autocomplete = new google.maps.places.Autocomplete(autocompleteInput, {
     fields: ["address_components", "geometry", "name"],
     types: ["university"],
@@ -60,8 +59,10 @@ function initMap() {
 window.initMap = initMap;
 
 //Scorri verso Howto
-function StartFunction(){
-  document.getElementById('HowTo').scrollIntoView({behavior: "smooth", block: "end"});
+function StartFunction() {
+  document
+    .getElementById("HowTo")
+    .scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 //Filtri
@@ -75,32 +76,32 @@ function updateFiltri() {
     contratto: $("#tipologiaContratto").val(),
     restrizioni: $("#restrizioni").val(),
     riscaldamento: $("#riscaldamento").val(),
-    internet: $("#internet").is(':checked'),
-    fumatori_ammessi: $("#fumatori").is(':checked'),
-    ascensore: $("#ascensore").is(':checked'),
-    animali_domestici: $("#animali").is(':checked'),
-    lavatrice: $("#lavatrice").is(':checked'),
-    asciugatrice: $("#asciugatrice").is(':checked'),
-    televisione: $("#televisione").is(':checked'),
-    aria_condizionata: $("#aria").is(':checked'),
-    accesso_disabili: $("#disabili").is(':checked')
+    internet: $("#internet").is(":checked"),
+    fumatori_ammessi: $("#fumatori").is(":checked"),
+    ascensore: $("#ascensore").is(":checked"),
+    animali_domestici: $("#animali").is(":checked"),
+    lavatrice: $("#lavatrice").is(":checked"),
+    asciugatrice: $("#asciugatrice").is(":checked"),
+    televisione: $("#televisione").is(":checked"),
+    aria_condizionata: $("#aria").is(":checked"),
+    accesso_disabili: $("#disabili").is(":checked"),
   };
 
-  Object.keys(filtri).forEach(key => {
-    if (filtri[key] === '' || filtri[key] === false) {
+  Object.keys(filtri).forEach((key) => {
+    if (filtri[key] === "" || filtri[key] === false) {
       delete filtri[key];
     }
   });
 
   $.ajax({
-  url: "http://localhost:8080/api/appartamenti",
-  method: "GET",
-  data: filtri,
-  success: processAppartamenti,
-  error: function (err) {
-    console.log(err);
-  }
-});
+    url: "http://localhost:8080/api/appartamenti",
+    method: "GET",
+    data: filtri,
+    success: processAppartamenti,
+    error: function (err) {
+      console.log(err);
+    },
+  });
 }
 
 $(document).ready(function () {
@@ -115,7 +116,7 @@ $(document).ready(function () {
 
   resizeFiltri($(window).width());
 
-  $(window).on('resize', function(event) {
+  $(window).on("resize", function (event) {
     resizeFiltri($(this).width());
   });
 
@@ -136,7 +137,7 @@ $(document).ready(function () {
     updateFiltri();
   });
 
-  $("#prezzo").on('input', function(){
+  $("#prezzo").on("input", function () {
     var prezzo = $(this).val();
     if (prezzo == 5000 || prezzo == 0) {
       prezzo = "Qualsiasi";
@@ -146,7 +147,7 @@ $(document).ready(function () {
     $("#valPrezzo").html(prezzo);
   });
 
-  $("#postiLetto").on('input', function(){
+  $("#postiLetto").on("input", function () {
     $("#valPostiLetto").html($(this).val());
   });
 
@@ -157,13 +158,15 @@ $(document).ready(function () {
   var i;
 
   for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
+    acc[i].addEventListener("click", function () {
       var panel = this.nextElementSibling;
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
       } else {
-        let active = document.querySelectorAll(".accordion-div .accordion.active");
-        for(let j = 0; j < active.length; j++) {
+        let active = document.querySelectorAll(
+          ".accordion-div .accordion.active"
+        );
+        for (let j = 0; j < active.length; j++) {
           active[j].classList.remove("active");
           active[j].nextElementSibling.style.maxHeight = null;
         }
@@ -180,8 +183,8 @@ $(document).ready(function () {
     success: processAppartamenti,
     error: function (err) {
       console.log(err);
-    }
-  });  
+    },
+  });
 });
 
 function processAppartamenti(data) {
@@ -197,7 +200,7 @@ function processAppartamenti(data) {
               <div class="row">
                   <div class="col-sm-6">
                       <h5 class="card-title">${data[i].titolo}</h5>
-                      <p class="card-text">${data[i].descrizione}</p>
+                      <p class="card-text cut-text">${data[i].descrizione}</p>
                   </div>
                   <div class="col-sm-6 d-flex align-items-center justify-content-end">
                       <div class="row d-flex justify-content-between">
@@ -206,18 +209,56 @@ function processAppartamenti(data) {
                               <h5 class="tipologia">${data[i].tipologia}</h5>
                               <h5 class="prezzo">${data[i].prezzo}€</h5>
                           <div>
-                              <a href="appartamento?id=${data[i]._id}" class="btn btn-app float-right">Dettagli</a>
+                              <a href="appartamento?id=${
+                                data[i]._id
+                              }" class="btn btn-app float-right">Dettagli</a>
                           </div>
                           <div class="tipo_servizi">
-                            ${data[i].internet ? "<i class=\"fa-solid fa-wifi\"></i>" : ""}
-                            ${data[i].fumatori_ammessi ? "<i class=\"fa-solid fa-smoking\"></i>" : ""}
-                            ${data[i].ascensore ? "<i class=\"fa-solid fa-elevator\"></i>" : ""}
-                            ${data[i].animali_domestici ? "<i class=\"fa-solid fa-cat\"></i>" : ""}
-                            ${data[i].lavatrice ? "<i class=\"fa-solid fa-soap\"></i>" : ""}
-                            ${data[i].asciugatrice ? "<i class=\"fa-solid fa-fire-flame-simple\"></i>" : ""}
-                            ${data[i].televisione ? "<i class=\"fa-solid fa-tv\"></i>" : ""}
-                            ${data[i].aria_condizionata ? "<i class=\"fa-solid fa-wind\"></i>" : ""}
-                            ${data[i].accesso_disabili ? "<i class=\"fa-solid fa-wheelchair\"></i>" : ""}
+                            ${
+                              data[i].internet
+                                ? '<i class="fa-solid fa-wifi"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].fumatori_ammessi
+                                ? '<i class="fa-solid fa-smoking"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].ascensore
+                                ? '<i class="fa-solid fa-elevator"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].animali_domestici
+                                ? '<i class="fa-solid fa-cat"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].lavatrice
+                                ? '<i class="fa-solid fa-soap"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].asciugatrice
+                                ? '<i class="fa-solid fa-fire-flame-simple"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].televisione
+                                ? '<i class="fa-solid fa-tv"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].aria_condizionata
+                                ? '<i class="fa-solid fa-wind"></i>'
+                                : ""
+                            }
+                            ${
+                              data[i].accesso_disabili
+                                ? '<i class="fa-solid fa-wheelchair"></i>'
+                                : ""
+                            }
                           </div>
                       </div>
                   </div>

@@ -163,6 +163,16 @@ i + i {
   color: cadetblue;
 }
 
+.cut-text {
+  width: 70%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  background: #fff;
+  position: absolute;
+}
+
 .pac-container {
   z-index: 10000 !important;
 }
@@ -303,7 +313,7 @@ i + i {
   width: 100%;
   margin-top: 2rem;
   padding-bottom: 2px;
-  border-bottom: 2px solid #f2f0dc !important;
+  border-bottom: 2px solid #f7de3a !important;
   cursor: pointer;
 }
 .accordion {

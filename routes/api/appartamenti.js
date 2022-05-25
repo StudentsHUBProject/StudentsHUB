@@ -33,13 +33,15 @@ router.get("/", (req, res) => {
     };
   }
 
-  Appartamento.find(query, (err, appartamenti) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.json(appartamenti);
-    }
-  });
+  Appartamento.find(query)
+    .sort({ created_at: "desc" })
+    .exec((err, appartamenti) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.json(appartamenti);
+      }
+    });
 });
 
 // Get appartamento by id
