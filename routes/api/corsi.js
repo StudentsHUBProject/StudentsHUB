@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
   });
 });
 
-// Create appartamento
+// Create corso
 router.post("/FormTutor", auth, async (req, res) => {
   const user = await User.findById(req.user.id).select("email");
   Corso.create(
@@ -30,20 +30,6 @@ router.post("/FormTutor", auth, async (req, res) => {
   );
 });
 
-/** 
-router.post("/FormTutor", auth, async(req, res) => {
-	//Aggiungi email utente al corso
-	const user = await User.findById(req.user.id).select('email')
-	req.body.user = user.email;
-
-	Corso.create(req.body, (err, corso) => {
-		if (err) {
-			res.send(err);
-		}
-		res.json(corso);
-	});
-});
-**/
 // Get corso by id
 router.get("/SchedaTutor/:id", (req, res) => {
   Corso.findById(req.params.id, (err, corso) => {
@@ -72,7 +58,7 @@ router.get("/SchedaTutor", (req, res) => {
   });
 });
 
-// Delete appartamento
+// Delete corso
 router.delete("/:id", auth, async (req, res) => {
   try {
     const corso = await Corso.findById(req.params.id).select(
