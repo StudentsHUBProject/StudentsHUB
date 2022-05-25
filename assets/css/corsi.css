@@ -499,7 +499,7 @@ navbar .checkbtn {
       margin-left: 60%;
       position: absolute;
       width: 35%;
-      height: 30vh;
+      height: 20vh;
       background: #E3E6F3;
       top: 85%;
       transform: scaleY(0);
@@ -600,7 +600,7 @@ navbar .checkbtn {
   }
   nav ul li a.active {
     background: none;
-    color: rgb(49, 198, 24);
+    color: #328fa5;
   }
   nav ul li:nth-child(2) a:hover {
     color: #f7de3a;
@@ -609,7 +609,7 @@ navbar .checkbtn {
     color: #f54967;
   }
   nav ul li:nth-child(4) a:hover {
-    color: #328fa5;
+    color: rgb(49, 198, 24);
   }
   #carousel {
     z-index: 1;

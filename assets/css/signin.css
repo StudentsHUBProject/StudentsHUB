@@ -230,6 +230,14 @@ nav ul li:nth-child(1) a:hover::after {
 .formbx .form form .forgot {
   color: #333;
 }
+.footer{
+  background-color: rgb(49, 198, 24);
+}
+.footer.active{
+  background-color: #23798e;
+  transition-delay: 0.2s;
+}
+
 
 /**=====Responsive Style=====**/
 @media (max-width: 1000px) {

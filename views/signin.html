@@ -108,8 +108,7 @@
 
     <!-- Footer -->
     <footer
-      class="text-center text-white"
-      style="background-color: rgb(49, 198, 24)"
+      class="text-center text-white footer"
     >
       <br />
       <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
@@ -125,14 +124,17 @@
       const signupBtn = document.querySelector(".signupbtn");
       const formBx = document.querySelector(".formbx");
       const background = document.querySelector(".LoginContainer");
+      const footer = document.querySelector(".footer");
 
       signupBtn.onclick = function () {
         formBx.classList.add("active");
         background.classList.add("active");
+        footer.classList.add("active");
       };
       signinBtn.onclick = function () {
         formBx.classList.remove("active");
         background.classList.remove("active");
+        footer.classList.remove("active");
       };
     </script>
   </body>
