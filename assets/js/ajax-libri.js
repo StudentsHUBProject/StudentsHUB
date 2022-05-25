@@ -24,6 +24,7 @@ $(document).ready(function () {
     },
   });
 
+
   // ajax get request per la sezione dei filtri
   $("#filtri").change(function () {
     var filtri = {
@@ -62,8 +63,10 @@ $(document).ready(function () {
     });
   });
 
+  
   /*
   $("#search-api").change(function () {
+    
     var search = { titolo: $("#search-api").val() };
 
     console.log(search);
@@ -73,6 +76,7 @@ $(document).ready(function () {
       method: "GET",
       data: search,
       success: function (data) {
+        console.log(data)
         for (let i = 0; i < data.length; i++) {
           $("#titoli").append(
             `
@@ -86,7 +90,8 @@ $(document).ready(function () {
       },
     });
   });
-*/
+  */
+
 
   //ajax get request per la ricerca dei libri in base al titolo
   $("#cerca").on("click", function () {

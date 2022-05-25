@@ -74,6 +74,30 @@ router.get("/search/:titolo", (req, res) => {
   });
 });
 
+
+/*
+//get request per mostrare i titoli
+router.get("/titoli", (req,res) => {
+	titoli=req.query;
+
+
+	let query={titolo: /titoli.titolo/}
+
+	console.log(query)
+
+	Libri.find(query, (err, libro) => {
+		if (err) {
+			res.send(err);
+		}
+		{
+		res.json(libro);
+		console.log(libro);
+		}
+	});
+	
+})
+*/
+
 // Delete libro
 router.delete("/:id", auth, async (req, res) => {
   try {

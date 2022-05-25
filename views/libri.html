@@ -240,6 +240,52 @@
 
       <section class="content-large">
         <div class="ItemContainer" id="libri"></div>
+
+
+        <br>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <!--==========Sezione FAQ==========-->
+        <section id="FAQsection">
+            <h2 class="title">FAQs</h2>
+            <div class="accordion-div">
+                <div class="faq">
+                    <div class="accordion"><h3>Come posso sapere in che condizioni si trova il libro?</h3></div>
+                    <div class="panel">
+                        <p>Contatta il venditore e mettiti d'accordo con lui per farti mandare delle foto
+                            riguardanti le condizioni del libro
+                        </p>
+                    </div>
+                </div>
+          
+                <div class="faq">
+                    <div class="accordion"><h3>Come funziona il pagamento?</h3></div>
+                    <div class="panel">
+                        <p>Controlla l'icona nella parte inferiore della card corso che preferisci per sapere
+                        il prezzo e mettiti d'accordo con il/la tutor tramite mail per la modalità di pagamento</p>
+                    </div>
+                </div>
+          
+                <div class="faq">
+                    <div class="accordion"><h3>Posso pubblicare un annuncio anche se non fossi registrato?</h3></div>
+                    <div class="panel">
+                        <p>Per inserire un qualsiasi tipo di annuncio devi essere registrato al nostro sito
+                            e loggarti con il tuo account
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+          <br /><br />
+        <!--==========Fine sezione FAQ==========-->
+
       </section>
 
       <!--Fine sezione dei libri-->
@@ -281,4 +327,31 @@
       obj.checked = check;
     }
   </script>
+
+<!--=====Script FAQ=====-->
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        let active = document.querySelectorAll(
+          ".accordion-div .accordion.active"
+        );
+        for (let j = 0; j < active.length; j++) {
+          active[j].classList.remove("active");
+          active[j].nextElementSibling.style.maxHeight = null;
+        }
+        this.classList.toggle("active");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+</script>
+<!--==========Fine sezione Script==========-->
+
 </html>
