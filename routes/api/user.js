@@ -28,7 +28,7 @@ router.get("/", auth, async (req, res) => {
 router.get("/appartamenti", auth, async (req, res) => {
   Appartamento.find({ user: req.user.id }, (err, appartamenti) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     }
     res.json(appartamenti);
   });
@@ -38,7 +38,7 @@ router.get("/appartamenti", auth, async (req, res) => {
 router.get("/libri", auth, async (req, res) => {
   Libro.find({ user: req.user.id }, (err, libri) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     }
     res.json(libri);
   });
@@ -48,7 +48,7 @@ router.get("/libri", auth, async (req, res) => {
 router.get("/corsi", auth, async (req, res) => {
   Corso.find({ user: req.user.id }, (err, corso) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     }
     res.json(corso);
   });

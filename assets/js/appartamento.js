@@ -97,7 +97,7 @@ $(document).ready(function () {
       if (data.caparra) $("#caparra").html(data.caparra + " €");
     },
     error: function (err) {
-      console.log(err);
+      window.location.href = "/appartamenti";
     },
   });
 });

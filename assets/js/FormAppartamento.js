@@ -126,7 +126,7 @@ $(document).ready(function () {
         titolo:
           $("#tipologiaAnnuncio option:selected").text() +
           " - " +
-          indirizzo.via +
+          indirizzo.via.trim() +
           ", " +
           indirizzo.citta,
         descrizione: $("#descrizione").val(),
@@ -163,6 +163,9 @@ $(document).ready(function () {
         processData: false,
         data: JSON.stringify(appartamento),
         success: function (data) {
+          if (data.name && data.name == "CastError") {
+            return alert("Qualcosa è andato storto: " + data.message);
+          }
           $("#progressbar li")
             .eq($("fieldset").index(next_fs))
             .addClass("active");
@@ -183,7 +186,7 @@ $(document).ready(function () {
           );
         },
         error: function (err) {
-          return alert("Qualcosa è andato storto:" + err);
+          return alert("Qualcosa è andato storto!");
         },
       });
 

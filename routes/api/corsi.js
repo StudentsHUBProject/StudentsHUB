@@ -1,6 +1,6 @@
 const express = require("express");
 const Corso = require("../../models/Corso");
-const User = require("../../models/User")
+const User = require("../../models/User");
 
 const auth = require("../../middleware/auth");
 
@@ -10,9 +10,10 @@ const router = express.Router();
 router.get("/", (req, res) => {
   Corso.find({}, (err, corsi) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
+    } else {
+      res.json(corsi);
     }
-    res.json(corsi);
   });
 });
 
@@ -23,9 +24,10 @@ router.post("/FormTutor", auth, async (req, res) => {
     { user: req.user.id, email: user.email, ...req.body },
     (err, corso) => {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
+      } else {
+        res.json(corso);
       }
-      res.json(corso);
     }
   );
 });
@@ -34,9 +36,10 @@ router.post("/FormTutor", auth, async (req, res) => {
 router.get("/SchedaTutor/:id", (req, res) => {
   Corso.findById(req.params.id, (err, corso) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
+    } else {
+      res.json(corso);
     }
-    res.json(corso);
   });
 });
 
@@ -52,24 +55,24 @@ router.get("/SchedaTutor", (req, res) => {
 
   Corso.find(query, (err, corso) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
+    } else {
+      res.json(corso);
     }
-    res.json(corso);
   });
 });
 
 // Delete corso
 router.delete("/:id", auth, async (req, res) => {
   try {
-    const corso = await Corso.findById(req.params.id).select(
-      "user"
-    );
+    const corso = await Corso.findById(req.params.id).select("user");
     if (corso.user === req.user.id) {
       Corso.findByIdAndRemove(req.params.id, (err, corso) => {
         if (err) {
-          res.send(err);
+          res.status(400).send(err);
+        } else {
+          res.json(corso);
         }
-        res.json(corso);
       });
     } else {
       res.status(401).json({ msg: "Unauthorized" });

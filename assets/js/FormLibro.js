@@ -18,7 +18,8 @@ $(document).ready(function () {
   });
 
   //ajax post request per la creazione del libro
-  $("#crea-libro").on("click", function () {
+  $(document).on("click", "#crea-libro", function (event) {
+    event.preventDefault();
     var crea = {
       immagine: immagine,
       materia: $("#materia").val(),
@@ -42,7 +43,7 @@ $(document).ready(function () {
         contentType: "application/json",
         processData: false,
         data: JSON.stringify(crea),
-        success: function () {
+        success: function (data) {
           window.location.href = "http://localhost:8080/libri";
         },
         error: function (err) {

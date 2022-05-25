@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
 
   Appartamento.find(query, (err, appartamenti) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     } else {
       res.json(appartamenti);
     }
@@ -46,7 +46,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Appartamento.findById(req.params.id, (err, appartamento) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     } else {
       res.json(appartamento);
     }
@@ -57,7 +57,7 @@ router.get("/:id", (req, res) => {
 router.get("/map/coordinate", (req, res) => {
   Appartamento.find({}, "titolo lat lng", (err, appartamenti) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     } else {
       res.json(appartamenti);
     }
@@ -77,7 +77,7 @@ router.post("/", auth, async (req, res) => {
     { user: req.user.id, email: user.email, ...req.body },
     (err, appartamento) => {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       } else {
         res.json(appartamento);
       }
@@ -94,7 +94,7 @@ router.delete("/:id", auth, async (req, res) => {
     if (appartamento.user === req.user.id) {
       Appartamento.findByIdAndRemove(req.params.id, (err, appartamento) => {
         if (err) {
-          res.send(err);
+          res.status(400).send(err);
         } else {
           res.json(appartamento);
         }

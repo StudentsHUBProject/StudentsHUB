@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    var id = window.location.href.split("?id=")[1];
-//ajax get request
-$.ajax({
-    url: "http://localhost:8080/api/corsi/SchedaTutor/"+id,
+  var id = window.location.href.split("?id=")[1];
+  //ajax get request
+  $.ajax({
+    url: "http://localhost:8080/api/corsi/SchedaTutor/" + id,
     method: "GET",
     success: function (data) {
-        console.log(data)
-        $(".TutorInfo").append(
-            `
+      console.log(data);
+      $(".TutorInfo").append(
+        `
             <div class="card">
               <div class="imgBx">
                   <img src=${data.Foto} alt="">
@@ -16,14 +16,24 @@ $.ajax({
                   <div class="details">
                       <h2>${data.Nome}</h2>
                       <h2>${data.Cognome}
-                      <br><span>${data.Regione}</span><br><span>${data.Titolo_di_studio}</span></h2>
+                      <br><span>${data.Regione}</span><br><span>${
+          data.Titolo_di_studio
+        }</span></h2>
                       <div class="data">
                           <p>${data.Titolo}</p>
                       </div>
                       <div class="icons">
                           <span id="prezzo">${data.Prezzo}</span>
-                          <span class="homeicon">${data.Modalita[0] == 'on' ? `<i class="fa fa-solid fa-house-user"></i>` : ` `}</span>
-                          <span class="awayicon">${data.Modalita[1] == 'on' ? `<i class="fa fa-solid fa-house-laptop"></i>` : ` `}</span>
+                          <span class="homeicon">${
+                            data.Modalita[0] == "on"
+                              ? `<i class="fa fa-solid fa-house-user"></i>`
+                              : ` `
+                          }</span>
+                          <span class="awayicon">${
+                            data.Modalita[1] == "on"
+                              ? `<i class="fa fa-solid fa-house-laptop"></i>`
+                              : ` `
+                          }</span>
                       </div>
                   </div>
               </div>
@@ -57,10 +67,10 @@ $.ajax({
               </div>
             </div>
             `
-            )
+      );
     },
     error: function (err) {
-      console.log(err);
-    }
+      window.location.href = "/corsi";
+    },
   });
-})
+});
