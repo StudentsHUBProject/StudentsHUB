@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   Libro.find({}, (err, libro) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     } else {
       res.json(libro);
     }
@@ -29,7 +29,7 @@ router.get("/materie-prezzo", (req, res) => {
 
   Libro.find(query, (err, libro) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     } else {
       res.json(libro);
     }
@@ -40,7 +40,7 @@ router.get("/materie-prezzo", (req, res) => {
 router.get("/:id", (req, res) => {
   Libro.findById(req.params.id, (err, libro) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     } else {
       res.json(libro);
     }
@@ -54,7 +54,7 @@ router.post("/crea-libro", auth, async (req, res) => {
     { user: req.user.id, email: user.email, ...req.body },
     (err, libro) => {
       if (err) {
-        res.send(err);
+        res.status(400).send(err);
       } else {
         res.json(libro);
       }
@@ -67,7 +67,7 @@ router.get("/search/:titolo", (req, res) => {
   const { titolo } = req.params;
   Libro.find({ titolo: titolo }, (err, libro) => {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     } else {
       res.json(libro);
     }
@@ -81,7 +81,7 @@ router.delete("/:id", auth, async (req, res) => {
     if (libro.user === req.user.id) {
       Libro.findByIdAndRemove(req.params.id, (err, libro) => {
         if (err) {
-          res.send(err);
+          res.status(400).send(err);
         } else {
           res.json(libro);
         }

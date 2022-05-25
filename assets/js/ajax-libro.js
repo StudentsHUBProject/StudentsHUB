@@ -30,7 +30,7 @@ $(document).ready(function () {
       );
     },
     error: function (err) {
-      console.log(err);
+      window.location.href = "/libri";
     },
   });
 });
