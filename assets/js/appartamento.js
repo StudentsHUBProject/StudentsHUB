@@ -92,7 +92,36 @@ $(document).ready(function () {
       if (data.classe_energetica)
         $("#classeEnergetica").html(data.classe_energetica);
       if (data.metri_quadri) $("#metriQuadri").html(data.metri_quadri + " mq");
-      if (data.contratto) $("#contratto").html(data.contratto);
+
+      if (data.contratto) {
+        switch (data.contratto) {
+          case 1:
+            $("#contratto").html("Ordinario 4 + 4");
+            break;
+          case 2:
+            $("#contratto").html("Contratto Transitorio");
+            break;
+          case 3:
+            $("#contratto").html("Con cedolare secca");
+            break;
+          case 4:
+            $("#contratto").html("Contratto Convenzionato");
+            break;
+          case 5:
+            $("#contratto").html("Transitorio per Studenti");
+            break;
+          case 6:
+            $("#contratto").html("Commodato d'uso");
+            break;
+          case 7:
+            $("#contratto").html("Sublocazione Autorizzata");
+            break;
+          case 8:
+            $("#contratto").html("Altro");
+            break;
+        }
+      }
+
       if (data.utenze_medie) $("#utenzeMedie").html(data.utenze_medie + " €");
       if (data.caparra) $("#caparra").html(data.caparra + " €");
     },
