@@ -108,7 +108,7 @@ nav ul li:nth-child(4) a:hover::after {
 }
 .sectionBanner h1 {
   position: absolute;
-  color: rgb(255, 94, 0);
+  color: white;
   font-size: 8vw;
   margin-top: -27%;
   margin-left: 10%;
@@ -116,7 +116,7 @@ nav ul li:nth-child(4) a:hover::after {
 }
 .sectionBanner p {
   position: absolute;
-  color: rgb(255, 153, 0);
+  color: white;
   font-size: 1.5vw;
   margin-left: 11%;
   margin-top: -18%;

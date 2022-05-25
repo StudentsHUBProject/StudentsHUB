@@ -36,7 +36,7 @@ router.get("/materie-prezzo", (req, res) => {
   });
 });
 
-//get libro by id
+//Get libro by id
 router.get("/:id", (req, res) => {
   Libro.findById(req.params.id, (err, libro) => {
     if (err) {
@@ -47,7 +47,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-//post per la creazione del libro
+//Post per la creazione del libro
 router.post("/crea-libro", auth, async (req, res) => {
   const user = await User.findById(req.user.id).select("email");
   Libro.create(
@@ -62,7 +62,7 @@ router.post("/crea-libro", auth, async (req, res) => {
   );
 });
 
-//get per la search dei titoli dei libri
+//Get per la search dei titoli dei libri
 router.get("/search/:titolo", (req, res) => {
   const { titolo } = req.params;
   Libro.find({ titolo: titolo }, (err, libro) => {
@@ -73,30 +73,6 @@ router.get("/search/:titolo", (req, res) => {
     }
   });
 });
-
-
-/*
-//get request per mostrare i titoli
-router.get("/titoli", (req,res) => {
-	titoli=req.query;
-
-
-	let query={titolo: /titoli.titolo/}
-
-	console.log(query)
-
-	Libri.find(query, (err, libro) => {
-		if (err) {
-			res.send(err);
-		}
-		{
-		res.json(libro);
-		console.log(libro);
-		}
-	});
-	
-})
-*/
 
 // Delete libro
 router.delete("/:id", auth, async (req, res) => {

@@ -12,7 +12,7 @@ $(document).ready(function () {
                       <img src=${data[i].immagine} class="card-img-top">
                       <h5 class="card-title m-2">${data[i].titolo}</h5>
                       <p class="card-text">${data[i].prezzo} euro</p>
-                      <a href="libro?id=${data[i]._id}" class="btn btn-primary" style="width: 100%">Info</a>
+                      <a href="libro?id=${data[i]._id}" class="btn btn-primary" style="width: 100%">Dettagli</a>
                   </div>
               </div>
             `
@@ -50,7 +50,7 @@ $(document).ready(function () {
                     <img src=${data[i].immagine} class="card-img-top">
                     <h5 class="card-title m-2">${data[i].titolo}</h5>
                     <p class="card-text">${data[i].prezzo} euro</p>
-                    <a href="libro?id=${data[i]._id}" class="btn btn-primary" style="width: 100%">Info</a>
+                    <a href="libro?id=${data[i]._id}" class="btn btn-primary" style="width: 100%">Dettagli</a>
                 </div>
             </div>
             `
@@ -62,36 +62,6 @@ $(document).ready(function () {
       },
     });
   });
-
-  
-  /*
-  $("#search-api").change(function () {
-    
-    var search = { titolo: $("#search-api").val() };
-
-    console.log(search);
-
-    $.ajax({
-      url: "http://localhost:8080/api/libri/titoli",
-      method: "GET",
-      data: search,
-      success: function (data) {
-        console.log(data)
-        for (let i = 0; i < data.length; i++) {
-          $("#titoli").append(
-            `
-              <li>${data[i].titolo}</li>
-            `
-          );
-        }
-      },
-      error: function (err) {
-        console.log(err);
-      },
-    });
-  });
-  */
-
 
   //ajax get request per la ricerca dei libri in base al titolo
   $("#cerca").on("click", function () {
@@ -110,7 +80,7 @@ $(document).ready(function () {
                   <img src=${data[i].immagine} class="card-img-top">
                   <h5 class="card-title m-2">${data[i].titolo}</h5>
                   <p class="card-text">${data[i].prezzo} euro</p>
-                  <a href="libro?id=${data[i]._id}" class="btn btn-primary" style="width: 100%">Info</a>
+                  <a href="libro?id=${data[i]._id}" class="btn btn-primary" style="width: 100%">Dettagli</a>
               </div>
             </div>
             `
