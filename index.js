@@ -17,7 +17,7 @@ require("dotenv").config({
   path: ".env",
 });
 
-const port = process.env.NODE_PORT || 3000;
+const port = process.env.NODE_PORT || 8080;
 
 let nginx_port = process.env.NGINX_PORT;
 
