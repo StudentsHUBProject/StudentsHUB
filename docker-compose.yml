@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: studentshub-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - node
+    ports:
+      - "8080:80"
+
+  mongodb:
+    image: mongo:latest
+    container_name: studentshub-mongodb
+    volumes:
+      - ~/apps/mongo:/data/db
+    ports:
+      - "27017"
+
+  node:
+    image: node:latest
+    container_name: studentshub-node
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    entrypoint: ["npm", "start"]
+    ports:
+      - "3000"
+    environment:
+      - DOCKER=true
+      - NODE_ENV=development
+      - NODE_PORT=3000
+      - NGINX_PORT=8080

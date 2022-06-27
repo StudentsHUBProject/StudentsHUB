@@ -17,14 +17,24 @@ require("dotenv").config({
   path: ".env",
 });
 
-const port = process.env.PORT;
+const port = process.env.NODE_PORT || 3000;
+
+let nginx_port = process.env.NGINX_PORT;
+
+if (!process.env.DOCKER) {
+  console.log('Not running in docker, you should use: "docker-compose up"\n');
+  nginx_port = port;
+}
 
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(static);
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }).then(() => {
   app.use(function (req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "http://localhost:" + nginx_port
+    );
     res.setHeader(
       "Access-Control-Allow-Methods",
       "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -40,5 +50,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }).then(() => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}\n\nhttp://localhost:${port}`);
+  console.log(
+    `Node Server listening on port ${port}\n\nhttp://localhost:${nginx_port}`
+  );
 });
