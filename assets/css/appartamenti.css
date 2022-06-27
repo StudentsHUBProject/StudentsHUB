@@ -169,7 +169,6 @@ i + i {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  background: #fff;
   position: absolute;
 }
 
