@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, "assets")));
 app.use(static);
 module.exports = app;
 
+//Connessione Moongose
 db.connect()
   .then(() => {
     app.use(function (req, res, next) {
