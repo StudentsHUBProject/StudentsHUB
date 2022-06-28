@@ -6,7 +6,7 @@ const Corsoschema = mongoose.Schema(
     Cognome: { type: String },
     Regione: { type: String, required: true },
     Titolo_di_studio: { type: String, required: true },
-    Foto: { type: String, required: true },
+    Foto: { type: String },
     Livello: { type: String, required: true },
     Materia: { type: String, required: true },
     Lingua: { type: String, required: true },

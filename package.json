@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test --exit --timeout 500000",
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,13 @@
     "express-validator": "^6.14.0",
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^8.5.1",
+    "mockgoose": "^8.0.4",
     "mongoose": "^6.3.4"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
   }
 }

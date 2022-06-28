@@ -128,7 +128,7 @@ document.getElementById('input_foto').onchange = function (evt) {
         Descrizione:  $("#desc").val(),
     };
 
-    if(crea.Nome=="" || crea.Regione=="" || crea.Titolo_di_studio=="" || crea.Foto=="" || crea.Livello=="" ||
+    if(crea.Nome=="" || crea.Regione=="" || crea.Titolo_di_studio=="" || crea.Livello=="" ||
        crea.Materia=="" || crea.Lingua=="" || crea.Modalita==[false,false] || crea.Prezzo=="" || 
        crea.Titolo=="" || crea.Descrizione==""){}
 
