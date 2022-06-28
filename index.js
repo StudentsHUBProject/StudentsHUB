@@ -12,9 +12,20 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-require("dotenv").config({
-  path: ".env",
-});
+const dotenv = require("dotenv");
+
+if (process.env.NODE_ENV != "test") {
+  //Connessione Moongose
+  require("./db").connect();
+
+  dotenv.config({
+    path: ".env",
+  });
+} else {
+  dotenv.config({
+    path: ".env.example",
+  });
+}
 
 const port = process.env.NODE_PORT || 8080;
 
@@ -29,11 +40,6 @@ app.use(express.static(path.join(__dirname, "assets")));
 app.use(static);
 
 module.exports = app;
-
-if (process.env.NODE_ENV != "test") {
-  //Connessione Moongose
-  require("./db").connect();
-}
 
 app.use(function (req, res, next) {
   res.setHeader(
