@@ -25,7 +25,7 @@ services:
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
-    entrypoint: ["npm", "start"]
+    command: bash -c "npm install && npm start"
     ports:
       - "3000"
     environment:
