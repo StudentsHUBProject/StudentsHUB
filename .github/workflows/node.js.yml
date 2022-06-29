@@ -7,7 +7,7 @@ on:
     branches: ["master"]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,3 +24,15 @@ jobs:
 
       - run: npm ci
       - run: npm test
+  
+  deploy:
+    needs: test
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Webhook Trigger
+      - uses: zzzze/webhook-trigger@v1.0.0
+        with:
+          data: ""
+          webhook_url: https://studentshub-deploy.ersi.xyz/${{ secrets.DEPLOY_KEY }}
