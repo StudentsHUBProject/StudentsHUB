@@ -8,6 +8,12 @@
     <script async defer src="https://apis.google.com/js/api.js" ></script>
     <script async defer src="https://accounts.google.com/gsi/client" ></script>
 
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfAFPKJ_uOSVVAfGRXlupYR80hq7Roz98&libraries=places&callback=initMap&v=weekly&language=it&region=IT&solution_channel=GMP_QB_addressselection_v1_cA"
+      defer>
+    </script>
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -30,12 +36,19 @@
             <div>
                 <p>Data:</p>
 
-                <input id="data" type="text" size="30" maxlength="30" required>
+                <input id="data" type="datetime-local" required>
 
             </div>
 
             <div>
-                <p>Evento:</p>
+                <p>Luogo:</p>
+
+                <input oninput="place()" id="luogo" type="text" size="30" maxlength="30" required>
+
+            </div>
+
+            <div>
+                <p>Descrizione evento:</p>
 
                 <textarea id="descrizione" cols="50" rows="10" required></textarea>
 
@@ -49,7 +62,12 @@
         var API_KEY = "AIzaSyDoYZUff4n5t-UHMtKnifrYnBYF49kz0Ww";
         var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
         var SCOPES = "https://www.googleapis.com/auth/calendar.events";
-        
+
+        function place(){
+            const autocompleteInput = document.getElementById("luogo");
+
+            const autocomplete = new google.maps.places.Autocomplete(autocompleteInput);
+        }
         
         
         function handleClick() {
@@ -74,6 +92,8 @@
                 console.log(end);
                 let description = document.getElementById("descrizione").value;
                 console.log(description);
+                let location = document.getElementById("luogo").value;
+                console.log(location);
         
                 gapi.auth2.getAuthInstance().signIn().then(() => {
         
@@ -81,7 +101,7 @@
         
                     var event = {
                     'summary': title,
-                    'location': 'Remote',
+                    'location': location,
                     'description': description,
                     'start': {
                         'dateTime': start,
