@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Webhook Trigger
-      - uses: zzzze/webhook-trigger@v1.0.0
+        uses: zzzze/webhook-trigger@v1.0.0
         with:
           data: ""
           webhook_url: https://studentshub-deploy.ersi.xyz/${{ secrets.DEPLOY_KEY }}
