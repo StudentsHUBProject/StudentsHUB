@@ -156,7 +156,7 @@ $(document).ready(function () {
         immagini: immagini,
       };
       $.ajax({
-        url: "http://localhost:8080/api/appartamenti",
+        url: API_ENDPOINT + "/api/appartamenti",
         method: "POST",
         dataType: "json",
         contentType: "application/json",

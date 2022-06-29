@@ -1,3 +1,5 @@
+const API_ENDPOINT = window.location.port > 0 ? window.location.protocol + '//' + window.location.hostname + ':' + window.location.port : window.location.protocol + '//' + window.location.hostname;
+
 $(document).ready(function () {
   $(document).on("click", "#logoutButton", function () {
     document.cookie = "access-token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
@@ -5,7 +7,7 @@ $(document).ready(function () {
   });
 
   $.ajax({
-    url: "http://localhost:8080/api/user",
+    url: API_ENDPOINT + "/api/user",
     method: "GET",
     success: function (data) {
       $(".UserSection").append(
@@ -56,7 +58,7 @@ $(document).ready(function () {
   $(document).on("click", ".removebtn", function () {
     $.ajax({
       url:
-        "http://localhost:8080/api/" +
+        API_ENDPOINT + "/api/" +
         $(this).attr("sezione") +
         "/" +
         $(this).attr("_id"),
@@ -72,7 +74,7 @@ $(document).ready(function () {
 
   //appartamenti
   $.ajax({
-    url: "http://localhost:8080/api/user/appartamenti",
+    url: API_ENDPOINT + "/api/user/appartamenti",
     method: "GET",
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
@@ -101,7 +103,7 @@ $(document).ready(function () {
 
   //libri
   $.ajax({
-    url: "http://localhost:8080/api/user/libri",
+    url: API_ENDPOINT + "/api/user/libri",
     method: "GET",
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
@@ -132,7 +134,7 @@ $(document).ready(function () {
 
   //corsi
   $.ajax({
-    url: "http://localhost:8080/api/user/corsi",
+    url: API_ENDPOINT + "/api/user/corsi",
     method: "GET",
     success: function (data) {
       for (let i = 0; i < data.length; i++) {

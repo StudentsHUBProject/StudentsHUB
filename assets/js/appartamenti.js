@@ -11,7 +11,7 @@ function initMap() {
 
   // ajax get coordinates
   $.ajax({
-    url: "http://localhost:8080/api/appartamenti/map/coordinate",
+    url: API_ENDPOINT + "/api/appartamenti/map/coordinate",
     method: "GET",
     success: function (data) {
       let markers = [];
@@ -20,7 +20,7 @@ function initMap() {
           position: { lat: data[i].lat, lng: data[i].lng },
           label: labels[i % labels.length],
           title: data[i].titolo,
-          url: "http://localhost:8080/appartamento?id=" + data[i]._id,
+          url: API_ENDPOINT + "/appartamento?id=" + data[i]._id,
         });
 
         marker.addListener("click", () => {
@@ -94,7 +94,7 @@ function updateFiltri() {
   });
 
   $.ajax({
-    url: "http://localhost:8080/api/appartamenti",
+    url: API_ENDPOINT + "/api/appartamenti",
     method: "GET",
     data: filtri,
     success: processAppartamenti,
@@ -178,7 +178,7 @@ $(document).ready(function () {
 
   //ajax get request
   $.ajax({
-    url: "http://localhost:8080/api/appartamenti",
+    url: API_ENDPOINT + "/api/appartamenti",
     method: "GET",
     success: processAppartamenti,
     error: function (err) {

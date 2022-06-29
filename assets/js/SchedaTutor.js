@@ -2,7 +2,7 @@ $(document).ready(function () {
   var id = window.location.href.split("?id=")[1];
   //ajax get request
   $.ajax({
-    url: "http://localhost:8080/api/corsi/SchedaTutor/" + id,
+    url: API_ENDPOINT + "/api/corsi/SchedaTutor/" + id,
     method: "GET",
     success: function (data) {
       console.log(data);

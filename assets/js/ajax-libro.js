@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   //ajax get request
   $.ajax({
-    url: "http://localhost:8080/api/libri/" + id,
+    url: API_ENDPOINT + "/api/libri/" + id,
     method: "GET",
     success: function (data) {
       console.log(data);

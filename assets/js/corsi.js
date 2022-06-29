@@ -19,7 +19,7 @@ $(document).ready(function () {
 
   /**======AJAX get request======**/
   $.ajax({
-    url: "http://localhost:8080/api/corsi",
+    url: API_ENDPOINT + "/api/corsi",
     method: "GET",
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
@@ -102,7 +102,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: "http://localhost:8080/api/corsi/SchedaTutor/",
+      url: API_ENDPOINT + "/api/corsi/SchedaTutor/",
       method: "GET",
       data: filtri,
       success: function (data) {

@@ -1,10 +1,4 @@
 $(document).ready(function(){
-
-//==========Controllo Token Accesso===========
-  if (!isAuth) {
-    window.location.href = "./signin";
-  }
-
 //===========Selectize selectors==========
 $('#select-regione').selectize({
     sortField: 'text'
@@ -134,14 +128,14 @@ document.getElementById('input_foto').onchange = function (evt) {
 
     else{
       $.ajax({
-      url: "http://localhost:8080/api/corsi/FormTutor",
+      url: API_ENDPOINT + "/api/corsi/FormTutor",
       method: 'POST',
       dataType: 'json',
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify(crea),
       success: function(corso) {
-        window.location.href="http://localhost:8080/SchedaTutor?id=" + corso._id;
+        window.location.href=API_ENDPOINT + "/SchedaTutor?id=" + corso._id;
         },
       error: function (err) {
         console.log(err);

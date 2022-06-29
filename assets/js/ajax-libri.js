@@ -1,7 +1,7 @@
 $(document).ready(function () {
   //ajax get request dei libri
   $.ajax({
-    url: "http://localhost:8080/api/libri",
+    url: API_ENDPOINT + "/api/libri",
     method: "GET",
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
@@ -36,7 +36,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: "http://localhost:8080/api/libri/materie-prezzo",
+      url: API_ENDPOINT + "/api/libri/materie-prezzo",
       method: "GET",
       data: filtri,
       success: function (data) {
@@ -68,7 +68,7 @@ $(document).ready(function () {
     var search = $("#search-api").val();
 
     $.ajax({
-      url: "http://localhost:8080/api/libri/search/" + search,
+      url: API_ENDPOINT + "/api/libri/search/" + search,
       method: "GET",
       success: function (data) {
         $("#libri").empty();

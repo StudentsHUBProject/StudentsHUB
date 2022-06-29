@@ -15,14 +15,14 @@ $(document).ready(function () {
     ) {
     } else {
       $.ajax({
-        url: "http://localhost:8080/api/user/register",
+        url: API_ENDPOINT + "/api/user/register",
         method: "POST",
         dataType: "json",
         contentType: "application/json",
         processData: false,
         data: JSON.stringify(data),
         success: function (token) {
-          window.location.href = "http://localhost:8080/signin";
+          window.location.href = API_ENDPOINT + "/signin";
         },
         error: function (err) {
           for (var i = 0; i < err.responseJSON.errors.length; i++) {
@@ -50,7 +50,7 @@ $(document).ready(function () {
     if (data.email == "" || data.password == "") {
     } else {
       $.ajax({
-        url: "http://localhost:8080/api/user/login",
+        url: API_ENDPOINT + "/api/user/login",
         method: "POST",
         dataType: "json",
         contentType: "application/json",
@@ -58,7 +58,7 @@ $(document).ready(function () {
         data: JSON.stringify(data),
         success: function (token) {
           console.log(token);
-          window.location.href = "http://localhost:8080/user";
+          window.location.href = API_ENDPOINT + "/user";
         },
         error: function (err) {
           for (var i = 0; i < err.responseJSON.errors.length; i++) {

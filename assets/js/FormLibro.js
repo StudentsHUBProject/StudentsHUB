@@ -37,14 +37,14 @@ $(document).ready(function () {
     ) {
     } else {
       $.ajax({
-        url: "http://localhost:8080/api/libri/crea-libro",
+        url: API_ENDPOINT + "/api/libri/crea-libro",
         method: "POST",
         dataType: "json",
         contentType: "application/json",
         processData: false,
         data: JSON.stringify(crea),
         success: function (data) {
-          window.location.href = "http://localhost:8080/libri";
+          window.location.href = API_ENDPOINT + "/libri";
         },
         error: function (err) {
           console.log(err);

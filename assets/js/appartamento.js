@@ -1,3 +1,5 @@
+window.location.port > 0 ? window.location.protocol + '//' + window.location.hostname + ':' + window.location.port : window.location.protocol + '//' + window.location.hostname;
+
 let map;
 
 function initMap() {
@@ -14,7 +16,7 @@ $(document).ready(function () {
 
   //ajax get request
   $.ajax({
-    url: "http://localhost:8080/api/appartamenti/" + id,
+    url: API_ENDPOINT + "/api/appartamenti/" + id,
     method: "GET",
     success: function (data) {
       marker = new google.maps.Marker({
