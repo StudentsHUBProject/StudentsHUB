@@ -29,11 +29,8 @@ if (process.env.NODE_ENV != "test") {
 
 const port = process.env.NODE_PORT || 8080;
 
-let nginx_port = process.env.NGINX_PORT;
-
 if (!process.env.DOCKER) {
   console.log('Not running in docker, you should use: "docker-compose up"\n');
-  nginx_port = port;
 }
 
 app.use(express.static(path.join(__dirname, "assets")));
@@ -42,10 +39,7 @@ app.use(static);
 module.exports = app;
 
 app.use(function (req, res, next) {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "http://localhost:" + nginx_port
-  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
@@ -61,6 +55,7 @@ app.use("/api", api);
 
 app.listen(port, () => {
   console.log(
-    `Node Server listening on port ${port}\n\nhttp://localhost:${nginx_port}`
+    `Node Server listening on port ${port}\n\n` +
+      (process.env.DOCKER ? "https://localhost" : `http://localhost:${port}`)
   );
 });
