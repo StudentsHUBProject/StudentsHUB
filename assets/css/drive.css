@@ -129,6 +129,10 @@ nav {
     cursor: pointer;
     display: none;
     margin-top: 20px;
+    border-radius: 10px;
+}
+.header button:hover{
+    background-color: #073be6;
 }
 #compila{
     display: none;
@@ -136,6 +140,9 @@ nav {
     font-size: 20px;
     margin-bottom: 5%;
 }
+#compila button:hover{
+    background-color: #968e8e;
+} 
 #cerca-cartella{
     margin-top: 30px;
     padding-top: 30px;
@@ -145,6 +152,9 @@ nav {
     font-size: 20px;
     margin-bottom: 20%;
 }
+#cerca-cartella button:hover{
+    background-color: #968e8e;
+} 
 #cartella-esistente{
     display: none;
     position: fixed;
@@ -156,6 +166,9 @@ nav {
     border-radius: 5px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
+}
+#cartella-esistente button:hover{
+    background-color: #968e8e;
 }
 #cartella-esistente p{
     margin-top: 5%;
@@ -175,10 +188,15 @@ nav {
     border-radius: 5px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 #crea-cartella p{
     margin-top: 5%;
 }
 #crea-cartella button{
     margin-bottom: 5%;
+}
+#crea-cartella button:hover{
+    background-color: #968e8e;
 }

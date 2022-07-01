@@ -144,11 +144,13 @@
                 signinButton.style.display="none";
                 signoutButton.style.display="block";
                 document.getElementById("cerca-cartella").style.display = "block";
+                document.getElementsByClassName("header")[0].style.marginBottom = "0%";
             }
             else{
                 signinButton.style.display="block";
                 signoutButton.style.display="none";
                 document.getElementById("cerca-cartella").style.display = "none";
+                document.getElementsByClassName("header")[0].style.marginBottom = "25%";
             }
         }
 
