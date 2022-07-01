@@ -21,6 +21,36 @@
     </head>
 
     <body>
+
+        <!--==========Navbar==========-->
+        <nav>
+            <!--=====Logo=====-->
+            <div class="logo">
+            <a href="/">
+                <img src="./img/finalHomeB.png" class="logo" height="120px" />
+            </a>
+            </div>
+            <!--=====Btn Toggle Responsive=====-->
+            <input type="checkbox" id="click" />
+            <label for="click" class="menu-btn">
+            <i class="fas fa-bars"></i>
+            </label>
+            <!--=====Schede=====-->
+            <ul id="navbar">
+            <li><a href="/">Home</a></li>
+            <li><a href="./appartamenti">Appartamenti</a></li>
+            <li><a href="./libri">Libri</a></li>
+            <li><a href="./corsi">Corsi</a></li>
+            <!--=====Login Button=====-->
+            <a href="./user" class="btn btn-lg" id="UserButton"
+                ><i class="fas fa-user-circle"></i
+            ></a>
+            </ul>
+        </nav>
+        <!--==========Fine Navbar==========-->
+
+
+
         <div id="cartella-esistente">
             <p>La cartella è presente nel tuo google drive</p>
             <button onclick="Close1()">Ok</button>
@@ -37,8 +67,8 @@
                 <button class="signout">Sign Out</button>
             </div>
         </div>
-
-        <div>
+        
+        <div id="cerca-cartella">
             <input id="cartella" type="text" size="30" maxlength="30" placeholder="Cerca la tua cartella">
             <button onclick="checkFolder()">Cerca</button>
         </div>
@@ -62,6 +92,17 @@
             <button onclick="upload()">Aggiungi file al drive</button>
 
         </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: forestgreen">
+            <br />
+            <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+            <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+            Made with ❤️ by Lorenzo, Roberto e Ersi
+            </p>
+            <br />
+        </footer>
+        <!-- Footer -->
     
     <script>
 
@@ -102,10 +143,12 @@
             if(isSignedIn){
                 signinButton.style.display="none";
                 signoutButton.style.display="block";
+                document.getElementById("cerca-cartella").style.display = "block";
             }
             else{
                 signinButton.style.display="block";
                 signoutButton.style.display="none";
+                document.getElementById("cerca-cartella").style.display = "none";
             }
         }
 
@@ -149,6 +192,7 @@
         function Close1(){
             document.getElementById("cartella-esistente").style.display = "none";
             document.getElementById("compila").style.display = "block";
+            document.getElementById("cerca-cartella").style.marginBottom = "0%";
         }
 
         function Close2(){
