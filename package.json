@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha test --exit --timeout 500000",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc npm run test",
+    "docs": "apidoc -i . -o apidoc && rm -rf assets/apidoc && mv apidoc/index.html views/apidoc.html && mv apidoc/assets assets/apidoc && sed -i 's/assets/apidoc/g' views/apidoc.html && rm -rf apidoc"
   },
   "repository": {
     "type": "git",
@@ -31,10 +32,28 @@
     "mongoose": "^6.4.2"
   },
   "devDependencies": {
+    "apidoc": "^0.51.1",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
     "mocha": "^10.0.0",
     "mongodb-memory-server": "^8.7.2",
     "nyc": "^15.1.0"
+  },
+  "apidoc": {
+    "title": "REST API",
+    "name": "StudentsHUB",
+    "version": "1.0.0",
+    "template": "default",
+    "theme": "default",
+    "markdown": true,
+    "exclude": [
+      "node_modules",
+      "**/*.test.js",
+      "**/*.test.jsx",
+      "**/*.test.ts",
+      "**/*.test.tsx"
+    ],
+    "src": "./src",
+    "dest": "./docs"
   }
 }

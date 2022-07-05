@@ -66,4 +66,8 @@ router.get("/signin", auth, function (req, res) {
   else res.sendFile(path.join(__dirname, "../views/signin.html"));
 });
 
+router.get("/docs", function (req, res) {
+  res.sendFile(path.join(__dirname, "../views/apidoc.html"));
+});
+
 module.exports = router;

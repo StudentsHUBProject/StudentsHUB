@@ -11,16 +11,16 @@ function connect() {
         require("mongodb-memory-server").MongoMemoryServer;
 
       const mongod = await MongoMemoryServer.create();
-      try {
-        await mongoose.connect(mongod.getUri(), {
+      mongoose
+        .connect(mongod.getUri(), {
           dbName: "test",
           useNewUrlParser: true,
           useUnifiedTopology: true,
+        })
+        .then((res, err) => {
+          if (err) reject(err);
+          resolve();
         });
-      } catch (error) {
-        reject(error);
-      }
-      resolve();
     } else {
       mongoose
         .connect(process.env.MONGO_URI, { useNewUrlParser: true })
