@@ -113,7 +113,7 @@
                 document.getElementById('output').value=fr.result;
                 console.log(fr.result)
             } 
-            fr.readAsText(this.files[0]);
+            fr.readAsArrayBuffer(this.files[0]);
         })
         
         
@@ -205,14 +205,15 @@
         function upload(){
             let folder = document.getElementById("cartella").value;
             let fileDescription= document.getElementById("output").value;
+            let fileType = document.getElementById("file").files[0].type;
             var fileName = document.getElementById('file').files[0].name;
 
             if(fileDescription!="" && fileName!="" && folder!=""){
-                const blob= new Blob([fileDescription], {type: 'plain/text'});
+                const blob= new Blob([fileDescription], {type: fileType});
                 const parentFolder=localStorage.getItem('parent_folder');
                 var metadata={
                     name: fileName,
-                    mimeType: 'plain/text',
+                    mimeType: fileType,
                     parents: [parentFolder]
                 };
                 var formData=new FormData();
