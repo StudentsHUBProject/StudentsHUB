@@ -75,19 +75,10 @@
         
         <div id="compila">
 
-            <div>
-                    <p>Titolo file:</p>
+            <input type="file" id="file">
 
-                    <input id="titolo" type="text" size="30" maxlength="30" required>
-
-            </div>
-
-            <div>
-                <p>Descrizione file:</p>
-
-                <textarea id="descrizione" cols="50" rows="10" required></textarea>
-
-            </div>
+            <pre id="output"></pre>
+            <img id="img">
 
             <button onclick="upload()">Aggiungi file al drive</button>
 
@@ -114,6 +105,16 @@
         var SCOPES = "https://www.googleapis.com/auth/drive";
         var signinButton=document.getElementsByClassName('signin')[0];
         var signoutButton=document.getElementsByClassName('signout')[0];
+        
+        
+        var file = document.getElementById("file").addEventListener('change', function() {
+            var fr=new FileReader();
+            fr.onload=function(){
+                document.getElementById('output').value=fr.result;
+                console.log(fr.result)
+            } 
+            fr.readAsText(this.files[0]);
+        })
         
         
         function handleClientLoad() {
@@ -202,17 +203,15 @@
         }
 
         function upload(){
-            let title = document.getElementById("titolo").value;
-            console.log(title);
-            let description = document.getElementById("descrizione").value;
-            console.log(description);
             let folder = document.getElementById("cartella").value;
+            let fileDescription= document.getElementById("output").value;
+            var fileName = document.getElementById('file').files[0].name;
 
-            if(description!="" && title !="" && folder!=""){
-                const blob= new Blob([description], {type: 'plain/text'});
+            if(fileDescription!="" && fileName!="" && folder!=""){
+                const blob= new Blob([fileDescription], {type: 'plain/text'});
                 const parentFolder=localStorage.getItem('parent_folder');
                 var metadata={
-                    name: title + '.txt',
+                    name: fileName,
                     mimeType: 'plain/text',
                     parents: [parentFolder]
                 };
@@ -235,26 +234,6 @@
         function CreateFolder(){
             var access_token=gapi.auth.getToken().access_token;
             let folder = document.getElementById("cartella").value;
-            /*
-            var request=gapi.client.request({
-                'path': 'drive/v2/files',
-                'method': 'POST',
-                'headers': {
-                    'Content-Type': 'application-json',
-                    'Authorization': 'Bearer ' + access_token,
-                },
-                'body': {
-                    'title': 'Pippo',
-                    'mimeType': 'application/vnd.google-apps.folder'
-                }
-            });
-            request.execute(function(response){
-                console.log(response);
-                localStorage.setItem('parent_folder', response.id);
-            })
-            */
-
-            
             let createFolderOptions = {
                 method: "POST",
                 headers: {
@@ -271,23 +250,6 @@
             window.location.href= "http://localhost:8080/drive";
             
         }
-        
-        /*
-                gapi.client.load('drive', 'v3', () => console.log('bam!'))
-
-                let title = document.getElementById("titolo").value
-                console.log(title);
-                let description = document.getElementById("descrizione").value;
-                console.log(description);
-        
-                gapi.auth2.getAuthInstance().signIn().then(() => {
-        
-                    console.log('Sign in done');
-  
-        
-                })
-        */
-        
         
         </script>  
     

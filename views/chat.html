@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Chat</title>
+</head>
+<body>
+    <pre id="showmessage"></pre>
+    <input type="text" id="email" placeholder="Scrivi la tua email">
+    <input type="text" id="message" placeholder="Scrivi qui il tuo messaggio">
+    <button onclick="send()"> Manda</button>
+
+    <!--
+    <script type="text/javascript">
+        function Websocket()
+        {
+           if ("WebSocket" in window)
+           {
+              alert("WebSocket is supported by your Browser!");
+
+              // Let us open a web socket
+              var ws = new WebSocket("ws://localhost:9998/");
+
+              ws.onopen = function()
+              {
+                 // Web Socket is connected, send data using send()
+                 let message_email = document.getElementById("message").value + "---" + document.getElementById("email").value;
+                 ws.send(message_email);
+                 alert("Message is sent...");
+              };
+
+              function showMessage(message){
+                    document.getElementById("showmessage").textContent= message;
+               }
+
+              ws.onmessage = function (env)
+              {
+                 var received_msg = env.data;
+                 alert("Message is received..."+received_msg);
+                 document.getElementById("showmessage").textContent+= received_msg;
+              };
+
+              ws.onclose = function()
+              {
+                 // websocket is closed.
+                 alert("Connection is closed...");
+              };
+
+              window.onbeforeunload = function(event) {
+                 socket.close();
+              };
+           }
+
+           else
+           {
+              // The browser doesn't support WebSocket
+              alert("WebSocket NOT supported by your Browser!");
+           }
+        }
+     </script>
+   -->
+
+      <script>
+         
+         //const sendBtn = document.querySelector('#send');
+         const email = document.querySelector('#email');
+         const showmessages = document.querySelector('#showmessage');
+         const message = document.querySelector('#message');
+      
+         let ws;
+
+         if (ws) {
+               ws.onerror = ws.onopen = ws.onclose = null;
+               ws.close();
+         }
+   
+         ws = new WebSocket('ws://localhost:9998/');
+         ws.onopen = () => {
+            alert('Connection opened!');
+         }
+         ws.onmessage = ({ data }) => showMessage(data);
+         ws.onclose = function() {
+            ws = null;
+            alert('Connection closed!');
+         }
+      
+         function showMessage(message) {
+            showmessages.textContent += `\n\n${message}`;
+            showmessages.scrollTop = showmessages.scrollHeight;
+            message.value = '';
+         }
+      
+         function send() {
+            if (!ws) {
+               showMessage("No WebSocket connection :(");
+               return ;
+            }
+      
+            ws.send(message.value + "---" + email.value);
+            showMessage(message.value);
+         }
+         
+      
+      </script>
+</body>
+</html>
