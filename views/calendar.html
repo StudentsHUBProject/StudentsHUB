@@ -14,6 +14,8 @@
       defer>
     </script>
 
+    <link rel="stylesheet" href="./css/calendar.css" />
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -25,6 +27,15 @@
     </head>
 
     <body>
+
+        <div class="auth-buttons">
+            <button class="signin">Sign In</button>
+            <button class="signout">Sign Out</button>
+        </div>
+
+        <div id="compila">
+
+            <a href="https://calendar.google.com">Vai al tuo calendar</a>
 
             <div>
                 <p>Titolo evento:</p>
@@ -55,33 +66,77 @@
             </div>
 
             <button onclick="handleClick()">Aggiungi al calendario</button>  
+
+        </div>
     
     <script>
+
+        window.onload=handleClientLoad;
 
         var CLIENT_ID = "760521937389-p4kedmhgpbqoo0613uq2fnlv9j1do05t.apps.googleusercontent.com";
         var API_KEY = "AIzaSyDoYZUff4n5t-UHMtKnifrYnBYF49kz0Ww";
         var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
         var SCOPES = "https://www.googleapis.com/auth/calendar.events";
+        var signinButton=document.getElementsByClassName('signin')[0];
+        var signoutButton=document.getElementsByClassName('signout')[0];
 
         function place(){
             const autocompleteInput = document.getElementById("luogo");
 
             const autocomplete = new google.maps.places.Autocomplete(autocompleteInput);
         }
+
+        function handleClientLoad() {
+                gapi.load('client:auth2', initClient)
+                console.log('loaded client')
+        }
+        
+        function initClient(){
+            gapi.client.init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES,
+                plugin_name:'App Name that you used in google developer console API'
+            }).then(function(){
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                signinButton.onclick=handleSignin;
+                signoutButton.onclick=handleSignout;
+            }, function(error){
+                console.log(error);
+            })
+        }
+
+        function updateSigninStatus(isSignedIn){
+            if(isSignedIn){
+                signinButton.style.display="none";
+                signoutButton.style.display="block";
+                document.getElementById("compila").style.display = "block";
+            }
+            else{
+                signinButton.style.display="block";
+                signoutButton.style.display="none";
+                document.getElementById("compila").style.display = "none";
+            }
+        }
+
+        function handleSignin(){
+            gapi.auth2.getAuthInstance().signIn();
+        }
+
+        function handleSignout(){
+            var auth2=gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function(){
+                location.reload();
+            });
+            auth2.disconnect();
+        }
         
         
         function handleClick() {
-                gapi.load('client:auth2', () => {
-                console.log('loaded client')
-        
-                gapi.client.init({
-                    apiKey: API_KEY,
-                    clientId: CLIENT_ID,
-                    discoveryDocs: DISCOVERY_DOCS,
-                    scope: SCOPES,
-                    plugin_name:'App Name that you used in google developer console API'
-                });
-        
+
                 gapi.client.load('calendar', 'v3', () => console.log('bam!'))
                 
                 let title = document.getElementById("titolo").value
@@ -94,10 +149,6 @@
                 console.log(description);
                 let location = document.getElementById("luogo").value;
                 console.log(location);
-        
-                gapi.auth2.getAuthInstance().signIn().then(() => {
-        
-                    console.log('Sign in done');
         
                     var event = {
                     'summary': title,
@@ -132,10 +183,6 @@
                         console.log(event)
                         window.open(event.htmlLink)
                     })
-                    
-        
-                })
-            })
         }
         
         
