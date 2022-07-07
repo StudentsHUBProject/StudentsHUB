@@ -72,24 +72,26 @@
             <input id="cartella" type="text" size="30" maxlength="30" placeholder="Cerca la tua cartella">
             <button onclick="checkFolder()">Cerca</button>
         </div>
-        
+       
         <div id="compila">
 
             <br>
             <input type="file" id="file">
 
-            <pre id="output"></pre>
-            <img id="img">
-
             <button onclick="upload()">Aggiungi file al drive</button>
+
+            <pre id="output"></pre>
+            <object id="img" width="100%" height="100%" type="application/pdf" class="internal">
+                <embed id="embed" type="application/pdf">
+            </object>
 
             <h1>Tutti i file all'interno della cartella</h1>
             <br>
             <div class="list">
-                <ul>
-                    <div style="text-align: center;">Sign In First</div>
-                </ul>
+                <ul></ul>
             </div>
+
+            <pre id="textarea"></pre>
         
             <div class="expand-container" style="display: none;">
                 <ul>
@@ -267,8 +269,9 @@
                 }),
             };
 
-            fetch("https://www.googleapis.com/drive/v3/files", createFolderOptions);
-            window.location.href= "http://localhost:8080/drive";
+            fetch("https://www.googleapis.com/drive/v3/files", createFolderOptions).then(function(){
+                window.location.href= "http://localhost:8080/drive";
+            })
             
         }
 
@@ -282,6 +285,7 @@
                 expandContainer.style.display = 'none';
                 expandContainerUl.setAttribute('data-id', '');
                 expandContainerUl.setAttribute('data-name', '');
+                expandContainerUl.setAttribute('data-mimeType', '');
             }
             else{
                 expandContainer.style.display = 'block';
@@ -290,6 +294,7 @@
                 // get data name & id and store it to the options
                 expandContainerUl.setAttribute('data-id', v.parentElement.getAttribute('data-id'));
                 expandContainerUl.setAttribute('data-name', v.parentElement.getAttribute('data-name'));
+                expandContainerUl.setAttribute('data-mimeType', v.parentElement.getAttribute('data-mimeType'));
             }
         }
 
@@ -305,7 +310,7 @@
                     for(var i=0; i<files.length; i++){
                         listcontainer.innerHTML += `
                         
-                        <li data-id="${files[i].id}" data-name="${files[i].name}">
+                        <li data-id="${files[i].id}" data-name="${files[i].name}" data-mimeType="${files[i].mimeType}">
                         <span>${files[i].name}</span>
                         <svg onclick="expand(this)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
                         </li>
@@ -313,8 +318,66 @@
                         `;
                     }
                 }else{
-                    listcontainer.innerHTML = '<div style="text-align: center;">No Files</div>'
+                    listcontainer.innerHTML = '<div style="text-align: center;"><h2>Cartella vuota</h2></div>'
                 }
+            })
+        }
+
+        function readEditDownload(v, condition){
+            var id = v.parentElement.getAttribute('data-id');
+            var name = v.parentElement.getAttribute('data-name');
+            var mimeType = v.parentElement.getAttribute('data-mimeType');
+            gapi.client.drive.files.get({
+                fileId: id,
+                alt: 'media'
+            }).then(function (res){
+                expandContainer.style.display = 'none';
+                expandContainerUl.setAttribute('data-id', '');
+                expandContainerUl.setAttribute('data-name', '');
+                expandContainerUl.setAttribute('data-mimeType', '');
+                if(condition == 'read'){
+                    var x="data:image/png;base64," + btoa(res.body)
+                    //var x="data:application/pdf;base64," + btoa(res.body);
+                    //const blobURL = URL.createObjectURL(new Blob([x], { type: "application/pdf" }));
+                    //window.open(blobURL);
+                    console.log(x)
+                    //document.getElementById('textarea').textContent = res.body;
+                    document.getElementById('img').data=x;
+                    document.getElementById('embed').src=x;
+                    document.documentElement.scrollTop = 0;
+                    console.log('Read Now')
+                }else if(condition == 'edit'){           
+                    document.querySelector('textarea').textContent = res.body;
+                    document.documentElement.scrollTop = 0;
+                    var updateBtn = document.getElementsByClassName('upload')[0];
+                    updateBtn.innerHTML = 'Update';
+                    // we will make the update function later
+                    updateBtn.setAttribute('onClick', 'update()');
+                    document.querySelector('textarea').setAttribute('data-update-id', id);
+                    console.log('File ready for update');
+                }else{
+                    var href =  `data:${mimeType};base64,` + btoa(res.body);
+                    var a = document.createElement('a');
+                    a.href = href;
+                    a.download = name;
+                    a.click();
+                }
+            })
+        }
+
+        function deleteFile(v){
+            var id = v.parentElement.getAttribute('data-id');
+            var request = gapi.client.drive.files.delete({
+                'fileId': id
+            });
+            request.execute(function (res){
+                console.log('File Deleted');
+                expandContainer.style.display = 'none';
+                expandContainerUl.setAttribute('data-id', '');
+                expandContainerUl.setAttribute('data-name', '');
+                expandContainerUl.setAttribute('data-mimeType', '');
+                // after delete update the list
+                showList();
             })
         }
         
