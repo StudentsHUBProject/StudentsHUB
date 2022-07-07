@@ -16,7 +16,7 @@ if (process.env.NODE_ENV != "test") {
   });
 }
 
-const wss = new WebSocket.Server({ port: 9998 });
+const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT ?? 3001 });
 
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message_email) {

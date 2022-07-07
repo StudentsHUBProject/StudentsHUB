@@ -24,7 +24,7 @@
               alert("WebSocket is supported by your Browser!");
 
               // Let us open a web socket
-              var ws = new WebSocket("ws://localhost:9998/");
+              var ws = new WebSocket("ws://localhost:3001/");
 
               ws.onopen = function()
               {
@@ -79,7 +79,9 @@
                ws.close();
          }
    
-         ws = new WebSocket('ws://localhost:9998/');
+         const endpoint = window.location.port ? 'ws://' + window.location.hostname + ':3001' : 'wss://' + window.location.hostname + '/websocket';
+
+         ws = new WebSocket(endpoint);
          ws.onopen = () => {
             alert('Connection opened!');
          }
