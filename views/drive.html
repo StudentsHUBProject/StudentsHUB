@@ -72,35 +72,39 @@
             <input id="cartella" type="text" size="30" maxlength="30" placeholder="Cerca la tua cartella">
             <button onclick="checkFolder()">Cerca</button>
         </div>
-       
+
         <div id="compila">
 
             <br>
             <input type="file" id="file">
-
+            <br>
+            <br>
             <button onclick="upload()">Aggiungi file al drive</button>
-
+            
             <pre id="output"></pre>
-            <object id="img" width="100%" height="100%" type="application/pdf" class="internal">
-                <embed id="embed" type="application/pdf">
-            </object>
 
             <h1>Tutti i file all'interno della cartella</h1>
             <br>
             <div class="list">
                 <ul></ul>
             </div>
-
-            <pre id="textarea"></pre>
         
             <div class="expand-container" style="display: none;">
                 <ul>
-                    <li onclick="readEditDownload(this, 'read')">Read</li>
-                    <li onclick="readEditDownload(this, 'edit')">Edit</li>
+                    <li onclick="readEditDownload(this, 'read')">Leggi</li>
+                    <li onclick="readEditDownload(this, 'edit')">Modifica</li>
                     <li onclick="readEditDownload(this, 'download')">Download</li>
-                    <li onclick="deleteFile(this)">Delete</li>
+                    <li onclick="deleteFile(this)">Elimina</li>
                 </ul>
             </div>
+
+            <h2 id="lettura-file" style="display: none;"></h2>
+            <br>
+            <iframe id="pdf" width="500px" height="500px" style="display: none;"></iframe>
+
+            <textarea id="txt" cols="50" rows="10" style="display: none;"></textarea>
+
+            <img id="img" width="400px" style="display: none;">
 
         </div>
 
@@ -336,17 +340,31 @@
                 expandContainerUl.setAttribute('data-name', '');
                 expandContainerUl.setAttribute('data-mimeType', '');
                 if(condition == 'read'){
-                    var x="data:image/png;base64," + btoa(res.body)
-                    //var x="data:application/pdf;base64," + btoa(res.body);
-                    //const blobURL = URL.createObjectURL(new Blob([x], { type: "application/pdf" }));
-                    //window.open(blobURL);
-                    console.log(x)
-                    //document.getElementById('textarea').textContent = res.body;
-                    document.getElementById('img').data=x;
-                    document.getElementById('embed').src=x;
+                    var x = `data:${mimeType};base64,` + btoa(res.body);
+                    if(name.includes(".pdf")){
+                        document.getElementById('pdf').src=x;
+                        document.getElementById('pdf').style.display="inline";
+                        document.getElementById('txt').style.display="none";
+                        document.getElementById('img').style.display="none";
+                    }
+                    else if(name.includes(".txt")){
+                        document.getElementById('txt').textContent = res.body;
+                        document.getElementById('txt').style.display="inline";
+                        document.getElementById('pdf').style.display="none";
+                        document.getElementById('img').style.display="none";
+                    }
+                    else{
+                        document.getElementById('img').src = x;
+                        document.getElementById('img').style.display="inline";
+                        document.getElementById('pdf').style.display="none";
+                        document.getElementById('txt').style.display="none";
+                    }
+                    document.getElementById('lettura-file').textContent = "Stai leggendo: " + name;
+                    document.getElementById('lettura-file').style.display="block";
                     document.documentElement.scrollTop = 0;
                     console.log('Read Now')
-                }else if(condition == 'edit'){           
+                }
+                else if(condition == 'edit'){           
                     document.querySelector('textarea').textContent = res.body;
                     document.documentElement.scrollTop = 0;
                     var updateBtn = document.getElementsByClassName('upload')[0];
@@ -355,7 +373,8 @@
                     updateBtn.setAttribute('onClick', 'update()');
                     document.querySelector('textarea').setAttribute('data-update-id', id);
                     console.log('File ready for update');
-                }else{
+                }
+                else{
                     var href =  `data:${mimeType};base64,` + btoa(res.body);
                     var a = document.createElement('a');
                     a.href = href;
@@ -376,6 +395,10 @@
                 expandContainerUl.setAttribute('data-id', '');
                 expandContainerUl.setAttribute('data-name', '');
                 expandContainerUl.setAttribute('data-mimeType', '');
+                document.getElementById('lettura-file').style.display="none";
+                document.getElementById('pdf').style.display="none";
+                document.getElementById('txt').style.display="none";
+                document.getElementById('img').style.display="none";
                 // after delete update the list
                 showList();
             })
