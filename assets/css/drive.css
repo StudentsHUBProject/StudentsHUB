@@ -201,6 +201,30 @@ nav {
     background-color: #968e8e;
 }
 
+#file-esistente{
+  display: none;
+  position: fixed;
+  top: 4%;
+  left: 35%;
+  background: rgb(252, 230, 230);
+  z-index: 1;
+  width: 400px;
+  border-radius: 5px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#file-esistente p{
+  margin-top: 5%;
+}
+#file-esistente button{
+  margin-bottom: 5%;
+}
+#file-esistente button:hover{
+  background-color: #968e8e;
+}
+
 h1{
   color: #3c84f8;
   background-color: rgb(224, 224, 224, 0.5);

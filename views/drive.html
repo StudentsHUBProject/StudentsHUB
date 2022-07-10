@@ -60,6 +60,11 @@
             <button onclick="CreateFolder()">Si</button>
             <button onclick="Close2()">No</button>
         </div>
+        <div id="file-esistente">
+            <p>Il file è presente all'interno della tua cartella, vuoi sostituirlo?</p>
+            <button onclick="SostituisciFile()">Si</button>
+            <button onclick="Close3()">No</button>
+        </div>
         <div class="header">
             <div class="title">Inserisci File in Google Drive</div>
             <div class="auth-buttons">
@@ -79,7 +84,7 @@
             <input type="file" id="file">
             <br>
             <br>
-            <button onclick="upload()">Aggiungi file al drive</button>
+            <button onclick="CheckFile()">Aggiungi file al drive</button>
             
             <pre id="output"></pre>
 
@@ -91,18 +96,17 @@
         
             <div class="expand-container" style="display: none;">
                 <ul>
-                    <li onclick="readEditDownload(this, 'read')">Leggi</li>
-                    <li onclick="readEditDownload(this, 'edit')">Modifica</li>
-                    <li onclick="readEditDownload(this, 'download')">Download</li>
+                    <li onclick="readDownload(this, 'read')">Leggi</li>
+                    <li onclick="readDownload(this, 'download')">Download</li>
                     <li onclick="deleteFile(this)">Elimina</li>
                 </ul>
             </div>
 
             <h2 id="lettura-file" style="display: none;"></h2>
             <br>
-            <iframe id="pdf" width="500px" height="500px" style="display: none;"></iframe>
+            <iframe id="pdf" width="1000px" height="1000px" style="display: none;"></iframe>
 
-            <textarea id="txt" cols="50" rows="10" style="display: none;"></textarea>
+            <textarea id="txt" cols="50" rows="10" style="display: none;" readonly></textarea>
 
             <img id="img" width="400px" style="display: none;">
 
@@ -194,10 +198,8 @@
         function checkFolder(){
             let folder = document.getElementById("cartella").value;
             console.log(folder);
-            let f= '"' + folder + '"';
-            console.log(f);
             gapi.client.drive.files.list({
-                q: 'name =' + f
+                q: `name ="${folder}"`
             }).then(function(response){
                 var files=response.result.files;
                 console.log(files)
@@ -227,35 +229,62 @@
             document.getElementById("crea-cartella").style.display = "none";
         }
 
+        function CheckFile(){
+            var fileName = document.getElementById('file').files[0].name;
+            var x=true;
+
+            gapi.client.drive.files.list({
+                'q': `parents in "${localStorage.getItem('parent_folder')}"`
+            }).then(function (response){
+                var files = response.result.files;
+                if(files && files.length > 0){
+                    for(var i=0; i<files.length; i++){
+                        if(fileName == files[i].name){
+                            document.getElementById("file-esistente").setAttribute('data-id', files[i].id);
+                            document.getElementById("file-esistente").style.display = "block";
+                            x=false;
+                        }
+                    }
+                    if(x==true) upload();
+                }
+            })
+        }
+
+        function SostituisciFile(){
+            deleteFileEsistente();
+            upload();
+        }
+
+        function Close3(){
+            document.getElementById("file-esistente").style.display = "none";
+        }
+
         function upload(){
-            let folder = document.getElementById("cartella").value;
             let fileDescription= document.getElementById("output").value;
             let fileType = document.getElementById("file").files[0].type;
             var fileName = document.getElementById('file').files[0].name;
 
-            if(fileDescription!="" && fileName!="" && folder!=""){
-                const blob= new Blob([fileDescription], {type: fileType});
-                const parentFolder=localStorage.getItem('parent_folder');
-                var metadata={
-                    name: fileName,
-                    mimeType: fileType,
-                    parents: [parentFolder]
-                };
-                var formData=new FormData();
-                formData.append("metadata", new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
-                formData.append("file", blob);
-                fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
-                    method: 'POST',
-                    headers: new Headers({"Authorization": "Bearer " + gapi.auth.getToken().access_token}),
-                    body: formData
-                }).then(function(response){
-                    return response.json();
-                }).then(function(value){
-                    console.log(value)
-                    showList();
-                });         
+            const blob= new Blob([fileDescription], {type: fileType});
+            const parentFolder=localStorage.getItem('parent_folder');
+            var metadata={
+                name: fileName,
+                mimeType: fileType,
+                parents: [parentFolder]
+            };
+            var formData=new FormData();
+            formData.append("metadata", new Blob([JSON.stringify(metadata)], {type: 'application/json'}));
+            formData.append("file", blob);
+            fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
+                method: 'POST',
+                headers: new Headers({"Authorization": "Bearer " + gapi.auth.getToken().access_token}),
+                body: formData
+            }).then(function(response){
+                return response.json();
+            }).then(function(value){
+                console.log(value)
+                showList();
+            });         
 
-            }  
         }
 
         function CreateFolder(){
@@ -327,7 +356,7 @@
             })
         }
 
-        function readEditDownload(v, condition){
+        function readDownload(v, condition){
             var id = v.parentElement.getAttribute('data-id');
             var name = v.parentElement.getAttribute('data-name');
             var mimeType = v.parentElement.getAttribute('data-mimeType');
@@ -364,16 +393,6 @@
                     document.documentElement.scrollTop = 0;
                     console.log('Read Now')
                 }
-                else if(condition == 'edit'){           
-                    document.querySelector('textarea').textContent = res.body;
-                    document.documentElement.scrollTop = 0;
-                    var updateBtn = document.getElementsByClassName('upload')[0];
-                    updateBtn.innerHTML = 'Update';
-                    // we will make the update function later
-                    updateBtn.setAttribute('onClick', 'update()');
-                    document.querySelector('textarea').setAttribute('data-update-id', id);
-                    console.log('File ready for update');
-                }
                 else{
                     var href =  `data:${mimeType};base64,` + btoa(res.body);
                     var a = document.createElement('a');
@@ -381,6 +400,21 @@
                     a.download = name;
                     a.click();
                 }
+            })
+        }
+
+        function deleteFileEsistente(){
+            var id = document.getElementById("file-esistente").getAttribute('data-id');
+            var request = gapi.client.drive.files.delete({
+                'fileId': id
+            });
+            request.execute(function (res){
+                console.log('File Deleted');
+                document.getElementById('lettura-file').style.display="none";
+                document.getElementById('pdf').style.display="none";
+                document.getElementById('txt').style.display="none";
+                document.getElementById('img').style.display="none";
+                document.getElementById("file-esistente").style.display = "none";
             })
         }
 
