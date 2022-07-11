@@ -1,3 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Spartan", sans-serif;
+    text-align: center;
+  }
+
+/**=====Navbar Style=====**/
+nav {
+    display: flex;
+    height: 120px;
+    width: 100%;
+    background: #e3e6f3;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px 0 100px;
+    flex-wrap: wrap;
+  }
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  nav ul li {
+    margin: 0 5px;
+    margin-top: 20px;
+    position: relative;
+  }
+  nav ul li a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 8px 15px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+  nav ul li a.active,
+  nav ul li a:hover {
+    color: #328fa5;
+  }
+  nav .menu-btn i {
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  nav ul li a.active::after,
+  nav ul li a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #23798e;
+    position: absolute;
+    bottom: 3px;
+    left: 15px;
+  }
+  nav ul li:nth-child(2) a:hover {
+    color: #f7de3a;
+  }
+  nav ul li:nth-child(3) a:hover {
+    color: #f54967;
+  }
+  nav ul li:nth-child(1) a:hover {
+    color: rgb(49, 198, 24);
+  }
+  nav ul li:nth-child(2) a:hover::after {
+    background: #f7de3a;
+  }
+  nav ul li:nth-child(3) a:hover::after {
+    background: #d03852;
+  }
+  nav ul li:nth-child(1) a:hover::after {
+    background: forestgreen;
+  }
+  #loginButton,
+  #ContactButton,
+  #logoutButton,
+  #UserButton {
+    margin-top: 5px;
+    color: #1a1a1a;
+    border: 2px solid rgb(49, 198, 24);
+    transition-duration: 0.4s;
+  }
+  #loginButton:hover,
+  #ContactButton:hover,
+  #logoutButton:hover,
+  #UserButton:hover {
+    background-color: rgb(49, 198, 24);
+  }
+  #UserButton {
+    border-radius: 100px;
+  }
+  
+  /**=====Fine Navbar Style=====**/
+  
 .auth-buttons{
     float: right;
 }

@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const static = require("./routes/static");
+const favicon = require("serve-favicon")
 const api = require("./routes/api");
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(favicon(path.join(__dirname, "assets/img", "favicon.ico")))
 
 const dotenv = require("dotenv");
 

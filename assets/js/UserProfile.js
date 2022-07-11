@@ -21,6 +21,11 @@ $(document).ready(function () {
               <div class="details">
                   <h2>${data.name}</h2>
                   <br><span>${data.email}</span>
+                  <div class="cardUtilsIcons">
+                  <a href="./calendar" id="userUtils"><i class="fa-solid fa-calendar-days"></i></a>
+                  <a href="./drive" id="userUtils"><i class="fa-brands fa-google-drive"></i></a>
+                  <a href="inbox" id="userUtils"><i class="fa-solid fa-message"></i></a>
+                  </div>
                   <div class="actionbtn">
                       <a href="" class="btn" id="logoutButton">Logout</a>
                   </div>

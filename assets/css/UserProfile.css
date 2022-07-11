@@ -109,9 +109,9 @@ nav ul li:nth-child(1) a:hover::after {
   padding-left: 10%;
   padding-right: 8%;
   padding-top: 6%;
-  padding-bottom: 3%;
+  padding-bottom: 6%;
 }
-.card {
+.card{
   position: sticky;
   top: 100px;
   width: 350px;
@@ -121,6 +121,22 @@ nav ul li:nth-child(1) a:hover::after {
   box-shadow: 0 5px 10px rgb(49, 198, 24);
   transition: 0.5s;
 }
+
+.cardUtilsIcons{
+  font-size: 25px;
+  padding-top: 5%;
+}
+
+#userUtils{
+  color: rgb(49, 198, 24);
+  padding-left: 10px;
+  padding-right: 10px;
+  transition-duration: 0.4s;
+}
+#userUtils:hover{
+  color: forestgreen
+}
+
 .imgBx {
   position: absolute;
   left: 50%;
@@ -153,7 +169,7 @@ nav ul li:nth-child(1) a:hover::after {
   margin-top: 5%;
 }
 .card .content .details {
-  padding-bottom: 20%;
+  padding-bottom: 12%;
   text-align: center;
   width: 100%;
   transition: 0.5s;
@@ -174,7 +190,7 @@ nav ul li:nth-child(1) a:hover::after {
   font-weight: bold;
 }
 .card .content .details .actionbtn {
-  padding-top: 5%;
+  padding-top: 3%;
 }
 .card .content .details .actionbtn .btn {
   display: inline-block;

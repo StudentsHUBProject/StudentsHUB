@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "watch": "nodemon",
     "start": "node index.js & node websocket.js",
     "test": "mocha test --exit --timeout 500000",
     "coverage": "nyc npm run test",
@@ -30,6 +31,7 @@
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.2",
+    "serve-favicon": "^2.5.0",
     "ws": "^8.8.0"
   },
   "devDependencies": {
@@ -38,6 +40,7 @@
     "chai-http": "^4.3.0",
     "mocha": "^10.0.0",
     "mongodb-memory-server": "^8.7.2",
+    "nodemon": "^2.0.19",
     "nyc": "^15.1.0"
   },
   "apidoc": {
