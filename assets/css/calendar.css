@@ -100,6 +100,20 @@ nav {
   
   /**=====Fine Navbar Style=====**/
   
+.header{
+    padding: 0px 150px;
+    line-height: 80px;
+    height: 80px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+.title{
+    margin-top: 20px;
+    font-weight: 700px;
+    font-size: 40px;
+    float: left;
+    color: rgb(54, 106, 155);
+}
 .auth-buttons{
     float: right;
 }
@@ -117,3 +131,20 @@ nav {
     margin-top: 20px;
     border-radius: 10px;
 }
+.header button:hover{
+  background-color: #073be6;
+}
+#compila{
+  display: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  margin-bottom: 5%;
+  margin-top: 30px;
+  padding-top: 3%;
+  border-top-style: solid;
+  border-top-color: rgb(114, 108, 108);
+  text-align: center;
+}
+#compila button:hover{
+  background-color: #968e8e;
+} 

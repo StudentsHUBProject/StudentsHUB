@@ -55,9 +55,12 @@
         </nav>
         <!--==========Fine Navbar==========-->
 
-        <div class="auth-buttons">
-            <button class="signin">Sign In</button>
-            <button class="signout">Sign Out</button>
+        <div class="header">
+            <div class="title">Inserisci Un Evento nel tuo Google Calendar</div>
+            <div class="auth-buttons">
+                <button class="signin">Sign In</button>
+                <button class="signout">Sign Out</button>
+            </div>
         </div>
 
         <div id="compila">
@@ -95,6 +98,17 @@
             <button onclick="handleClick()">Aggiungi al calendario</button>  
 
         </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: forestgreen">
+            <br />
+            <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>
+            <p style="font-size: 0.8em; font-weight: bold; padding-left: 10px">
+            Made with ❤️ by Lorenzo, Roberto e Ersi
+            </p>
+            <br />
+        </footer>
+        <!-- Footer -->
     
     <script>
 
@@ -141,11 +155,12 @@
                 signinButton.style.display="none";
                 signoutButton.style.display="block";
                 document.getElementById("compila").style.display = "block";
+                document.getElementsByClassName("header")[0].style.marginBottom = "0%";
             }
             else{
                 signinButton.style.display="block";
                 signoutButton.style.display="none";
-                document.getElementById("compila").style.display = "none";
+                document.getElementsByClassName("header")[0].style.marginBottom = "25%";
             }
         }
 
