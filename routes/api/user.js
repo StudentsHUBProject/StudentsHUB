@@ -10,6 +10,7 @@ const User = require("../../models/User");
 const Appartamento = require("../../models/Appartamento");
 const Libro = require("../../models/Libro");
 const Corso = require("../../models/Corso");
+const Chat = require("../../models/Chat");
 
 //POST api/user/
 //desc get user info
@@ -51,6 +52,16 @@ router.get("/corsi", auth, async (req, res) => {
       res.status(400).send(err);
     }
     res.json(corso);
+  });
+});
+
+// GET chat dell'utente loggato
+router.get("/chat", auth, async (req, res) => {
+  Chat.find({partecipanti: {$in: [req.user.id]}}, (err, chat) => {
+    if (err) {
+      res.status(400).send(err);
+    }
+    res.json(chat);
   });
 });
 

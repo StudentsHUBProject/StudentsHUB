@@ -8,4 +8,6 @@ router.use("/libri", require("./api/libri"));
 
 router.use("/user", require("./api/user"));
 
+router.use("/chat", require("./api/chat"));
+
 module.exports = router;
