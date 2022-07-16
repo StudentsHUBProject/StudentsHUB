@@ -247,6 +247,7 @@
                     }
                     if(x==true) upload();
                 }
+                else {if(x==true) upload();}
             })
         }
 
@@ -287,6 +288,47 @@
 
         }
 
+        function shareFolder(){
+            var access_token=gapi.auth.getToken().access_token;
+            var folder_id = localStorage.getItem('parent_folder');
+            var shareOptions = {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ` + access_token,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    role: 'reader',
+                    type: 'anyone'
+                }),
+            };
+            
+            fetch(`https://www.googleapis.com/drive/v3/files/${folder_id}/permissions`, shareOptions);
+        }
+
+        function CreateFolder() {
+            console.log("c")
+            var access_token = gapi.auth.getToken().access_token;
+            let folder = document.getElementById("cartella").value;
+            var request = gapi.client.request({
+                'path': 'drive/v3/files',
+                'method': 'POST',
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + access_token,
+                },
+                'body': {
+                    'name': folder,
+                    'mimeType': 'application/vnd.google-apps.folder'
+                }
+            });
+            request.execute(function (response) {
+                localStorage.setItem('parent_folder', response.id);
+                shareFolder();
+            })
+        }
+
+        /*
         function CreateFolder(){
             var access_token=gapi.auth.getToken().access_token;
             let folder = document.getElementById("cartella").value;
@@ -303,10 +345,12 @@
             };
 
             fetch("https://www.googleapis.com/drive/v3/files", createFolderOptions).then(function(){
-                window.location.href= "http://localhost:8080/drive";
+                shareFolder().then(function(){window.location.href= "http://localhost:8080/drive";});
+               
             })
             
         }
+        */
 
         var expandContainer = document.querySelector('.expand-container');
         var expandContainerUl = document.querySelector('.expand-container ul');
