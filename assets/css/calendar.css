@@ -147,4 +147,17 @@ nav {
 }
 #compila button:hover{
   background-color: #968e8e;
-} 
+}
+#map{
+  height: 400px;
+  width: 400px;
+  margin-left: 35%;
+}
+#compila .btn{
+  font-size: 30px;
+  background-color: #e68d07;
+  color: white
+}
+#compila .btn:hover{
+  background-color: #e65907;
+}
