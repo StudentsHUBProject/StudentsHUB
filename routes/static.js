@@ -30,16 +30,19 @@ router.get("/SchedaTutor", function (req, res) {
   res.sendFile(path.join(__dirname, "../views/SchedaTutor.html"));
 });
 
-router.get("/calendar", function (req, res) {
-  res.sendFile(path.join(__dirname, "../views/calendar.html"));
+router.get("/calendar", auth, function (req, res) {
+  if (!req.user) res.redirect("/signin");
+  else res.sendFile(path.join(__dirname, "../views/calendar.html"));
 });
 
-router.get("/drive", function (req, res) {
-  res.sendFile(path.join(__dirname, "../views/drive.html"));
+router.get("/drive", auth, function (req, res) {
+  if (!req.user) res.redirect("/signin");
+  else res.sendFile(path.join(__dirname, "../views/drive.html"));
 });
 
-router.get("/chat", function (req, res) {
-  res.sendFile(path.join(__dirname, "../views/chat.html"));
+router.get("/chat", auth, function (req, res) {
+  if (!req.user) res.redirect("/signin");
+  else res.sendFile(path.join(__dirname, "../views/chat.html"));
 });
 
 router.get("/FormTutor", auth, function (req, res) {
