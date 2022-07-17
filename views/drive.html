@@ -88,7 +88,7 @@
             
             <pre id="output"></pre>
 
-            <h1>Tutti i file all'interno della cartella</h1>
+            <h1 id="cartellaH"></h1>
             <br>
             <div class="list">
                 <ul></ul>
@@ -209,6 +209,7 @@
                         localStorage.setItem('parent_folder', file.id);
                         console.log("Cartella disponibile");
                         document.getElementById("cartella-esistente").style.display = "block";
+                        $("#cartellaH").html("Tutti i file all'interno della cartella" + " " + folder)
                         showList();
                     }
                 }
@@ -324,6 +325,8 @@
             });
             request.execute(function (response) {
                 localStorage.setItem('parent_folder', response.id);
+                document.getElementById("crea-cartella").style.display = "none";
+                checkFolder();
                 shareFolder();
             })
         }

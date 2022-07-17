@@ -239,7 +239,7 @@ nav ul li:nth-child(1) a:hover::after {
 .LingueBox,
 .argomentiBox {
   width: 90%;
-  height: auto;
+  height: 120%;
   font-size: 1vw;
   padding: 1%;
   background: #fff;
@@ -280,10 +280,24 @@ nav ul li:nth-child(1) a:hover::after {
   background-color: #328fa5;
   align-items: center;
 }
-.contatta {
+.Drive {
+  margin-top: 2%;
+  background-color: #d03852;
+  width: 90%;
+  height: 60%;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+}
+.Drive:hover {
+  background-color: #f54967;
+  align-items: center;
+}
+.contatta, 
+.cartellaD {
   padding-top: 4%;
 }
-.ContactBox a {
+.ContactBox a,
+.Drive a {
   margin-left: 14%;
   font-size: 1.3vw;
   font-weight: 600;
@@ -292,6 +306,11 @@ nav ul li:nth-child(1) a:hover::after {
 }
 .ContactBox a::after {
   content: "\f0e0";
+  font-weight: 900;
+  font-family: "FontAwesome";
+}
+.Drive a::after{
+  content: "\f3aa";
   font-weight: 900;
   font-family: "FontAwesome";
 }

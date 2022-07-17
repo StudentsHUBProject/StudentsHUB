@@ -56,11 +56,20 @@ $(document).ready(function () {
                         <li>${data.Lingua_Secondaria}</li>
                       </div>
                   </div>
-                  <div class="ContactBox">
+                  <div class="UtilLinks">
+                    <div class="ContactBox">
                       <div class="contatta">
                       <a href="mailto:${data.email}">
                           Prenota una lezione
                       </a>
+                      </div>
+                    </div>
+                    <div class="Drive">
+                      <div class="cartellaD">
+                        <a href="${data.drive}">
+                          Materiale del Corso
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>

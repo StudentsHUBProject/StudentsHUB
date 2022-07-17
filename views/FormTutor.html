@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FormTutor</title>
+    <script async defer src="https://apis.google.com/js/api.js" ></script>
+    <script async defer src="https://accounts.google.com/gsi/client" ></script>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
     <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./css/FormTutor.css" />
@@ -266,6 +268,18 @@
                   required
                 />
               </div>
+              <div class="DriveFolder">
+                <label for="auth-buttons">Collega cartella Drive:</label>
+                <div class="auth-buttons">
+                  <button class="signin">Sign In</button>
+                  <button class="signout">Sign Out</button>
+                </div>
+                <div id="cerca-cartella">
+                  <p id="nomeCartella"></p>
+                  <input id="cartella" type="text" size="30" maxlength="30" placeholder="Cerca la tua cartella">
+                  <button id="findfolder" onclick="checkFolder()">Cerca</button>
+                </div>
+              </div>
               <div class="inputdescription-box">
                 <span class="details">Descrizione:</span>
                 <textarea
@@ -273,6 +287,7 @@
                   id="desc"
                   cols="30"
                   rows="10"
+                  required
                 ></textarea>
               </div>
             </fieldset>
@@ -339,6 +354,16 @@
     </section>
     <!--==========Fine sezione FAQ==========-->
 
+    <div id="cartella-esistente">
+      <p>La cartella è presente nel tuo google drive</p>
+      <button onclick="Close1()">Ok</button>
+    </div>
+    <div id="crea-cartella">
+      <p>La cartella non è presente nel tuo google drive. Vuoi crearla?</p>
+      <button onclick="CreateFolder()">Si</button>
+      <button onclick="Close2()">No</button>
+    </div>
+
     <!-- Footer -->
     <footer class="text-center text-white" style="background-color: #328fa5">
       <br />
@@ -375,5 +400,146 @@
       }
     </script>
     <!--==========Fine sezione Script==========-->
+
+    <!--==========Script Drive==========-->
+    <script>
+    window.onload=handleClientLoad;
+
+    var CLIENT_ID = "760521937389-ij66th8q3mqq42802kfal6fjaf2h5164.apps.googleusercontent.com";
+    var API_KEY = "AIzaSyBe4AmD0xb5b_T2c6axCLJ54ULp43zBDhs";
+    var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
+    var SCOPES = "https://www.googleapis.com/auth/drive";
+    var signinButton=document.getElementsByClassName('signin')[0];
+    var signoutButton=document.getElementsByClassName('signout')[0];
+    
+    function handleClientLoad() {
+            gapi.load('client:auth2', initClient)
+            console.log('loaded client')
+    }
+    
+    function initClient(){
+        gapi.client.init({
+            apiKey: API_KEY,
+            clientId: CLIENT_ID,
+            discoveryDocs: DISCOVERY_DOCS,
+            scope: SCOPES,
+            plugin_name:'App Name that you used in google developer console API'
+        }).then(function(){
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            signinButton.onclick=handleSignin;
+            signoutButton.onclick=handleSignout;
+        }, function(error){
+            console.log(error);
+        })
+    }
+
+    function updateSigninStatus(isSignedIn){
+        if(isSignedIn){
+            signinButton.style.display="none";
+            signoutButton.style.display="block";
+            document.getElementById("cerca-cartella").style.display = "block";
+        }
+        else{
+          document.getElementById("cerca-cartella").style.display = "none";
+            signinButton.style.display="block";
+            signoutButton.style.display="none";
+        }
+    }
+
+    function handleSignin(){
+        gapi.auth2.getAuthInstance().signIn();
+    }
+
+    function handleSignout(){
+        var auth2=gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function(){
+        });
+        auth2.disconnect();
+    }
+
+    function checkFolder(){
+            let folder = document.getElementById("cartella").value;
+            gapi.client.drive.files.list({
+                q: `name ="${folder}"`
+            }).then(function(response){
+                var files=response.result.files;
+                console.log(files)
+                if(files && files.length>0){
+                    document.getElementById("cartella-esistente").style.display = "block";
+                    document.getElementById("cartella").value = "https://drive.google.com/drive/folders/" + files[0].id;
+                    document.getElementById("cartella").style.display = "none";
+                    document.getElementById("findfolder").style.display = "none";
+                    $('#nomeCartella').html(`<i class="fa-solid fa-folder-open"></i>` + " " + folder + `<button id="changeF" onclick="ChangeFolder()">X</button>`);
+                }
+                else{
+                    document.getElementById("crea-cartella").style.display = "block";
+                }
+            })
+        }
+
+        function CreateFolder() {
+            var access_token = gapi.auth.getToken().access_token;
+            let folder = document.getElementById("cartella").value;
+            var request = gapi.client.request({
+                'path': 'drive/v3/files',
+                'method': 'POST',
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + access_token,
+                },
+                'body': {
+                    'name': folder,
+                    'mimeType': 'application/vnd.google-apps.folder'
+                }
+            });
+            request.execute(function (response) {
+                document.getElementById("crea-cartella").style.display = "none";
+                localStorage.setItem('parent_folder', response.id);
+                document.getElementById("cartella").value = "https://drive.google.com/drive/folders/" + response.id;
+                document.getElementById("cartella").style.display = "none";
+                document.getElementById("findfolder").style.display = "none";
+                $('#nomeCartella').html(`<i class="fa-solid fa-folder-open"></i>` + " " + folder + `<button id="changeF" onclick="ChangeFolder()">X</button>`);
+                shareFolder();
+            })
+        }
+
+        function shareFolder(){
+            var access_token=gapi.auth.getToken().access_token;
+            var folder_id = localStorage.getItem('parent_folder');
+            var shareOptions = {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ` + access_token,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    role: 'reader',
+                    type: 'anyone'
+                }),
+            };
+            
+            fetch(`https://www.googleapis.com/drive/v3/files/${folder_id}/permissions`, shareOptions);
+        }
+
+        function ChangeFolder(){
+          $('#nomeCartella').html("");
+          document.getElementById("cartella").value = "";
+          document.getElementById("cartella").style.display = "inline-block";
+          document.getElementById("findfolder").style.display = "inline-block";
+        }
+
+        function Close1(){
+            document.getElementById("cartella-esistente").style.display = "none";
+            document.getElementById("cerca-cartella").style.marginBottom = "0%";
+        }
+
+        function Close2(){
+            document.getElementById("crea-cartella").style.display = "none";
+        }
+    </script>
+    <!--==========Fine Script Drive==========-->
+
   </body>
 </html>

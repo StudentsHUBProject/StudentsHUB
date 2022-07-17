@@ -411,6 +411,94 @@ legend {
 }
 /**=====Fine sezione FAQ=====**/
 
+#cartella-esistente{
+  display: none;
+  position: fixed;
+  top: 4%;
+  left: 35%;
+  background: rgb(252, 230, 230);
+  z-index: 1;
+  width: 400px;
+  border-radius: 5px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+}
+#cartella-esistente button:hover{
+  background-color: #968e8e;
+}
+#cartella-esistente p{
+  margin-top: 5%;
+}
+#cartella-esistente button{
+  margin-bottom: 5%;
+}
+#crea-cartella{
+  display: none;
+  position: fixed;
+  top: 4%;
+  left: 35%;
+  background: rgb(252, 230, 230);
+  z-index: 1;
+  width: 400px;
+  border-radius: 5px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#crea-cartella p{
+  margin-top: 5%;
+}
+#crea-cartella button{
+  margin-bottom: 5%;
+}
+#crea-cartella button:hover{
+  background-color: #968e8e;
+}
+.signin, .signout{
+  border: 0px;
+  padding: 2%;
+  width: 30%;
+  background-color: rgb(0, 119, 255);
+  font-size: 20px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  display: none;
+  margin-top: 2%;
+  border-radius: 10px;
+}
+.signin{
+  margin-bottom: 3%;
+}
+#cerca-cartella{
+  padding-top: 1%;
+  font-size: 15px;
+  margin-bottom: 3%;
+  white-space: nowrap
+}
+#cerca-cartella button:hover{
+  background-color: #968e8e;
+} 
+#findfolder{
+  border:10%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.DriveFolder{
+  margin-top: 3%;
+}
+#nomeCartella{
+  margin-top: 1%;
+}
+#changeF{
+  margin-left: 1%;
+  border: 0px;
+  color: rgb(192, 21, 21);
+  background-color: transparent;
+}
+
+
 /**=====Footer=====**/
 footer{
   padding-bottom: -10%;

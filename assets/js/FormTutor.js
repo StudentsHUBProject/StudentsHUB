@@ -120,6 +120,7 @@ document.getElementById('input_foto').onchange = function (evt) {
         Prezzo:  $("#input_prezzo").val(),
         Titolo:  $("#input_titolo").val(),
         Descrizione:  $("#desc").val(),
+        drive: $("#cartella").val()
     };
 
     if(crea.Nome=="" || crea.Regione=="" || crea.Titolo_di_studio=="" || crea.Livello=="" ||
