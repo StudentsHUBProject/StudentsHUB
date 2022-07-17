@@ -8,7 +8,7 @@
     "start": "node index.js & node websocket.js",
     "test": "mocha test --exit --timeout 500000",
     "coverage": "nyc npm run test",
-    "docs": "apidoc -i . -o apidoc && rm -rf assets/apidoc && mv apidoc/index.html views/apidoc.html && mv apidoc/assets assets/apidoc && sed -i 's/assets/apidoc/g' views/apidoc.html && rm -rf apidoc"
+    "docs": "apidoc -i routes/api -o apidoc && rm -rf assets/apidoc && mv apidoc/index.html views/apidoc.html && mv apidoc/assets assets/apidoc && sed -i 's/assets/apidoc/g' views/apidoc.html && rm -rf apidoc"
   },
   "repository": {
     "type": "git",
@@ -49,15 +49,6 @@
     "version": "1.0.0",
     "template": "default",
     "theme": "default",
-    "markdown": true,
-    "exclude": [
-      "node_modules",
-      "**/*.test.js",
-      "**/*.test.jsx",
-      "**/*.test.ts",
-      "**/*.test.tsx"
-    ],
-    "src": "./src",
-    "dest": "./docs"
+    "markdown": true
   }
 }
