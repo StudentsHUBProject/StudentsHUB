@@ -13,6 +13,7 @@
   <a href="https://github.com/StudentsHUBProject/StudentsHUB/actions/workflows/node.js.yml">
     <img alt="Docker Compose & Node" src="https://github.com/StudentsHUBProject/StudentsHUB/actions/workflows/node.js.yml/badge.svg">
   </a>
+  <a href="https://www.codefactor.io/repository/github/studentshubproject/studentshub"><img src="https://www.codefactor.io/repository/github/studentshubproject/studentshub/badge" alt="CodeFactor" /></a>
 </p>
 
 <h2 align="center">Scopo del progetto</h2>
@@ -27,5 +28,66 @@ la sezione Libri in cui è possibile esplorare un catalogo che spazia nell'ambit
 
 <h2 align="center">Architetture di riferimento e tecnologie usate</h2>
 
-![Test!](/assets/img/SCHEMA.png)
+![Schema!](/assets/img/SCHEMA.png)
+
+<h2 align="center">Soddisfacimento dei requisiti</h2>
+
+1. __Il servizio REST che implementate (lo chiameremo SERV) deve offrire a terze parti delle API documentate.__ (requisito 1)
+    - La nostra webapp offre API documentate tramite apiDoc, in particolare è possibile effettuare la GET (eventualmente con id e/o filtri) e la POST di appartamenti, libri e corsi.
+
+ 2. __SERV si deve interfacciare con almeno due servizi REST di terze parti.__ (requisiti 2, 3, 4)
+    - La nostra webapp utilizza le seguenti API esterne:
+        1. Google Maps.
+        2. Google Calendar: OAUTH tramite account google.
+        3. Google Drive: OAUTH tramite account google.
+
+3. __La soluzione deve prevedere l'uso di protocolli asincroni. Per esempio Websocket e/o AMQP.__ (requisito 5)
+    - La nostra webapp implementa il protocollo Websocket, ne fa utilizzo per permettere agli utenti di inviarsi messaggi
+    
+4. __Il progetto deve prevedere l'uso di Docker e l'automazione del processo di lancio, configurazione e test.__ (requisito 6)
+    - La nostra webapp utilizza Docker, ogni entità della nostra rete è dockerizzata.
+
+5. __Deve essere implementata una forma di CI/CD per esempio con le Github Actions__ (requisito 8)
+    - La nostra webapp implenta Github Actions per:
+        - Testing automatico delle funzionalità.
+        - Testing automatico dei servizi API offerti.
+        - Deploy su https://studentshub.ersi.xyz/
+
+6. __Requisiti minimi di sicurezza devono essere considerati e documentati. Self-signed certificate sono più che sufficienti per gli scopi del progetto.__ (requisito 9)
+    - La nostra webapp accetta solo richieste https autorizzate tramite l'utilizzo di Self-signed certificate.
+    - E' presente una regola che reinstrada le richieste http in entrata al reverse proxy in https.
+
+<h2 align="center">Istruzioni per l'installazione</h2>
+
+  1) Tramite git clonare il repository utilizzando il comando ```git clone https://github.com/StudentsHUBProject/StudentsHUB.git```;
+  2) installare docker;
+  3) esegiure il comando ```docker-compose up```;  
+  4) Aprire il browser e andare su [localhost](https://localhost);
+
+<h2 align="center">Istruzioni per il test</h2>
+
+- Spostarsi nella directory principale ed installare i moduli di node :
+
+```
+cd StudentsHUB
+npm install
+```
+
+- Eseguire i test digitando:
+
+```
+npm run test
+```
+
+<h2 align="center">Autori</h2>
+
+StudentsHUB è stato creato da:
+
+- Ersi Regolli (1895021)
+- Roberto Di Giovanni (1816691)
+- Lorenzo Ralli (1853661)
+
+
+
+
 
