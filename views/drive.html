@@ -209,7 +209,6 @@
                         localStorage.setItem('parent_folder', file.id);
                         console.log("Cartella disponibile");
                         document.getElementById("cartella-esistente").style.display = "block";
-                        $("#cartellaH").html("Tutti i file all'interno della cartella" + " " + folder)
                         showList();
                     }
                 }
@@ -308,7 +307,6 @@
         }
 
         function CreateFolder() {
-            console.log("c")
             var access_token = gapi.auth.getToken().access_token;
             let folder = document.getElementById("cartella").value;
             var request = gapi.client.request({
@@ -326,34 +324,12 @@
             request.execute(function (response) {
                 localStorage.setItem('parent_folder', response.id);
                 document.getElementById("crea-cartella").style.display = "none";
-                checkFolder();
+                showList();
+                document.getElementById("compila").style.display = "block";
+                document.getElementById("cerca-cartella").style.marginBottom = "0%";
                 shareFolder();
             })
         }
-
-        /*
-        function CreateFolder(){
-            var access_token=gapi.auth.getToken().access_token;
-            let folder = document.getElementById("cartella").value;
-            let createFolderOptions = {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer `+ access_token,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    mimeType: "application/vnd.google-apps.folder",
-                    name: folder
-                }),
-            };
-
-            fetch("https://www.googleapis.com/drive/v3/files", createFolderOptions).then(function(){
-                shareFolder().then(function(){window.location.href= "http://localhost:8080/drive";});
-               
-            })
-            
-        }
-        */
 
         var expandContainer = document.querySelector('.expand-container');
         var expandContainerUl = document.querySelector('.expand-container ul');
@@ -380,11 +356,13 @@
 
         // function for files list
         function showList(){
+            let folder = document.getElementById("cartella").value;
             gapi.client.drive.files.list({
                 // get parent folder id from localstorage
                 'q': `parents in "${localStorage.getItem('parent_folder')}"`
             }).then(function (response){
                 var files = response.result.files;
+                $("#cartellaH").html("Tutti i file all'interno della cartella" + " " + folder);
                 if(files && files.length > 0){
                     listcontainer.innerHTML = '';
                     for(var i=0; i<files.length; i++){
