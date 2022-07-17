@@ -62,7 +62,6 @@ router.post("/FormTutor", auth, async (req, res) => {
         res.status(400).send(err);
       } else {
         res.json(corso);
-        console.log(corso)
       }
     }
   );
