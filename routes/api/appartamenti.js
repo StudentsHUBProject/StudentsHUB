@@ -17,9 +17,9 @@ const router = express.Router();
  * @apiBody {Number} [posti_letto] Numero minimo di posti letto.
  * @apiBody {String} [citta] Città.
  * @apiBody {String} [classe_energetica] Tipologia di classe energetica. (es. A, B, C, D, E, F, G)
- * @apiBody {Number} [contratto] Tipologia di classe energetica. (Numero da 1 a 8).
+ * @apiBody {Number} [contratto] Tipologia di contratto. (Numero da 1 a 8).
  * @apiBody {String} [restrizioni] Restrizioni dell'annuncio. (es. "solo ragazze", "solo ragazzi")
- * @apiBody {String} [riscaldamento] Topologia di riscaldamento. (es. Autonomo, Centralizzato)
+ * @apiBody {String} [riscaldamento] Tipologia di riscaldamento. (es. Autonomo, Centralizzato)
  * @apiBody {Boolean} [internet] Presenza di internet. (es. true, false)
  * @apiBody {Boolean} [fumatori_ammessi] Fumatori ammessi. (es. true, false)
  * @apiBody {Boolean} [ascensore] Presenza dell'ascensore. (es. true, false)
