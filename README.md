@@ -37,9 +37,9 @@ la sezione Libri in cui è possibile esplorare un catalogo che spazia nell'ambit
 
  2. __SERV si deve interfacciare con almeno due servizi REST di terze parti.__ (requisiti 2, 3, 4)
     - La nostra webapp utilizza le seguenti API esterne:
-        1) Google Maps.
-        2) Google Calendar: OAUTH tramite account google.
-        3) Google Drive: OAUTH tramite account google.
+        - Google Maps.
+        - Google Calendar: OAUTH tramite account google.
+        - Google Drive: OAUTH tramite account google.
 
 3. __La soluzione deve prevedere l'uso di protocolli asincroni. Per esempio Websocket e/o AMQP.__ (requisito 5)
     - La nostra webapp implementa il protocollo Websocket, ne fa utilizzo per permettere agli utenti di inviarsi messaggi
@@ -60,9 +60,16 @@ la sezione Libri in cui è possibile esplorare un catalogo che spazia nell'ambit
 <h2 align="center">Istruzioni per l'installazione</h2>
 
   1) Tramite git clonare il repository utilizzando il comando 
-  ```git clone https://github.com/StudentsHUBProject/StudentsHUB.git```;
+  ```
+  git clone https://github.com/StudentsHUBProject/StudentsHUB.git
+  
+  ```
   2) Installare docker;
-  3) Eseguire il comando ```docker-compose up```;  
+  3) Eseguire il comando 
+  ```
+  docker-compose up
+  
+  ```  
   4) Aprire il browser e andare su [localhost](https://localhost);
 
 <h2 align="center">Istruzioni per il test</h2>
