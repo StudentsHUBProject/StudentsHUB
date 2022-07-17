@@ -4,7 +4,7 @@
   <img width="50%" src="https://raw.githubusercontent.com/StudentsHUBProject/StudentsHUB/master/assets/img/FinalHomeW.png" alt="StudentsHUB: logo">
 </p>
 
-<p align="center">StudentsHUB è una piattaforma creata per favorire la collaborazione tra studenti di tutt'Italia!<br><br>Progetto di gruppo realizzato per i corsi di "Linguaggi e Tecnologie per il Web" e "Reti di Calcolatori", tenuti rispettivamente dai Proff. Riccardo Rosati ed Andrea Vitaletti nel 2° semestre del 3° anno di Ingegneria Informatica e Automatica (A.A. 2021/2022) presso Sapienza Università di Roma.</p>
+<p align="center" style="margin-top: -5%" >StudentsHUB è una piattaforma creata per favorire la collaborazione tra studenti di tutt'Italia!<br><br>Progetto di gruppo realizzato per i corsi di "Linguaggi e Tecnologie per il Web" e "Reti di Calcolatori", tenuti rispettivamente dai Proff. Riccardo Rosati ed Andrea Vitaletti nel 2° semestre del 3° anno di Ingegneria Informatica e Automatica (A.A. 2021/2022) presso Sapienza Università di Roma.</p>
 
 <p align="center">
   <a href="https://github.com/StudentsHUBProject/StudentsHUB/blob/master/LICENSE">
