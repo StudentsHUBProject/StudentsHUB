@@ -194,6 +194,7 @@ nav ul li:nth-child(1) a:hover::after {
 	 width: 80%;
 }
  .chat-bubble {
+   width: 200px;
 	 padding: 10px 14px;
 	 background: #eee;
 	 margin: 10px 30px;
@@ -201,6 +202,9 @@ nav ul li:nth-child(1) a:hover::after {
 	 position: relative;
 	 animation: fadeIn 1s ease-in;
 }
+ .chat-bubble--right {
+   right: 100px;
+ }
  .chat-bubble:after {
 	 content: '';
 	 position: absolute;
