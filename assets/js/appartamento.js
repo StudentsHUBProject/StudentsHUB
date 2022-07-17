@@ -62,7 +62,7 @@ $(document).ready(function () {
                     <h5 class="tipologia">${data.tipologia}</h5>
                     <h5 class="prezzo">${data.prezzo}€</h5>
                   </div>
-                    <a href="mailto:${data.email}" class="btn btn-app">Contatta l'inserzionista</a>
+                    <button id="contatta" ref="${data.user}" class="btn btn-app">Contatta l'inserzionista</button>
                 </div>
             </div>
         </div>
@@ -130,5 +130,24 @@ $(document).ready(function () {
     error: function (err) {
       window.location.href = "/appartamenti";
     },
+  });
+
+  $(document).on("click", "#contatta", function () {
+    var user = $(this).attr("ref");
+    //ajax post request
+    $.ajax({
+      url: API_ENDPOINT + "/api/chat/",
+      method: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify({user: user}),
+      success: function (data) {
+        window.open("/chat", "_blank");
+      },
+      error: function (err) {
+        alert("Errore: " + err.responseText);
+      }
+    });
   });
 });

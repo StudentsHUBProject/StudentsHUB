@@ -275,6 +275,7 @@ nav ul li:nth-child(1) a:hover::after {
   height: 60%;
   border-radius: 20px;
   transition-duration: 0.4s;
+  cursor: pointer;
 }
 .ContactBox:hover {
   background-color: #328fa5;
@@ -296,7 +297,7 @@ nav ul li:nth-child(1) a:hover::after {
 .cartellaD {
   padding-top: 4%;
 }
-.ContactBox a,
+.ContactBox p,
 .Drive a {
   margin-left: 14%;
   font-size: 1.3vw;
@@ -304,7 +305,7 @@ nav ul li:nth-child(1) a:hover::after {
   text-decoration: none;
   color: white;
 }
-.ContactBox a::after {
+.ContactBox p::after {
   content: "\f0e0";
   font-weight: 900;
   font-family: "FontAwesome";
@@ -314,7 +315,7 @@ nav ul li:nth-child(1) a:hover::after {
   font-weight: 900;
   font-family: "FontAwesome";
 }
-.ContactBox a::after:hover {
+.ContactBox p::after:hover {
   background-color: #23798e;
 }
 .PInfo {
@@ -453,7 +454,7 @@ nav ul li:nth-child(1) a:hover::after {
     padding-top: 2.5%;
     margin-left: -5%;
   }
-  .ContactBox a {
+  .ContactBox p {
     font-size: 3vw;
   }
 }
@@ -492,7 +493,7 @@ nav ul li:nth-child(1) a:hover::after {
   .Lingue {
     font-size: 3vw;
   }
-  .ContactBox a {
+  .ContactBox p {
     font-size: 4vw;
   }
   .contatta {

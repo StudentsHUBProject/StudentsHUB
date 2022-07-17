@@ -19,7 +19,7 @@ $(document).ready(function () {
               <br>
               <br>
               <h3 id="pr">Prezzo: ${data.prezzo} euro</h3>
-              <h3 id="em">Email del venditore: <a id="b" class="btn btn-danger" role="button" href="mailto:${data.email}">Contattami!</a> </h3>
+              <h3 id="em"><p id="contatta" ref="${data.user}" class="btn btn-danger" role="button">Contattami!</p> </h3>
             </section>
             <section class="content-large">
               <h3> Descrizione del libro: </h3>
@@ -32,5 +32,24 @@ $(document).ready(function () {
     error: function (err) {
       window.location.href = "/libri";
     },
+  });
+
+  $(document).on("click", "#contatta", function () {
+    var user = $(this).attr("ref");
+    //ajax post request
+    $.ajax({
+      url: API_ENDPOINT + "/api/chat/",
+      method: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify({user: user}),
+      success: function (data) {
+        window.open("/chat", "_blank");
+      },
+      error: function (err) {
+        alert("Errore: " + err.responseText);
+      }
+    });
   });
 });

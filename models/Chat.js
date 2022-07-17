@@ -8,6 +8,7 @@ const schema = mongoose.Schema(
       testo: { type: String, required: true },
       inviato_da: { type: String, required: true },
     }],
+    ultimo_messaggio: { type: Date, default: Date.now },
     created_at: { type: Date, default: Date.now },
   },
   {

@@ -11,13 +11,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./js/checkAuth.js"></script>
     <script src="./js/chat.js"></script>
 
     <link rel="stylesheet" href="./css/jquery-toast.css" />
 
-    <link rel="stylesheet" href="./css/signin.css" />
+    <link rel="stylesheet" href="./css/chat.css" />
   </head>
   <body>
     <!--==========Navbar==========-->
@@ -44,14 +45,48 @@
     </nav>
     <!--==========Fine Navbar==========-->
 
-    <pre id="showmessage"></pre>
-    <input type="text" id="to_user" placeholder="User ID">
-    <input type="text" id="message" placeholder="Scrivi qui il tuo messaggio">
-    <button id="send"> Manda</button>
+
+
+    <!--==========Chat==========-->
+    <div class="container">
+	<div class="row no-gutters">
+	  <div class="col-md-4 border-right">
+		<div class="settings-tray">
+		  <img class="profile-image" src="./img/favicon.ico" alt="img">
+		</div>
+
+    <div class="sidebar"></div>
+
+	  </div>
+	  <div class="col-md-8">
+		<div class="settings-tray">
+			<div class="friend-drawer no-gutters friend-drawer--grey">
+			<img id="userImg" class="profile-image" src="./img/favicon.ico" alt="">
+			<div class="text">
+			  <h6 id="userName"></h6>
+			</div>
+		  </div>
+		</div>
+		<div class="chat-panel">
+		  <div id="input" class="row">
+				<div class="col-12">
+					<div class="chat-box-tray">
+					<i class="material-icons">sentiment_very_satisfied</i>
+					<input id="message" style="padding-left: 20px;" type="text" placeholder="Scrivi il tuo messaggio...">
+					<i id="send" class="material-icons">send</i>
+					</div>
+				</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+
 
     <!-- Footer -->
     <footer
-      class="text-center text-white footer"
+      class="text-center text-white"
+      style="background-color: forestgreen"
     >
       <br />
       <p>© 2022 Copyright: <a class="text-white" href="#">StudentsHUB</a></p>

@@ -59,9 +59,9 @@ $(document).ready(function () {
                   <div class="UtilLinks">
                     <div class="ContactBox">
                       <div class="contatta">
-                      <a href="mailto:${data.email}">
+                      <p id="contatta" ref="${data.user}">
                           Prenota una lezione
-                      </a>
+                      </p>
                       </div>
                     </div>
                     <div class="Drive">
@@ -81,5 +81,24 @@ $(document).ready(function () {
     error: function (err) {
       window.location.href = "/corsi";
     },
+  });
+
+  $(document).on("click", "#contatta", function () {
+    var user = $(this).attr("ref");
+    //ajax post request
+    $.ajax({
+      url: API_ENDPOINT + "/api/chat/",
+      method: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify({user: user}),
+      success: function (data) {
+        window.open("/chat", "_blank");
+      },
+      error: function (err) {
+        alert("Errore: " + err.responseText);
+      }
+    });
   });
 });

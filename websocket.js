@@ -40,14 +40,16 @@ wss.on('connection', function connection(ws, req) {
     try {
       const data = JSON.parse(data_);
 
+      if(!data.message) return("Empty message");
+
       try {
         const receiver = await User.findById(data.to_user);
 
-        if (!receiver) throw new Error("Receiver not found");
+        if (!receiver) return("Receiver not found");
 
         const sender = await User.findById(connected_user);
 
-        if (!sender) throw new Error("Sender not found");
+        if (!sender) return("Sender not found");
 
         let chat = await Chat.findOne({
           partecipanti: {
@@ -66,6 +68,8 @@ wss.on('connection', function connection(ws, req) {
           testo: data.message,
           inviato_da: sender._id,
         });
+
+        chat.ultimo_messaggio = new Date();
 
         chat.save();
 

@@ -57,11 +57,25 @@ router.get("/corsi", auth, async (req, res) => {
 
 // GET chat dell'utente loggato
 router.get("/chat", auth, async (req, res) => {
-  Chat.find({partecipanti: {$in: [req.user.id]}}, (err, chat) => {
+  let response = [];
+  Chat.find({partecipanti: {$in: [req.user.id]}}).sort({ ultimo_messaggio: "desc" }).exec(async (err, chats) => {
     if (err) {
       res.status(400).send(err);
     }
-    res.json(chat);
+    for(let i = 0; i < chats.length; i++) {
+      const chat = chats[i];
+      try {
+        const user = await User.findById(chat.partecipanti.filter(user => user !== req.user.id)).select("-password");
+        response.push({
+          chat: chat,
+          user: user
+        });
+      } catch (error) {
+        console.log(err.message);
+        res.status(500).send("Server Error");
+      }
+    }
+    res.json(response);
   });
 });
 
