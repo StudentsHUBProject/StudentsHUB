@@ -38,6 +38,8 @@ wss.on('connection', function connection(ws, req) {
 
   ws.on('message', async function message(data_) {
     try {
+      if (data_ == "ping") return ws.send("pong");
+
       const data = JSON.parse(data_);
 
       if(!data.message) return("Empty message");

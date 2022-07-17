@@ -87,6 +87,10 @@ $(document).ready(function () {
 
   ws = new WebSocket(endpoint);
   ws.onopen = () => {
+    //keep alive
+    setInterval(() => {
+      ws.send('ping');
+    }, 20000);
   }
   ws.onmessage = ({ data }) => showMessage(JSON.parse(data));
   ws.onclose = function() {
@@ -95,6 +99,8 @@ $(document).ready(function () {
   }
 
   function showMessage(data) {
+    if (data === 'ping') return;
+
     if(data.to_user) {
       direzione = "right";
       offset = "offset-md-9";
