@@ -33,7 +33,7 @@ la sezione Libri in cui è possibile esplorare un catalogo che spazia nell'ambit
 <h2 align="center">Soddisfacimento dei requisiti</h2>
 
 1. __Il servizio REST che implementate (lo chiameremo SERV) deve offrire a terze parti delle API documentate.__ (requisito 1)
-    - La nostra webapp offre API documentate tramite apiDoc, in particolare è possibile effettuare la GET (eventualmente con id e/o filtri) e la POST di appartamenti, libri e corsi.
+    - La nostra webapp offre API documentate tramite apiDoc, in particolare è possibile effettuare la GET (eventualmente con id e/o filtri).
 
  2. __SERV si deve interfacciare con almeno due servizi REST di terze parti.__ (requisiti 2, 3, 4)
     - La nostra webapp utilizza le seguenti API esterne:
@@ -45,7 +45,7 @@ la sezione Libri in cui è possibile esplorare un catalogo che spazia nell'ambit
     - La nostra webapp implementa il protocollo Websocket, ne fa utilizzo per permettere agli utenti di inviarsi messaggi
     
 4. __Il progetto deve prevedere l'uso di Docker e l'automazione del processo di lancio, configurazione e test.__ (requisito 6)
-    - La nostra webapp utilizza Docker, ogni entità della nostra rete è dockerizzata.
+    - La nostra webapp utilizza Docker, ogni entità della nostra rete è dockerizzata, sono presenti 3 entità node per permettere a Nginx di effettuare load balancing.
 
 5. __Deve essere implementata una forma di CI/CD per esempio con le Github Actions__ (requisito 8)
     - La nostra webapp implenta Github Actions per:
