@@ -18,7 +18,7 @@
 
 <h2 align="center">Scopo del progetto</h2>
 <p>StudentsHUB nasce con lo scopo di favorire la vita degli studenti universitari tramite una piattaforma
-che incita alla collaborazione e la condivisione di materiale didattico e conoscenze.</p>
+che incita alla collaborazione tra studenti e la condivisione di materiale didattico e conoscenze.</p>
 
 <p>La piattaforma è divisa in 3 sezioni:
 La sezione Appartamenti in cui è possibile cercare appartamenti in affitto nei pressi del tuo istituto,
@@ -64,11 +64,12 @@ la sezione Libri in cui è possibile esplorare un catalogo che spazia nell'ambit
   git clone https://github.com/StudentsHUBProject/StudentsHUB.git
   ```
   2) Installare docker;
-  3) Eseguire il comando 
+  3) Rinominare ```.env.example``` in ```.env```
+  4) Eseguire il comando 
   ```
   docker-compose up
   ```  
-  4) Aprire il browser e andare su [localhost](https://localhost);
+  5) Aprire il browser e andare su [localhost](https://localhost);
 
 <h2 align="center">Istruzioni per il test</h2>
 
