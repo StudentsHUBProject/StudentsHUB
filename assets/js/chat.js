@@ -83,7 +83,7 @@ $(document).ready(function () {
     ws.close();
   }
 
-  const endpoint = window.location.port ? 'ws://' + window.location.hostname + ':3001' : 'wss://' + window.location.hostname + '/websocket';
+  const endpoint = window.location.port ? 'ws://' + window.location.hostname + ':3000' : 'wss://' + window.location.hostname + '/websocket';
 
   ws = new WebSocket(endpoint);
   ws.onopen = () => {
@@ -92,14 +92,16 @@ $(document).ready(function () {
       ws.send('ping');
     }, 20000);
   }
-  ws.onmessage = ({ data }) => showMessage(JSON.parse(data));
+  ws.onmessage = ({ data }) => showMessage(data);
   ws.onclose = function() {
     ws = null;
     alert('Connection closed!');
   }
 
   function showMessage(data) {
-    if (data === 'ping') return;
+    if (data === 'ping' || data === 'pong') return;
+
+    if (!data.message) data = JSON.parse(data);
 
     if(data.to_user) {
       direzione = "right";
