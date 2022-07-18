@@ -33,7 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.5",
     "serve-favicon": "^2.5.0",
-    "ws": "^8.8.0"
+    "ws": "^8.8.1"
   },
   "devDependencies": {
     "apidoc": "^0.52.0",
