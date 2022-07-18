@@ -12,7 +12,7 @@ dotenv.config({
   path: ".env",
 });
 
-const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT ?? 3001 });
+const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT ?? 3000 });
 
 let users = [];
 
