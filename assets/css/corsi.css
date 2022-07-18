@@ -355,7 +355,7 @@ navbar .checkbtn {
   flex-direction: row;
   justify-content: space-around;
   flex-flow: wrap;
-  margin-top: -15%;
+  margin-top: -10%;
 }
 .howto .box {
   position: relative;

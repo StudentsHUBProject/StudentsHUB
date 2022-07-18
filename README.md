@@ -62,13 +62,11 @@ la sezione Libri in cui è possibile esplorare un catalogo che spazia nell'ambit
   1) Tramite git clonare il repository utilizzando il comando 
   ```
   git clone https://github.com/StudentsHUBProject/StudentsHUB.git
-  
   ```
   2) Installare docker;
   3) Eseguire il comando 
   ```
   docker-compose up
-  
   ```  
   4) Aprire il browser e andare su [localhost](https://localhost);
 

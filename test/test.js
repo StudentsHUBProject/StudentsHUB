@@ -10,6 +10,8 @@ chai.should();
 
 let token;
 let token2;
+let id1;
+let id2;
 let tokenerrato = 0;
 
 describe("TEST API", () => {
@@ -34,6 +36,7 @@ describe("TEST API", () => {
     const userappartamenti = "/api/user/appartamenti";
     const userlibri = "/api/user/libri";
     const usercorsi = "/api/user/corsi";
+    const userchat = "/api/user/chat"
 
     //Test Registrazione
     describe("Test Registrazione", () => {
@@ -158,6 +161,22 @@ describe("TEST API", () => {
             done();
           });
       });
+
+      //Test login errato: password errata
+      it("/ Deve restituire 400 perchè la password è errata", (done) => {
+        const user = {
+          email: "test@test.com",
+          password: "7654321",
+        };
+        chai
+          .request(server)
+          .post(signin)
+          .send(user)
+          .end((err, res) => {
+            res.should.have.status(400);
+            done();
+          });
+      });
     });
 
     //Test UserInfo
@@ -169,6 +188,19 @@ describe("TEST API", () => {
           .set("Cookie", `access-token=${token}`)
           .end((err, res) => {
             res.should.have.status(200);
+            id1 = res.body._id;
+            done();
+          });
+      });
+
+      it("/ Deve restituire 200 e le user info presenti nel database dopo check Token per il 2 utente", (done) => {
+        chai
+          .request(server)
+          .get(userinfo)
+          .set("Cookie", `access-token=${token2}`)
+          .end((err, res) => {
+            res.should.have.status(200);
+            id2 = res.body._id;
             done();
           });
       });
@@ -204,6 +236,20 @@ describe("TEST API", () => {
         chai
           .request(server)
           .get(userappartamenti)
+          .set("Cookie", `access-token=${token}`)
+          .end((err, res) => {
+            res.should.have.status(200);
+            done();
+          });
+      });
+    });
+
+    //Test Chat di User
+    describe("Test Chat User", () => {
+      it("/ Deve restituire 200 e le entry chat nel db di User", (done) => {
+        chai
+          .request(server)
+          .get(userchat)
           .set("Cookie", `access-token=${token}`)
           .end((err, res) => {
             res.should.have.status(200);
@@ -248,6 +294,9 @@ describe("TEST API", () => {
     const FormTutor = "/FormTutor";
     const StaticSignin = "/signin";
     const StaticUser = "/user";
+    const calendar = "/calendar";
+    const drive = "/drive";
+    const chat = "/chat";
 
     //FormAppartamento
     describe("Test Form Appartamento", () => {
@@ -360,6 +409,126 @@ describe("TEST API", () => {
         chai
           .request(server)
           .get(FormTutor)
+          .set("Cookie", `access-token=${tokenerrato}`)
+          .redirects(0)
+          .end((err, res) => {
+            res.should.have.status(302);
+            done();
+          });
+      });
+    });
+
+    //Calendar
+    describe("Test Calendar", () => {
+      it("/ Deve restituire 200 se è presente il token di accesso nei cookies", (done) => {
+        chai
+          .request(server)
+          .get(calendar)
+          .set("Cookie", `access-token=${token}`)
+          .end((err, res) => {
+            res.should.have.status(200);
+            done();
+          });
+      });
+
+      //Calendar token non presente
+      it("/ Deve restituire 302 e reindirizzare alla pagina di login per token non presente", (done) => {
+        chai
+          .request(server)
+          .get(calendar)
+          .set("Cookie", "")
+          .redirects(0)
+          .end((err, res) => {
+            res.should.have.status(302);
+            done();
+          });
+      });
+
+      //Calendar token errato
+      it("/ Deve restituire 302 e reindirizzare alla pagina di login per token errato", (done) => {
+        chai
+          .request(server)
+          .get(calendar)
+          .set("Cookie", `access-token=${tokenerrato}`)
+          .redirects(0)
+          .end((err, res) => {
+            res.should.have.status(302);
+            done();
+          });
+      });
+    });
+
+    //Drive
+    describe("Test Drive", () => {
+      it("/ Deve restituire 200 se è presente il token di accesso nei cookies", (done) => {
+        chai
+          .request(server)
+          .get(drive)
+          .set("Cookie", `access-token=${token}`)
+          .end((err, res) => {
+            res.should.have.status(200);
+            done();
+          });
+      });
+
+      //Drive token non presente
+      it("/ Deve restituire 302 e reindirizzare alla pagina di login per token non presente", (done) => {
+        chai
+          .request(server)
+          .get(drive)
+          .set("Cookie", "")
+          .redirects(0)
+          .end((err, res) => {
+            res.should.have.status(302);
+            done();
+          });
+      });
+
+      //Drive token errato
+      it("/ Deve restituire 302 e reindirizzare alla pagina di login per token errato", (done) => {
+        chai
+          .request(server)
+          .get(drive)
+          .set("Cookie", `access-token=${tokenerrato}`)
+          .redirects(0)
+          .end((err, res) => {
+            res.should.have.status(302);
+            done();
+          });
+      });
+    });
+
+    //Chat
+    describe("Test Chat", () => {
+      it("/ Deve restituire 200 se è presente il token di accesso nei cookies", (done) => {
+        chai
+          .request(server)
+          .get(chat)
+          .set("Cookie", `access-token=${token}`)
+          .end((err, res) => {
+            res.should.have.status(200);
+            done();
+          });
+      });
+
+      //Chat token non presente
+      it("/ Deve restituire 302 e reindirizzare alla pagina di login per token non presente", (done) => {
+        chai
+          .request(server)
+          .get(chat)
+          .set("Cookie", "")
+          .redirects(0)
+          .end((err, res) => {
+            res.should.have.status(302);
+            done();
+          });
+      });
+
+      //Chat token errato
+      it("/ Deve restituire 302 e reindirizzare alla pagina di login per token errato", (done) => {
+        chai
+          .request(server)
+          .get(chat)
           .set("Cookie", `access-token=${tokenerrato}`)
           .redirects(0)
           .end((err, res) => {
@@ -717,6 +886,19 @@ describe("TEST API", () => {
             done();
           });
       });
+
+      it("/ Deve restituire 200 e gli appartamenti trovati con i filtri di ricerca vuoti", (done) => {
+        const filtri = {};
+        chai
+          .request(server)
+          .get(appartamenti)
+          .send(filtri)
+          .end((err, res) => {
+            res.should.have.status(200);
+            done();
+          });
+      });
+
     });
 
     //GET Appartamento by ID
@@ -889,4 +1071,72 @@ describe("TEST API", () => {
       });
     });
   });
+
+  //==================Test API chat.js==================
+  describe("Chat APIs", () => {
+    const chatroute = "/api/chat/";
+    let chat;
+
+    //POST chat
+    describe("Test POST Chat tra 2 utenti", () => {
+      it("/ deve restituire 400 poiche non è possibile creare una chat con se stessi", (done) => {
+       const utente = {
+         user: id1
+        }
+        chai
+            .request(server)
+            .post(chatroute)
+            .set("Cookie", `access-token=${token}`)
+            .send(utente)
+            .end((err, res) => {
+              res.should.have.status(400);
+              done();
+            })
+      });
+
+      it("/ deve restituire 200 e la nuova chat creata tra i 2 utenti", (done) => {
+        const utente2 = {
+          user: id2
+        }
+        chai   
+            .request(server)
+            .post(chatroute)
+            .set("Cookie", `access-token=${token}`)
+            .send(utente2)
+            .end((err, res) => {
+              res.should.have.status(200)
+              chat = res.body
+              done()
+            })
+      })
+    })
+
+    //GET Chat
+    describe("Test GET chat tra 2 utente", () => {
+      it("/ deve restutire 400 poiche non puoi chattare con te stesso", (done) => {
+        chai 
+            .request(server)
+            .get(chatroute)
+            .set("Cookie", `access-token=${token}`)
+            .query({user: id1})
+            .end((err, res) => {
+              res.should.have.status(400)
+              done()
+            })
+      })
+
+      it("/ deve restutire 200 e la chat tra i 2 utenti", (done) => {
+        chai 
+            .request(server)
+            .get(chatroute)
+            .set("Cookie", `access-token=${token}`)
+            .query({user: id2})
+            .end((err, res) => {
+              res.should.have.status(200)
+              done()
+            })
+      })
+    })
+
+  })
 });
