@@ -379,6 +379,10 @@
                 }else{
                     listcontainer.innerHTML = '<div style="text-align: center;"><h2>Cartella vuota</h2></div>'
                 }
+                document.getElementById('lettura-file').style.display="none";
+                document.getElementById('pdf').style.display="none";
+                document.getElementById('txt').style.display="none";
+                document.getElementById('img').style.display="none";
             })
         }
 
@@ -436,10 +440,6 @@
             });
             request.execute(function (res){
                 console.log('File Deleted');
-                document.getElementById('lettura-file').style.display="none";
-                document.getElementById('pdf').style.display="none";
-                document.getElementById('txt').style.display="none";
-                document.getElementById('img').style.display="none";
                 document.getElementById("file-esistente").style.display = "none";
             })
         }
@@ -455,10 +455,6 @@
                 expandContainerUl.setAttribute('data-id', '');
                 expandContainerUl.setAttribute('data-name', '');
                 expandContainerUl.setAttribute('data-mimeType', '');
-                document.getElementById('lettura-file').style.display="none";
-                document.getElementById('pdf').style.display="none";
-                document.getElementById('txt').style.display="none";
-                document.getElementById('img').style.display="none";
                 // after delete update the list
                 showList();
             })
